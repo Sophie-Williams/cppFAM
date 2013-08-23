@@ -24,7 +24,6 @@ _naturalLanguage(naturalLanguage) {
 
 double Rule::fire(std::vector<double> values) {
     vector<double> mus;
-//    double best = 0;
 
     for (size_t i = 0; i < _antecedents.size(); i++) {
         mus.push_back(_antecedents[i]->calculateMu(values[i]));
