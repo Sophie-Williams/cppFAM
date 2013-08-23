@@ -81,6 +81,9 @@
 		83388A4D17C80877001170DC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		83C7E78F17C80ACF00F95F8D /* weapon_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = weapon_example; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C7E79117C80AD000F95F8D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		83C7E79B17C8126D00F95F8D /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		83C7E79C17C8126D00F95F8D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		83C7E79D17C8126D00F95F8D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,9 @@
 		832EEB5217C296BF0022C8FF = {
 			isa = PBXGroup;
 			children = (
+				83C7E79B17C8126D00F95F8D /* CHANGELOG.md */,
+				83C7E79C17C8126D00F95F8D /* LICENSE */,
+				83C7E79D17C8126D00F95F8D /* README.md */,
 				832EEB5D17C296BF0022C8FF /* fuzzyMemory */,
 				832930B517C80563005B34A1 /* hvac_example */,
 				83C7E79017C80AD000F95F8D /* weapon_example */,
