@@ -77,6 +77,13 @@ double RuleSet::calculate(vector<double> inputValues) {
         }
     }
 
+    //    Defuzzify into a discrete & usable value by adding up the weighted
+    //    consequents' contributions to the output. Again there are several ways
+    //    of doing it, such as computing the centroid of the combined 'mass', or
+    //    the 'mean of maximum' of the tallest set(s). Here we use the "Average
+    //    of Maxima" summation mechanism. MaxAv is defined as:
+    //    (∑ representative value * height) / (∑ height) for all output sets
+    //    where 'representative value' is shape-dependent.
     double numerator=0;
     double denominator=0;
 
