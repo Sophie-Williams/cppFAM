@@ -2,7 +2,7 @@
 
 This is a port of my own Ruby version of this code, hosted at http://github.com/cpowell/fuzzy-associative-memory. This is something of a work in progress while I explore the platform-specific compilation and packaging requirements (something one doesn't worry about in Ruby).
 
-Currently the code and examples run under Mac OS X 10.8. Support for other platforms are in the works.
+Currently the code and examples run under Mac OS X 10.8. Support for other platforms (e.g. Linux) is in the works.
 
 # Fuzzy logic "Fuzzy Associative Memory"
 
@@ -56,8 +56,8 @@ Watch the [changelog](http://github.com/cpowell/fuzzy-associative-memory-cpluspl
 ## Included examples
 
 The source code contains the following examples:
-* `hvac_system_example` illustrates how a FAM could govern an HVAC fan unit to maintain a constant, comfortable temperature
-* `weapon_choice_example` illustrates how a FAM could let a game bot intelligently decide which weapon to use
+* `hvac_example` illustrates how a FAM could govern an HVAC fan unit to maintain a constant, comfortable temperature
+* `weapon_example` illustrates how a FAM could let a game bot intelligently decide which weapon to use
 
 ## References used in the creation of this software
 * "Fuzzy Thinking: The New Science of Fuzzy Logic" by Bart Kosko [(Amazon link)](http://www.amazon.com/Fuzzy-Thinking-New-Science-Logic/dp/0006547133/)
