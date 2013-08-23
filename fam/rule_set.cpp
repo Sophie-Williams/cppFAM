@@ -73,7 +73,7 @@ double RuleSet::calculate(vector<double> inputValues) {
         if (_implication == "mamdani") {
             consequents.push_back( (item.first)->mamdami(item.second) );
         } else {
-            consequents.push_back( (item.first)->mamdami(item.second) );
+            consequents.push_back( (item.first)->larsen(item.second) );
         }
     }
 
@@ -81,6 +81,7 @@ double RuleSet::calculate(vector<double> inputValues) {
     double denominator=0;
 
     for (auto cons : consequents) {
+//        std::cout << *cons << std::endl;
         numerator += (cons->calculateXCentroid() * cons->getHeight());
         denominator += cons->getHeight();
     }
