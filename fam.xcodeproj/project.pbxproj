@@ -21,10 +21,19 @@
 		8305190817C803CB004DC675 /* triangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB6817C296F70022C8FF /* triangle.h */; };
 		832930BD17C8056E005B34A1 /* libfuzzy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830518F317C8038D004DC675 /* libfuzzy.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		83388A4E17C80877001170DC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83388A4D17C80877001170DC /* main.cpp */; };
+		83C7E79217C80AD000F95F8D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83C7E79117C80AD000F95F8D /* main.cpp */; };
+		83C7E79A17C80AF500F95F8D /* libfuzzy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830518F317C8038D004DC675 /* libfuzzy.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		83C7E78917C808D600F95F8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 832EEB5317C296BF0022C8FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 830518F217C8038D004DC675;
+			remoteInfo = fuzzy;
+		};
+		83C7E79817C80AEC00F95F8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832EEB5317C296BF0022C8FF /* Project object */;
 			proxyType = 1;
@@ -38,6 +47,15 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		83C7E78D17C80ACF00F95F8D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
 			);
@@ -61,6 +79,8 @@
 		8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trapezoid.cpp; sourceTree = "<group>"; };
 		8333275E17C5D9E000B8BFE7 /* trapezoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trapezoid.h; sourceTree = "<group>"; };
 		83388A4D17C80877001170DC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		83C7E78F17C80ACF00F95F8D /* weapon_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = weapon_example; sourceTree = BUILT_PRODUCTS_DIR; };
+		83C7E79117C80AD000F95F8D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +96,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				832930BD17C8056E005B34A1 /* libfuzzy.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83C7E78C17C80ACF00F95F8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C7E79A17C80AF500F95F8D /* libfuzzy.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +123,7 @@
 			children = (
 				832EEB5D17C296BF0022C8FF /* fuzzyMemory */,
 				832930B517C80563005B34A1 /* hvac_example */,
+				83C7E79017C80AD000F95F8D /* weapon_example */,
 				832EEB5C17C296BF0022C8FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,6 +133,7 @@
 			children = (
 				830518F317C8038D004DC675 /* libfuzzy.dylib */,
 				832930B417C80563005B34A1 /* hvac_example */,
+				83C7E78F17C80ACF00F95F8D /* weapon_example */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +156,14 @@
 			);
 			name = fuzzyMemory;
 			path = fam;
+			sourceTree = "<group>";
+		};
+		83C7E79017C80AD000F95F8D /* weapon_example */ = {
+			isa = PBXGroup;
+			children = (
+				83C7E79117C80AD000F95F8D /* main.cpp */,
+			);
+			path = weapon_example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +220,24 @@
 			productReference = 832930B417C80563005B34A1 /* hvac_example */;
 			productType = "com.apple.product-type.tool";
 		};
+		83C7E78E17C80ACF00F95F8D /* weapon_example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83C7E79517C80AD000F95F8D /* Build configuration list for PBXNativeTarget "weapon_example" */;
+			buildPhases = (
+				83C7E78B17C80ACF00F95F8D /* Sources */,
+				83C7E78C17C80ACF00F95F8D /* Frameworks */,
+				83C7E78D17C80ACF00F95F8D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83C7E79917C80AEC00F95F8D /* PBXTargetDependency */,
+			);
+			name = weapon_example;
+			productName = weapon_example;
+			productReference = 83C7E78F17C80ACF00F95F8D /* weapon_example */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,6 +261,7 @@
 			targets = (
 				830518F217C8038D004DC675 /* fuzzy */,
 				832930B317C80563005B34A1 /* hvac_example */,
+				83C7E78E17C80ACF00F95F8D /* weapon_example */,
 			);
 		};
 /* End PBXProject section */
@@ -231,6 +288,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		83C7E78B17C80ACF00F95F8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C7E79217C80AD000F95F8D /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -238,6 +303,11 @@
 			isa = PBXTargetDependency;
 			target = 830518F217C8038D004DC675 /* fuzzy */;
 			targetProxy = 83C7E78917C808D600F95F8D /* PBXContainerItemProxy */;
+		};
+		83C7E79917C80AEC00F95F8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 830518F217C8038D004DC675 /* fuzzy */;
+			targetProxy = 83C7E79817C80AEC00F95F8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -361,6 +431,29 @@
 			};
 			name = Release;
 		};
+		83C7E79617C80AD000F95F8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		83C7E79717C80AD000F95F8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -390,6 +483,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		83C7E79517C80AD000F95F8D /* Build configuration list for PBXNativeTarget "weapon_example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83C7E79617C80AD000F95F8D /* Debug */,
+				83C7E79717C80AD000F95F8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
