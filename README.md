@@ -36,13 +36,6 @@ As you can see, the fuzzy rules are deliberately vague and use qualifiers like "
 between fuzzy sets are intentionally blurry. This is the nature of fuzzy sets; they capture such human fuzziness in a way that extracts highly natural behavior from the fuzzy rules.
 When defining these rules, it helps to imagine interviewing a bona fide expert in the domain and writing down the skills necessary to be successful in the domain.
 
-## FLV visualization
-
-Fuzzy Linguistic Variables can be hard to visualize, especially when they get complex and include triangles and trapezoids in combination.
-To answer that, this software can now (optionally) shell out to your installed Gnuplot and create PNG or SVG renderings of your FLVs. Here's an example:
-
-![flv example](https://raw.github.com/cpowell/fuzzy-associative-memory/master/bin/plot%20of%20rocket%20launcher%20ammo%20quantity.png)
-
 ## Project status
 
 This is working, functional software, suitable for use in your own game or application. It currently supports:
@@ -58,31 +51,13 @@ To do (in descending importance, roughly):
 * Hedges ('very' and 'fairly')
 * Additional examples
 
-Watch the [changelog](http://github.com/cpowell/fuzzy-associative-memory/blob/master/CHANGELOG.md) for news.
-
-## Gem installation
-
-I recommend you clone the Git repository and browse the examples and source code to fully understand how FAMs work.
-
-But if / when you want to use this in your own project, the easiest way to do so is via the Gem:
-```
-gem install fuzzy_associative_memory
-```
-
-Then in your code:
-```
-require 'fuzzy_associative_memory'
-```
-
-The gem is fully namespaced to prevent collisions. See the examples for usage details.
+Watch the [changelog](http://github.com/cpowell/fuzzy-associative-memory-cplusplus/blob/master/CHANGELOG.md) for news.
 
 ## Included examples
 
-The `bin` directory contains the following examples:
+The source code contains the following examples:
 * `hvac_system_example` illustrates how a FAM could govern an HVAC fan unit to maintain a constant, comfortable temperature
 * `weapon_choice_example` illustrates how a FAM could let a game bot intelligently decide which weapon to use
-
-Plots of the examples' fuzzy linguistic variables have been pre-rendered and are in the bin directory. These will help you visualize the FLVs.
 
 ## References used in the creation of this software
 * "Fuzzy Thinking: The New Science of Fuzzy Logic" by Bart Kosko [(Amazon link)](http://www.amazon.com/Fuzzy-Thinking-New-Science-Logic/dp/0006547133/)
