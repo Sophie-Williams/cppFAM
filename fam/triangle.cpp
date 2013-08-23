@@ -47,10 +47,10 @@ Triangle *Triangle::larsen(double ratio) {
 }
 
 Trapezoid *Triangle::mamdami(double clip_height) {
-    double l = _left;
+    double l  = _left;
     double tl = _left + (clip_height * (_center - _left));
-    double tr = _right + (clip_height * (_right - _center));
-    double r = _right;
+    double tr = _right - (clip_height * (_right - _center));
+    double r  = _right;
 
     return new Trapezoid(l, tl, tr, r, clip_height);
 }
