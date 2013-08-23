@@ -35,11 +35,15 @@ public:
 
     void setHeight(double height);
 
-    inline friend ostream& operator<<(ostream &strm, const Triangle &tri) {
-        // print something from v to str, e.g: Str << v.getX();
-        strm << "Triangle " << &tri << ", " << tri._left << "/" << tri._center << "/" << tri._right << " (" << tri._height << ")";
-        return strm;
+    void print( std::ostream &strm) const {
+        strm << "Triangle " << this << ", " << this->_left << "/" << this->_center << "/" << this->_right << " (" << this->_height << ")";
     }
+
+//    inline friend ostream& operator<<(ostream &strm, const Triangle &tri) {
+//        // print something from v to str, e.g: Str << v.getX();
+//        strm << "Triangle " << &tri << ", " << tri._left << "/" << tri._center << "/" << tri._right << " (" << tri._height << ")";
+//        return strm;
+//    }
 };
 
 #endif /* defined(__fam__triangle__) */

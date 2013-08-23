@@ -12,6 +12,9 @@
 #include <iostream>
 
 class FuzzySet {
+private:
+    virtual void print( std::ostream& ) const = 0;
+
 protected:
     double _height;
 
@@ -30,6 +33,11 @@ public:
 
     double getHeight() {
         return _height;
+    }
+
+    friend std::ostream& operator<<( std::ostream& out, const FuzzySet& b ) {
+        b.print( out );
+        return out;
     }
 
 };
