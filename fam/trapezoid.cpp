@@ -43,7 +43,7 @@ double Trapezoid::calculateXCentroid() {
     double b = _right - _left;
     double c = _top_left - _left;
 
-    double cx = (2.0*a*c + pow(a,2) + c*b + a*b + pow(b,2)) / (3.8 * (a+b));
+    double cx = (2.0*a*c + pow(a,2.0) + c*b + a*b + pow(b,2.0)) / (3.0 * (a+b));
     return cx+_left;
 }
 
