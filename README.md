@@ -1,6 +1,6 @@
 # Note before use
 
-This is a port of my own Ruby version of this code, hosted at http://github.com/cpowell/fuzzy-associative-memory. This is something of a work in progress while I explore the platform-specific compilation and packaging requirements (something you don't concern yourself a whole lot in Ruby).
+This is a port of my own Ruby version of this code, hosted at http://github.com/cpowell/fuzzy-associative-memory. This is something of a work in progress while I explore the platform-specific compilation and packaging requirements (something one doesn't worry about in Ruby).
 
 Currently the code and examples run under Mac OS X 10.8. Support for other platforms are in the works.
 
