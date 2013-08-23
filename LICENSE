@@ -3,12 +3,12 @@ Copyright 2013, Prylis Incorporated.
 Please contact the author <cpowell@prylis.com> for questions about licensing
 or for specific licensing needs.
 
-The Ruby Fuzzy Associative Memory is free software: you can redistribute it
+The C++ Fuzzy Associative Memory is free software: you can redistribute it
 and/or modify it under the terms of the GNU Lesser General Public License as
 published by the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-The Ruby Fuzzy Associative Memory is distributed in the hope that it will be
+The C++ Fuzzy Associative Memory is distributed in the hope that it will be
 useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser
 General Public License for more details.
