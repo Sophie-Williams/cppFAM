@@ -7,20 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		832EEB5F17C296BF0022C8FF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB5E17C296BF0022C8FF /* main.cpp */; };
-		832EEB6917C296F70022C8FF /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB6717C296F70022C8FF /* triangle.cpp */; };
-		832EEB7317C2A8880022C8FF /* fuzzy_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */; };
-		832EEB7617C2C5670022C8FF /* linguistic_variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7417C2C5670022C8FF /* linguistic_variable.cpp */; };
-		832EEB7917C2CCC00022C8FF /* rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7717C2CCC00022C8FF /* rule.cpp */; };
-		832EEB7C17C2E5E20022C8FF /* rule_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7A17C2E5E20022C8FF /* rule_set.cpp */; };
-		8333275F17C5D9E000B8BFE7 /* trapezoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */; };
+		830518F717C803AC004DC675 /* fuzzy_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */; };
+		830518F817C803AC004DC675 /* linguistic_variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7417C2C5670022C8FF /* linguistic_variable.cpp */; };
+		830518F917C803AC004DC675 /* rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7717C2CCC00022C8FF /* rule.cpp */; };
+		830518FA17C803AC004DC675 /* rule_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7A17C2E5E20022C8FF /* rule_set.cpp */; };
+		830518FB17C803AC004DC675 /* trapezoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */; };
+		830518FC17C803AC004DC675 /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB6717C296F70022C8FF /* triangle.cpp */; };
+		8305190317C803CB004DC675 /* fuzzy_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7217C2A8880022C8FF /* fuzzy_set.h */; };
+		8305190417C803CB004DC675 /* linguistic_variable.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7517C2C5670022C8FF /* linguistic_variable.h */; };
+		8305190517C803CB004DC675 /* rule.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7817C2CCC00022C8FF /* rule.h */; };
+		8305190617C803CB004DC675 /* rule_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7B17C2E5E20022C8FF /* rule_set.h */; };
+		8305190717C803CB004DC675 /* trapezoid.h in Headers */ = {isa = PBXBuildFile; fileRef = 8333275E17C5D9E000B8BFE7 /* trapezoid.h */; };
+		8305190817C803CB004DC675 /* triangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB6817C296F70022C8FF /* triangle.h */; };
+		832930BD17C8056E005B34A1 /* libfuzzy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830518F317C8038D004DC675 /* libfuzzy.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		83388A4E17C80877001170DC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83388A4D17C80877001170DC /* main.cpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		83C7E78917C808D600F95F8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 832EEB5317C296BF0022C8FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 830518F217C8038D004DC675;
+			remoteInfo = fuzzy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		832EEB5917C296BF0022C8FF /* CopyFiles */ = {
+		832930B217C80563005B34A1 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
 			);
@@ -29,8 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		832EEB5B17C296BF0022C8FF /* fam */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fam; sourceTree = BUILT_PRODUCTS_DIR; };
-		832EEB5E17C296BF0022C8FF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		830518F317C8038D004DC675 /* libfuzzy.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfuzzy.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		832930B417C80563005B34A1 /* hvac_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hvac_example; sourceTree = BUILT_PRODUCTS_DIR; };
 		832EEB6717C296F70022C8FF /* triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = triangle.cpp; sourceTree = "<group>"; };
 		832EEB6817C296F70022C8FF /* triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle.h; sourceTree = "<group>"; };
 		832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fuzzy_set.cpp; sourceTree = "<group>"; };
@@ -43,23 +60,41 @@
 		832EEB7B17C2E5E20022C8FF /* rule_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rule_set.h; sourceTree = "<group>"; };
 		8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trapezoid.cpp; sourceTree = "<group>"; };
 		8333275E17C5D9E000B8BFE7 /* trapezoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trapezoid.h; sourceTree = "<group>"; };
+		83388A4D17C80877001170DC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		832EEB5817C296BF0022C8FF /* Frameworks */ = {
+		830518F017C8038D004DC675 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		832930B117C80563005B34A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				832930BD17C8056E005B34A1 /* libfuzzy.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		832930B517C80563005B34A1 /* hvac_example */ = {
+			isa = PBXGroup;
+			children = (
+				83388A4D17C80877001170DC /* main.cpp */,
+			);
+			path = hvac_example;
+			sourceTree = "<group>";
+		};
 		832EEB5217C296BF0022C8FF = {
 			isa = PBXGroup;
 			children = (
-				832EEB5D17C296BF0022C8FF /* fam */,
+				832EEB5D17C296BF0022C8FF /* fuzzyMemory */,
+				832930B517C80563005B34A1 /* hvac_example */,
 				832EEB5C17C296BF0022C8FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,15 +102,15 @@
 		832EEB5C17C296BF0022C8FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				832EEB5B17C296BF0022C8FF /* fam */,
+				830518F317C8038D004DC675 /* libfuzzy.dylib */,
+				832930B417C80563005B34A1 /* hvac_example */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		832EEB5D17C296BF0022C8FF /* fam */ = {
+		832EEB5D17C296BF0022C8FF /* fuzzyMemory */ = {
 			isa = PBXGroup;
 			children = (
-				832EEB5E17C296BF0022C8FF /* main.cpp */,
 				832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */,
 				832EEB7217C2A8880022C8FF /* fuzzy_set.h */,
 				832EEB7417C2C5670022C8FF /* linguistic_variable.cpp */,
@@ -89,27 +124,62 @@
 				832EEB6717C296F70022C8FF /* triangle.cpp */,
 				832EEB6817C296F70022C8FF /* triangle.h */,
 			);
+			name = fuzzyMemory;
 			path = fam;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		830518F117C8038D004DC675 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8305190317C803CB004DC675 /* fuzzy_set.h in Headers */,
+				8305190417C803CB004DC675 /* linguistic_variable.h in Headers */,
+				8305190517C803CB004DC675 /* rule.h in Headers */,
+				8305190617C803CB004DC675 /* rule_set.h in Headers */,
+				8305190717C803CB004DC675 /* trapezoid.h in Headers */,
+				8305190817C803CB004DC675 /* triangle.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		832EEB5A17C296BF0022C8FF /* fam */ = {
+		830518F217C8038D004DC675 /* fuzzy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 832EEB6417C296BF0022C8FF /* Build configuration list for PBXNativeTarget "fam" */;
+			buildConfigurationList = 830518F417C8038D004DC675 /* Build configuration list for PBXNativeTarget "fuzzy" */;
 			buildPhases = (
-				832EEB5717C296BF0022C8FF /* Sources */,
-				832EEB5817C296BF0022C8FF /* Frameworks */,
-				832EEB5917C296BF0022C8FF /* CopyFiles */,
+				830518EF17C8038D004DC675 /* Sources */,
+				830518F017C8038D004DC675 /* Frameworks */,
+				830518F117C8038D004DC675 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = fam;
-			productName = fam;
-			productReference = 832EEB5B17C296BF0022C8FF /* fam */;
+			name = fuzzy;
+			productName = fuzzy;
+			productReference = 830518F317C8038D004DC675 /* libfuzzy.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		832930B317C80563005B34A1 /* hvac_example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 832930BA17C80563005B34A1 /* Build configuration list for PBXNativeTarget "hvac_example" */;
+			buildPhases = (
+				832930B017C80563005B34A1 /* Sources */,
+				832930B117C80563005B34A1 /* Frameworks */,
+				832930B217C80563005B34A1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83C7E78A17C808D600F95F8D /* PBXTargetDependency */,
+			);
+			name = hvac_example;
+			productName = hvac_example;
+			productReference = 832930B417C80563005B34A1 /* hvac_example */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -133,29 +203,91 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				832EEB5A17C296BF0022C8FF /* fam */,
+				830518F217C8038D004DC675 /* fuzzy */,
+				832930B317C80563005B34A1 /* hvac_example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		832EEB5717C296BF0022C8FF /* Sources */ = {
+		830518EF17C8038D004DC675 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8333275F17C5D9E000B8BFE7 /* trapezoid.cpp in Sources */,
-				832EEB5F17C296BF0022C8FF /* main.cpp in Sources */,
-				832EEB7317C2A8880022C8FF /* fuzzy_set.cpp in Sources */,
-				832EEB6917C296F70022C8FF /* triangle.cpp in Sources */,
-				832EEB7617C2C5670022C8FF /* linguistic_variable.cpp in Sources */,
-				832EEB7C17C2E5E20022C8FF /* rule_set.cpp in Sources */,
-				832EEB7917C2CCC00022C8FF /* rule.cpp in Sources */,
+				830518F717C803AC004DC675 /* fuzzy_set.cpp in Sources */,
+				830518F817C803AC004DC675 /* linguistic_variable.cpp in Sources */,
+				830518F917C803AC004DC675 /* rule.cpp in Sources */,
+				830518FA17C803AC004DC675 /* rule_set.cpp in Sources */,
+				830518FB17C803AC004DC675 /* trapezoid.cpp in Sources */,
+				830518FC17C803AC004DC675 /* triangle.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		832930B017C80563005B34A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83388A4E17C80877001170DC /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		83C7E78A17C808D600F95F8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 830518F217C8038D004DC675 /* fuzzy */;
+			targetProxy = 83C7E78917C808D600F95F8D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		830518F517C8038D004DC675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				EXECUTABLE_PREFIX = lib;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		830518F617C8038D004DC675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		832930BB17C80563005B34A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		832930BC17C80563005B34A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		832EEB6217C296BF0022C8FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -191,7 +323,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -225,41 +357,36 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		832EEB6517C296BF0022C8FF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		832EEB6617C296BF0022C8FF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		830518F417C8038D004DC675 /* Build configuration list for PBXNativeTarget "fuzzy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				830518F517C8038D004DC675 /* Debug */,
+				830518F617C8038D004DC675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		832930BA17C80563005B34A1 /* Build configuration list for PBXNativeTarget "hvac_example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				832930BB17C80563005B34A1 /* Debug */,
+				832930BC17C80563005B34A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		832EEB5617C296BF0022C8FF /* Build configuration list for PBXProject "fam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				832EEB6217C296BF0022C8FF /* Debug */,
 				832EEB6317C296BF0022C8FF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		832EEB6417C296BF0022C8FF /* Build configuration list for PBXNativeTarget "fam" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				832EEB6517C296BF0022C8FF /* Debug */,
-				832EEB6617C296BF0022C8FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
