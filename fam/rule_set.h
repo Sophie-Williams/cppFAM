@@ -26,7 +26,7 @@ namespace fuzzy {
     private:
         std::string _name;
         std::string _implication;
-        std::vector<Rule *> _rules;
+        std::vector<std::shared_ptr<Rule>> _rules;
         vector<std::shared_ptr<FuzzySet>> consequents;
 
         typedef std::unordered_map<std::shared_ptr<FuzzySet>, double> mu_map;
@@ -38,9 +38,8 @@ namespace fuzzy {
         RuleSet(std::string name, std::string implication);
 
         std::string name();
-        void addRule(Rule * const r);
+        void addRule(std::shared_ptr<Rule> const r);
         double calculate(std::vector<double> values);
-
     };
 }
 

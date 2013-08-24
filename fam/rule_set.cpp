@@ -34,7 +34,7 @@ string fuzzy::RuleSet::name() {
     return _name;
 }
 
-void fuzzy::RuleSet::addRule(Rule * const r) {
+void fuzzy::RuleSet::addRule(std::shared_ptr<Rule> const r) {
     _rules.push_back(r);
 }
 
@@ -47,7 +47,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     std::shared_ptr<FuzzySet>con;
 
     // Fire each rule to determine the µ value (degree of fit).
-    for (Rule *rule : _rules) {
+    for (auto rule : _rules) {
         mu = rule->fire(inputValues);
         con = rule->getConsequent();
 

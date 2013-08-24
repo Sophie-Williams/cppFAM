@@ -26,7 +26,7 @@ int main(int argc, const char * argv[])
 {
     cout << "Starting...\n";
 
-    LinguisticVariable *temperature_in = new LinguisticVariable("room temperature");
+    auto temperature_in = make_shared<LinguisticVariable>("room temperature");
 
     auto cold = make_shared<Trapezoid>(40, 40, 40, 50);
     auto cool = make_shared<Triangle>(45, 55, 65);
@@ -40,7 +40,7 @@ int main(int argc, const char * argv[])
     temperature_in->addSet(warm);
     temperature_in->addSet(hot);
 
-    LinguisticVariable *fan_speed = new LinguisticVariable("fan speed");
+    auto fan_speed = make_shared<LinguisticVariable>("fan speed");
 
     auto stop  = make_shared<Triangle>(-30, 0, 30);
     auto slow  = make_shared<Triangle>(10, 30, 50);
@@ -54,13 +54,13 @@ int main(int argc, const char * argv[])
     fan_speed->addSet(fast);
     fan_speed->addSet(blast);
 
-    RuleSet *system = new RuleSet("HVAC control", "larsen");
+    auto system = make_shared<RuleSet>("HVAC control", "larsen");
 
-    Rule *r1 = new Rule(vector<shared_ptr<FuzzySet>>{cold}, "", stop,  "if room is cold, fan motor stops");
-    Rule *r2 = new Rule(vector<shared_ptr<FuzzySet>>{cool}, "", slow,  "if room is cool, fan motor is slow");
-    Rule *r3 = new Rule(vector<shared_ptr<FuzzySet>>{ok},   "", med,   "if room is ok, fan motor is medium");
-    Rule *r4 = new Rule(vector<shared_ptr<FuzzySet>>{warm}, "", fast,  "if room is warm, fan motor speeds up");
-    Rule *r5 = new Rule(vector<shared_ptr<FuzzySet>>{hot},  "", blast, "if room is hot, fan motor runs full blast");
+    auto r1 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{cold}, "", stop,  "if room is cold, fan motor stops");
+    auto r2 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{cool}, "", slow,  "if room is cool, fan motor is slow");
+    auto r3 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{ok},   "", med,   "if room is ok, fan motor is medium");
+    auto r4 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{warm}, "", fast,  "if room is warm, fan motor speeds up");
+    auto r5 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{hot},  "", blast, "if room is hot, fan motor runs full blast");
 
     system->addRule(r1);
     system->addRule(r2);
@@ -69,7 +69,7 @@ int main(int argc, const char * argv[])
     system->addRule(r5);
 
     double result;
-    for (int i=0; i<50000; ++i) {
+    for (int i=0; i<20000; ++i) {
     for (double t=40; t<=90; ++t) {
         vector<double>input{t};
         result = system->calculate(input);
