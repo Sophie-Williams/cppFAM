@@ -20,33 +20,36 @@
 
 using namespace std;
 
-class Trapezoid : public FuzzySet {
-    double _left;
-    double _top_left;
-    double _top_right;
-    double _right;
+namespace fuzzy {
+    class Trapezoid : public FuzzySet {
+        double _left;
+        double _top_left;
+        double _top_right;
+        double _right;
 
-public:
-    Trapezoid(double l, double tl, double tr, double r, double h=1.0);
-    Trapezoid();
+    public:
+        Trapezoid(double l, double tl, double tr, double r, double h=1.0);
+        Trapezoid();
 
-    double calculateMu(double value);
-    double calculateXCentroid();
+        double calculateMu(double value);
+        double calculateXCentroid();
 
-    FuzzySet *larsen(double ratio);
-    FuzzySet *mamdami(double clip_height);
+        FuzzySet *larsen(double ratio);
+        FuzzySet *mamdami(double clip_height);
 
-    void setHeight(double height);
+        void setHeight(double height);
 
-    void print( std::ostream &strm) const {
-        strm << "Trapezoid " << this << ", " << this->_left << "/" << this->_top_left << "/" << this->_top_right << "/" << this->_right << " (" << this->_height << ")";
-    }
+        void print( std::ostream &strm) const {
+            strm << "Trapezoid " << this << ", " << this->_left << "/" << this->_top_left << "/" << this->_top_right << "/" << this->_right << " (" << this->_height << ")";
+        }
 
-//    inline friend ostream& operator<<(ostream &strm, const Trapezoid &tri) {
-//        // print something from v to str, e.g: Str << v.getX();
-//        strm << "Trapezoid " << &tri << ", " << tri._left << "/" << tri._top_left << "/" << tri._top_right << "/" << tri._right << " (" << tri._height << ")";
-//
-//        return strm;
-//    }
-};
+    //    inline friend ostream& operator<<(ostream &strm, const Trapezoid &tri) {
+    //        // print something from v to str, e.g: Str << v.getX();
+    //        strm << "Trapezoid " << &tri << ", " << tri._left << "/" << tri._top_left << "/" << tri._top_right << "/" << tri._right << " (" << tri._height << ")";
+    //
+    //        return strm;
+    //    }
+    };
+}
+
 #endif /* defined(__fam__trapezoid__) */

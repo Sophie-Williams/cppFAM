@@ -19,6 +19,7 @@
 #include "rule_set.h"
 
 using std::cout;
+using namespace fuzzy;
 
 int main(int argc, const char * argv[])
 {

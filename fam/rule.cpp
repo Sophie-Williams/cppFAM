@@ -17,17 +17,17 @@
 using std::cout;
 using std::endl;
 
-Rule::Rule() {
+fuzzy::Rule::Rule() {
 }
 
-Rule::Rule(vector<FuzzySet *> antecedents, string conjunction, FuzzySet *consequent, string naturalLanguage) :
+fuzzy::Rule::Rule(vector<FuzzySet *> antecedents, string conjunction, FuzzySet *consequent, string naturalLanguage) :
 _antecedents(antecedents),
 _conjunction(conjunction),
 _consequent(consequent),
 _naturalLanguage(naturalLanguage) {
 }
 
-double Rule::fire(std::vector<double> values) {
+double fuzzy::Rule::fire(std::vector<double> values) {
     vector<double> mus;
 
     for (size_t i = 0; i < _antecedents.size(); i++) {
@@ -52,6 +52,6 @@ double Rule::fire(std::vector<double> values) {
     return mu;
 }
 
-FuzzySet* Rule::getConsequent() {
+fuzzy::FuzzySet* fuzzy::Rule::getConsequent() {
     return _consequent;
 }

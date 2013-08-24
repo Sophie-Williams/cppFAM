@@ -21,34 +21,35 @@
 
 using namespace std;
 
-class Triangle : public FuzzySet {
+namespace fuzzy {
+    class Triangle : public FuzzySet {
+    private:
+        double _left;
+        double _center;
+        double _right;
 
-private:
-    double _left;
-    double _center;
-    double _right;
+    public:
+        Triangle(double l, double c, double r, double h=1.0);
+        Triangle();
 
-public:
-    Triangle(double l, double c, double r, double h=1.0);
-    Triangle();
+        double calculateMu(double value);
+        double calculateXCentroid();
 
-    double calculateMu(double value);
-    double calculateXCentroid();
+        Triangle *larsen(double ratio);
+        Trapezoid *mamdami(double clip_height);
 
-    Triangle *larsen(double ratio);
-    Trapezoid *mamdami(double clip_height);
+        void setHeight(double height);
 
-    void setHeight(double height);
+        void print( std::ostream &strm) const {
+            strm << "Triangle " << this << ", " << this->_left << "/" << this->_center << "/" << this->_right << " (" << this->_height << ")";
+        }
 
-    void print( std::ostream &strm) const {
-        strm << "Triangle " << this << ", " << this->_left << "/" << this->_center << "/" << this->_right << " (" << this->_height << ")";
-    }
-
-//    inline friend ostream& operator<<(ostream &strm, const Triangle &tri) {
-//        // print something from v to str, e.g: Str << v.getX();
-//        strm << "Triangle " << &tri << ", " << tri._left << "/" << tri._center << "/" << tri._right << " (" << tri._height << ")";
-//        return strm;
-//    }
-};
+    //    inline friend ostream& operator<<(ostream &strm, const Triangle &tri) {
+    //        // print something from v to str, e.g: Str << v.getX();
+    //        strm << "Triangle " << &tri << ", " << tri._left << "/" << tri._center << "/" << tri._right << " (" << tri._height << ")";
+    //        return strm;
+    //    }
+    };
+}
 
 #endif /* defined(__fam__triangle__) */

@@ -18,27 +18,27 @@ using std::vector;
 using std::pair;
 using std::string;
 
-RuleSet::RuleSet() :
+fuzzy::RuleSet::RuleSet() :
 _name {""},
 _implication {""}
 {
 }
 
-RuleSet::RuleSet(string name, string implication) :
+fuzzy::RuleSet::RuleSet(string name, string implication) :
 _name {name},
 _implication {implication}
 {
 }
 
-string RuleSet::name() {
+string fuzzy::RuleSet::name() {
     return _name;
 }
 
-void RuleSet::addRule(Rule * const r) {
+void fuzzy::RuleSet::addRule(Rule * const r) {
     _rules.push_back(r);
 }
 
-double RuleSet::calculate(vector<double> inputValues) {
+double fuzzy::RuleSet::calculate(vector<double> inputValues) {
 //    std::cout << "\nFiring all rules..." << std::endl;
 
     typedef unordered_map<FuzzySet *, double> mu_map;

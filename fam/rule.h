@@ -21,20 +21,22 @@
 using std::string;
 using std::vector;
 
-class Rule {
-private:
-    std::vector<FuzzySet *> _antecedents;
-    std::string _conjunction;
-    FuzzySet *_consequent;
-    std::string _naturalLanguage;
+namespace fuzzy {
+    class Rule {
+    private:
+        std::vector<FuzzySet *> _antecedents;
+        std::string _conjunction;
+        FuzzySet *_consequent;
+        std::string _naturalLanguage;
 
-public:
-    Rule(vector<FuzzySet *>antecedents, string conjunction, FuzzySet *consequent, string naturalLanguage);
-    Rule();
+    public:
+        Rule(vector<FuzzySet *>antecedents, string conjunction, FuzzySet *consequent, string naturalLanguage);
+        Rule();
 
-    FuzzySet *getConsequent();
+        FuzzySet *getConsequent();
 
-    double fire(vector<double> values);
-};
+        double fire(vector<double> values);
+    };
+}
 
 #endif /* defined(__fam__rule__) */

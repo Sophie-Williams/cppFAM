@@ -20,20 +20,22 @@
 #include <unordered_map>
 #include "rule.h"
 
-class RuleSet {
-private:
-    std::string _name;
-    std::string _implication;
-    std::vector<Rule *> _rules;
+namespace fuzzy {
+    class RuleSet {
+    private:
+        std::string _name;
+        std::string _implication;
+        std::vector<Rule *> _rules;
 
-public:
-    RuleSet();
-    RuleSet(std::string name, std::string implication);
+    public:
+        RuleSet();
+        RuleSet(std::string name, std::string implication);
 
-    std::string name();
-    void addRule(Rule * const r);
-    double calculate(std::vector<double> values);
+        std::string name();
+        void addRule(Rule * const r);
+        double calculate(std::vector<double> values);
 
-};
+    };
+}
 
 #endif /* defined(__fam__rule_set__) */

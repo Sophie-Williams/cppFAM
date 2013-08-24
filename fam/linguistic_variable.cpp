@@ -13,21 +13,21 @@
 
 #include "linguistic_variable.h"
 
-LinguisticVariable::LinguisticVariable() :
+fuzzy::LinguisticVariable::LinguisticVariable() :
 _name {""}
 {
 }
 
-LinguisticVariable::LinguisticVariable(std::string name) :
+fuzzy::LinguisticVariable::LinguisticVariable(std::string name) :
 _name {name}
 {
 }
 
-std::string LinguisticVariable::name() {
+std::string fuzzy::LinguisticVariable::name() {
     return _name;
 }
 
-void LinguisticVariable::addSet(FuzzySet * const set) {
+void fuzzy::LinguisticVariable::addSet(FuzzySet * const set) {
     _sets.push_back(set);
 }
 

@@ -19,17 +19,19 @@
 #include <vector>
 #include "fuzzy_set.h"
 
-class LinguisticVariable {
-private:
-    std::string _name;
-    std::vector<FuzzySet *> _sets;
+namespace fuzzy {
+    class LinguisticVariable {
+    private:
+        std::string _name;
+        std::vector<FuzzySet *> _sets;
 
-public:
-    LinguisticVariable();
-    LinguisticVariable(std::string name);
+    public:
+        LinguisticVariable();
+        LinguisticVariable(std::string name);
 
-    std::string name();
-    void addSet(FuzzySet * const set);
-};
+        std::string name();
+        void addSet(FuzzySet * const set);
+    };
+}
 
 #endif /* defined(__fam__linguistic_variable__) */

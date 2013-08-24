@@ -16,35 +16,36 @@
 
 #include <iostream>
 
-class FuzzySet {
-private:
-    virtual void print( std::ostream& ) const = 0;
+namespace fuzzy {
+    class FuzzySet {
+    private:
+        virtual void print( std::ostream& ) const = 0;
 
-protected:
-    double _height;
+    protected:
+        double _height;
 
-public:
-    // Empty virtual destructor for proper cleanup.
-    // This allows you to pass pointer ownership to another party without exposing
-    // the concrete derived class.
-    virtual ~FuzzySet() {};
+    public:
+        // Empty virtual destructor for proper cleanup.
+        // This allows you to pass pointer ownership to another party without exposing
+        // the concrete derived class.
+        virtual ~FuzzySet() {};
 
-    virtual double calculateMu(double value) = 0;
+        virtual double calculateMu(double value) = 0;
 
-    virtual double calculateXCentroid() = 0;
+        virtual double calculateXCentroid() = 0;
 
-    virtual FuzzySet *larsen(double ratio) = 0;
-    virtual FuzzySet *mamdami(double clip_height) = 0;
+        virtual FuzzySet *larsen(double ratio) = 0;
+        virtual FuzzySet *mamdami(double clip_height) = 0;
 
-    double getHeight() {
-        return _height;
-    }
+        double getHeight() {
+            return _height;
+        }
 
-    friend std::ostream& operator<<( std::ostream& out, const FuzzySet& b ) {
-        b.print( out );
-        return out;
-    }
+        friend std::ostream& operator<<( std::ostream& out, const FuzzySet& b ) {
+            b.print( out );
+            return out;
+        }
 
-};
-
+    };
+}
 #endif /* defined(__fam__fuzzy_set__) */
