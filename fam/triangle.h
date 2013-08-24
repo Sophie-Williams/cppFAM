@@ -31,12 +31,13 @@ namespace fuzzy {
     public:
         Triangle(const double l, const double c, const double r, const double h=1.0);
         Triangle();
+//        Triangle( const Triangle& other );
 
         double calculateMu(double value) const;
         double calculateXCentroid() const;
 
-        Triangle *larsen(double ratio) const;
-        Trapezoid *mamdami(double clip_height) const;
+        std::shared_ptr<FuzzySet> larsen(double ratio) const;
+        std::shared_ptr<FuzzySet> mamdami(double clip_height) const;
 
         void setHeight(double height);
 

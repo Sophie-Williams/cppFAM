@@ -34,8 +34,8 @@ namespace fuzzy {
 
         virtual double calculateXCentroid() const = 0;
 
-        virtual FuzzySet *larsen(const double ratio) const = 0;
-        virtual FuzzySet *mamdami(const double clip_height) const = 0;
+        virtual std::shared_ptr<FuzzySet> larsen(const double ratio) const = 0;
+        virtual std::shared_ptr<FuzzySet> mamdami(const double clip_height) const = 0;
 
         double getHeight() const {
             return _height;

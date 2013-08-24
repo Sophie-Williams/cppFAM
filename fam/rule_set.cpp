@@ -44,7 +44,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     consequents.clear();
 
     double mu;
-    FuzzySet *con;
+    std::shared_ptr<FuzzySet>con;
 
     // Fire each rule to determine the µ value (degree of fit).
     for (Rule *rule : _rules) {
@@ -60,7 +60,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
             p->second = mu; // keep the max mu
         } else {
             // Didn't find
-            consequent_mus.insert(pair<FuzzySet*, double>(con, mu));
+            consequent_mus.insert(pair<std::shared_ptr<FuzzySet>, double>(con, mu));
         }
     }
 
@@ -86,7 +86,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     double numerator=0;
     double denominator=0;
 
-    for (FuzzySet *cons : consequents) {
+    for (auto cons : consequents) {
         numerator += (cons->calculateXCentroid() * cons->getHeight());
         denominator += cons->getHeight();
     }

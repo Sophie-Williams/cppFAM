@@ -24,14 +24,14 @@ using std::end;
 fuzzy::Rule::Rule() {
 }
 
-fuzzy::Rule::Rule(vector<FuzzySet *> antecedents, string conjunction, FuzzySet *consequent, string naturalLanguage) :
+fuzzy::Rule::Rule(vector<std::shared_ptr<FuzzySet>> antecedents, string conjunction, std::shared_ptr<FuzzySet>consequent, string naturalLanguage) :
 _antecedents(antecedents),
 _conjunction(conjunction),
 _consequent(consequent),
 _naturalLanguage(naturalLanguage) {
 }
 
-fuzzy::FuzzySet* fuzzy::Rule::getConsequent() {
+std::shared_ptr<fuzzy::FuzzySet> fuzzy::Rule::getConsequent() {
     return _consequent;
 }
 

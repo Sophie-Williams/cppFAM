@@ -18,6 +18,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <memory>
 #include "rule.h"
 
 namespace fuzzy {
@@ -26,9 +27,9 @@ namespace fuzzy {
         std::string _name;
         std::string _implication;
         std::vector<Rule *> _rules;
-        std::vector<FuzzySet *> consequents;
+        vector<std::shared_ptr<FuzzySet>> consequents;
 
-        typedef std::unordered_map<FuzzySet *, double> mu_map;
+        typedef std::unordered_map<std::shared_ptr<FuzzySet>, double> mu_map;
         mu_map consequent_mus;
         mu_map::iterator p;
 

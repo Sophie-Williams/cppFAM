@@ -34,8 +34,8 @@ namespace fuzzy {
         double calculateMu(double value) const;
         double calculateXCentroid() const;
 
-        FuzzySet *larsen(double ratio) const;
-        FuzzySet *mamdami(double clip_height) const;
+        std::shared_ptr<FuzzySet> larsen(double ratio) const;
+        std::shared_ptr<FuzzySet> mamdami(double clip_height) const;
 
         void setHeight(double height);
 

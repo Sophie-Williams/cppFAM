@@ -29,6 +29,10 @@ _right {0}
     _height=0;
 }
 
+//fuzzy::Triangle::Triangle(const Triangle& other) {
+//
+//}
+
 double fuzzy::Triangle::calculateMu(double value) const {
     if (value < _left || value > _right) {
         return 0.0;
@@ -45,17 +49,18 @@ void fuzzy::Triangle::setHeight(double height) {
     _height = height;
 }
 
-fuzzy::Triangle *fuzzy::Triangle::larsen(double ratio) const {
-    Triangle *dup = new Triangle(*this);
+std::shared_ptr<fuzzy::FuzzySet> fuzzy::Triangle::larsen(double ratio) const {
+//    Triangle *dup = new Triangle(*this);
+    std::shared_ptr<Triangle> dup(new Triangle(*this));
     dup->setHeight(_height * ratio);
     return dup;
 }
 
-fuzzy::Trapezoid *fuzzy::Triangle::mamdami(double clip_height) const {
+std::shared_ptr<fuzzy::FuzzySet> fuzzy::Triangle::mamdami(double clip_height) const {
     double l  = _left;
     double tl = _left + (clip_height * (_center - _left));
     double tr = _right - (clip_height * (_right - _center));
     double r  = _right;
 
-    return new Trapezoid(l, tl, tr, r, clip_height);
+    return make_shared<Trapezoid>(l, tl, tr, r, clip_height);
 }
