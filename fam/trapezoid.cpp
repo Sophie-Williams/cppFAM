@@ -13,7 +13,7 @@
 
 #include "trapezoid.h"
 
-fuzzy::Trapezoid::Trapezoid(double l, double tl, double tr, double r, double h) :
+fuzzy::Trapezoid::Trapezoid(const double l, const double tl, const double tr, const double r, const double h) :
 _left {l},
 _top_left {tl},
 _top_right {tr},
@@ -31,7 +31,7 @@ _right {0}
     _height=0;
 }
 
-double fuzzy::Trapezoid::calculateMu(double value) {
+double fuzzy::Trapezoid::calculateMu(double value) const {
     if (value < _left || value > _right) {
         return 0.0;
     } else if (value >= _left && value < _top_left) {
@@ -43,7 +43,7 @@ double fuzzy::Trapezoid::calculateMu(double value) {
     }
 }
 
-double fuzzy::Trapezoid::calculateXCentroid() {
+double fuzzy::Trapezoid::calculateXCentroid() const {
     double a = _top_right - _top_left;
     double b = _right - _left;
     double c = _top_left - _left;
@@ -56,13 +56,13 @@ void fuzzy::Trapezoid::setHeight(double height) {
     _height = height;
 }
 
-fuzzy::FuzzySet *fuzzy::Trapezoid::larsen(double ratio) {
+fuzzy::FuzzySet *fuzzy::Trapezoid::larsen(double ratio) const {
     Trapezoid *dup = new Trapezoid(*this);
     dup->setHeight(_height * ratio);
     return dup;
 }
 
-fuzzy::FuzzySet *fuzzy::Trapezoid::mamdami(double clip_height) {
+fuzzy::FuzzySet *fuzzy::Trapezoid::mamdami(double clip_height) const {
     double l = _left;
     double tl = _left + (clip_height * (_top_left - _left));
     double tr = _right + (clip_height * (_right - _top_right));

@@ -28,14 +28,14 @@ namespace fuzzy {
         double _right;
 
     public:
-        Trapezoid(double l, double tl, double tr, double r, double h=1.0);
+        Trapezoid(const double l, const double tl, const double tr, const double r, const double h=1.0);
         Trapezoid();
 
-        double calculateMu(double value);
-        double calculateXCentroid();
+        double calculateMu(double value) const;
+        double calculateXCentroid() const;
 
-        FuzzySet *larsen(double ratio);
-        FuzzySet *mamdami(double clip_height);
+        FuzzySet *larsen(double ratio) const;
+        FuzzySet *mamdami(double clip_height) const;
 
         void setHeight(double height);
 

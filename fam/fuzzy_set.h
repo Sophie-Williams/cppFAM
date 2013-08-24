@@ -30,14 +30,14 @@ namespace fuzzy {
         // the concrete derived class.
         virtual ~FuzzySet() {};
 
-        virtual double calculateMu(double value) = 0;
+        virtual double calculateMu(double value) const = 0;
 
-        virtual double calculateXCentroid() = 0;
+        virtual double calculateXCentroid() const = 0;
 
-        virtual FuzzySet *larsen(double ratio) = 0;
-        virtual FuzzySet *mamdami(double clip_height) = 0;
+        virtual FuzzySet *larsen(const double ratio) const = 0;
+        virtual FuzzySet *mamdami(const double clip_height) const = 0;
 
-        double getHeight() {
+        double getHeight() const {
             return _height;
         }
 

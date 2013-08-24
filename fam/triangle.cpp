@@ -13,7 +13,7 @@
 
 #include "triangle.h"
 
-fuzzy::Triangle::Triangle(double l, double c, double r, double h) :
+fuzzy::Triangle::Triangle(const double l, const double c, const double r, const double h) :
 _left {l},
 _center {c},
 _right {r}
@@ -29,7 +29,7 @@ _right {0}
     _height=0;
 }
 
-double fuzzy::Triangle::calculateMu(double value) {
+double fuzzy::Triangle::calculateMu(double value) const {
     if (value < _left || value > _right) {
         return 0.0;
     } else {
@@ -37,7 +37,7 @@ double fuzzy::Triangle::calculateMu(double value) {
     }
 }
 
-double fuzzy::Triangle::calculateXCentroid() {
+double fuzzy::Triangle::calculateXCentroid() const {
     return (_left + _right + _center) / 3.0;
 }
 
@@ -45,13 +45,13 @@ void fuzzy::Triangle::setHeight(double height) {
     _height = height;
 }
 
-fuzzy::Triangle *fuzzy::Triangle::larsen(double ratio) {
+fuzzy::Triangle *fuzzy::Triangle::larsen(double ratio) const {
     Triangle *dup = new Triangle(*this);
     dup->setHeight(_height * ratio);
     return dup;
 }
 
-fuzzy::Trapezoid *fuzzy::Triangle::mamdami(double clip_height) {
+fuzzy::Trapezoid *fuzzy::Triangle::mamdami(double clip_height) const {
     double l  = _left;
     double tl = _left + (clip_height * (_center - _left));
     double tr = _right - (clip_height * (_right - _center));

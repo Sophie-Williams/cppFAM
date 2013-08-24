@@ -29,14 +29,14 @@ namespace fuzzy {
         double _right;
 
     public:
-        Triangle(double l, double c, double r, double h=1.0);
+        Triangle(const double l, const double c, const double r, const double h=1.0);
         Triangle();
 
-        double calculateMu(double value);
-        double calculateXCentroid();
+        double calculateMu(double value) const;
+        double calculateXCentroid() const;
 
-        Triangle *larsen(double ratio);
-        Trapezoid *mamdami(double clip_height);
+        Triangle *larsen(double ratio) const;
+        Trapezoid *mamdami(double clip_height) const;
 
         void setHeight(double height);
 
