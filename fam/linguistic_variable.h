@@ -27,7 +27,7 @@ namespace fuzzy {
 
     public:
         LinguisticVariable();
-        LinguisticVariable(std::string name);
+        LinguisticVariable(const std::string name);
 
         std::string name();
         void addSet(FuzzySet * const set);

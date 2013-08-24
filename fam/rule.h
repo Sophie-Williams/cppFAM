@@ -30,12 +30,12 @@ namespace fuzzy {
         std::string _naturalLanguage;
 
     public:
-        Rule(vector<FuzzySet *>antecedents, string conjunction, FuzzySet *consequent, string naturalLanguage);
         Rule();
+        Rule(const vector<FuzzySet *>antecedents, const string conjunction, FuzzySet *const consequent, const string naturalLanguage);
 
         FuzzySet *getConsequent();
 
-        double fire(vector<double> values);
+        double fire(const vector<double> values);
     };
 }
 

@@ -76,6 +76,7 @@ int main(int argc, const char * argv[])
         cout << " " << t << ", the " << fan_speed->name() << " is ";
         cout << result << " CFM\n";
     }
+
     return 0;
 }
 

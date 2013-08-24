@@ -16,6 +16,10 @@
 
 using std::cout;
 using std::endl;
+using std::min_element;
+using std::max_element;
+using std::begin;
+using std::end;
 
 fuzzy::Rule::Rule() {
 }
@@ -27,7 +31,12 @@ _consequent(consequent),
 _naturalLanguage(naturalLanguage) {
 }
 
-double fuzzy::Rule::fire(std::vector<double> values) {
+
+fuzzy::FuzzySet* fuzzy::Rule::getConsequent() {
+    return _consequent;
+}
+
+double fuzzy::Rule::fire(const std::vector<double> values) {
     vector<double> mus;
 
     for (size_t i = 0; i < _antecedents.size(); i++) {
@@ -35,23 +44,16 @@ double fuzzy::Rule::fire(std::vector<double> values) {
     }
 
     double mu;
-    if (_conjunction == "and") {
-        // AND == intersection == minimum
-        mu = *std::min_element(std::begin(mus), std::end(mus)); // c++11
-    } else {
-        // OR == union == maximum
-        mu = *std::max_element(std::begin(mus), std::end(mus)); // c++11
-    }
+    if (_conjunction == "and")  // AND == intersection == minimum
+        mu = *min_element(begin(mus), end(mus));
+    else // OR == union == maximum
+        mu = *max_element(begin(mus), end(mus));
 
-//    cout << "Fired rule: µ choices are [";
-//    for (auto mu: mus) {
-//        cout << mu << ", ";
-//    }
-//    cout << "], final µ is " << mu << endl;
-
+    //    cout << "Fired rule: µ choices are [";
+    //    for (auto mu: mus) {
+    //        cout << mu << ", ";
+    //    }
+    //    cout << "], final µ is " << mu << endl;
+    
     return mu;
-}
-
-fuzzy::FuzzySet* fuzzy::Rule::getConsequent() {
-    return _consequent;
 }
