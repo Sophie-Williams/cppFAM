@@ -26,6 +26,11 @@ namespace fuzzy {
         std::string _name;
         std::string _implication;
         std::vector<Rule *> _rules;
+        std::vector<FuzzySet *> consequents;
+
+        typedef std::unordered_map<FuzzySet *, double> mu_map;
+        mu_map consequent_mus;
+        mu_map::iterator p;
 
     public:
         RuleSet();

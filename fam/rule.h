@@ -28,6 +28,7 @@ namespace fuzzy {
         std::string _conjunction;
         FuzzySet *_consequent;
         std::string _naturalLanguage;
+        std::vector<double> mus;
 
     public:
         Rule();

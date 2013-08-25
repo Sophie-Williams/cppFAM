@@ -40,12 +40,8 @@ void fuzzy::RuleSet::addRule(Rule * const r) {
 
 double fuzzy::RuleSet::calculate(vector<double> inputValues) {
 //    std::cout << "\nFiring all rules..." << std::endl;
-
-    typedef unordered_map<FuzzySet *, double> mu_map;
-    mu_map consequent_mus;
-    mu_map::iterator p;
-
-    vector<FuzzySet *> consequents;
+    consequent_mus.clear();
+    consequents.clear();
 
     double mu;
     FuzzySet *con;
@@ -60,10 +56,8 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
         // µ. A popular way of doing so is to OR the values together, i.e. keep the
         // maximum µ value and discard the others.
         p = consequent_mus.find(con);
-        if (p != consequent_mus.end()) {
-            // Found it
-            if (mu > p->second)
-                p->second = mu; // keep the max mu
+        if (p != consequent_mus.end() && mu > p->second) {
+            p->second = mu; // keep the max mu
         } else {
             // Didn't find
             consequent_mus.insert(pair<FuzzySet*, double>(con, mu));
@@ -92,7 +86,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     double numerator=0;
     double denominator=0;
 
-    for (auto cons : consequents) {
+    for (FuzzySet *cons : consequents) {
         numerator += (cons->calculateXCentroid() * cons->getHeight());
         denominator += cons->getHeight();
     }
