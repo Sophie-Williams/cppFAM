@@ -80,18 +80,16 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     // of Maxima" summation mechanism. MaxAv is defined as:
     // (∑ representative value * height) / (∑ height) for all output sets
     // where 'representative value' is shape-dependent.
+    //
+    // Also, clean up all the temporary, implicated fuzzy sets. Note that doing
+    // it this way this isn't exception-safe...
     double numerator=0;
     double denominator=0;
 
-    for (FuzzySet *cons : _consequents) {
+    for (auto cons : _consequents) {
         numerator += (cons->calculateXCentroid() * cons->getHeight());
         denominator += cons->getHeight();
-    }
-
-    // Clean up all the temporary, implicated fuzzy sets. Note that doing it this
-    // way this isn't exception-safe...
-    for (auto item : _consequents) {
-        delete item;
+        delete cons;
     }
 
     _consequents.clear();
