@@ -40,13 +40,10 @@ void fuzzy::RuleSet::addRule(Rule * const r) {
 
 double fuzzy::RuleSet::calculate(vector<double> inputValues) {
 //    std::cout << "\nFiring all rules..." << std::endl;
-    consequent_mus.clear();
-    consequents.clear();
-
-    double mu;
-    FuzzySet *con;
 
     // Fire each rule to determine the µ value (degree of fit).
+    double mu;
+    FuzzySet *con;
     for (Rule *rule : _rules) {
         mu = rule->fire(inputValues);
         con = rule->getConsequent();
@@ -55,12 +52,12 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
         // need to get just a single µ value out -- we only care about the 'best'
         // µ. A popular way of doing so is to OR the values together, i.e. keep the
         // maximum µ value and discard the others.
-        p = consequent_mus.find(con);
-        if (p != consequent_mus.end() && mu > p->second) {
-            p->second = mu; // keep the max mu
+        _p = _consequent_mus.find(con);
+        if (_p != _consequent_mus.end() && mu > _p->second) {
+            _p->second = mu; // keep the max mu
         } else {
             // Didn't find
-            consequent_mus.insert(pair<FuzzySet*, double>(con, mu));
+            _consequent_mus.insert(pair<FuzzySet*, double>(con, mu));
         }
     }
 
@@ -68,11 +65,11 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     // called implication, and 'weights' the consequents properly. There are
     // several common ways of doing it, such as Larsen (scaling) and Mamdani
     // (clipping).
-    for ( auto item : consequent_mus) {
+    for ( auto item : _consequent_mus) {
         if (_implication == "mamdani") {
-            consequents.push_back( (item.first)->mamdami(item.second) );
+            _consequents.push_back( (item.first)->mamdami(item.second) );
         } else {
-            consequents.push_back( (item.first)->larsen(item.second) );
+            _consequents.push_back( (item.first)->larsen(item.second) );
         }
     }
 
@@ -86,10 +83,16 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     double numerator=0;
     double denominator=0;
 
-    for (FuzzySet *cons : consequents) {
+    for (FuzzySet *cons : _consequents) {
         numerator += (cons->calculateXCentroid() * cons->getHeight());
         denominator += cons->getHeight();
     }
+
+    for(std::vector<FuzzySet*>::const_iterator it = _consequents.begin(); it != _consequents.end(); it++) {
+        delete *it;
+    }
+    _consequents.clear();
+    _consequent_mus.clear();
 
     return numerator/denominator;
 }
