@@ -68,16 +68,15 @@ int main(int argc, const char * argv[])
     system->addRule(r4);
     system->addRule(r5);
 
-    double result;
-    for (int i=0; i<20000; ++i) {
-    for (double t=40; t<=90; ++t) {
-        vector<double>input{t};
-        result = system->calculate(input);
+    //double result;
+    for (int i=0; i<50000; ++i) {
+        for (double t=40; t<=90; ++t) {
+            system->calculate( vector<double>{t} );
 
-//        cout << "The " << system->name() << " determines: for " << temperature_in->name();
-//        cout << " " << t << ", the " << fan_speed->name() << " is ";
-//        cout << result << " CFM\n";
-    }
+            //        cout << "The " << system->name() << " determines: for " << temperature_in->name();
+            //        cout << " " << t << ", the " << fan_speed->name() << " is ";
+            //        cout << result << " CFM\n";
+        }
     }
 
     return 0;
