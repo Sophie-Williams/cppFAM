@@ -88,9 +88,8 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
         denominator += cons->getHeight();
     }
 
-//    for(std::vector<FuzzySet*>::const_iterator it = _consequents.begin(); it != _consequents.end(); it++) {
-//        delete *it;
-//    }
+    // Clean up all the temporary, implicated fuzzy sets. Note that doing it this
+    // way this isn't exception-safe...
     for (auto item : _consequents) {
         delete item;
     }
