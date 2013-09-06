@@ -21,21 +21,22 @@
 
 using std::string;
 using std::vector;
+using std::shared_ptr;
 
 namespace fuzzy {
     class Rule {
     private:
-        std::vector<std::shared_ptr<FuzzySet>> _antecedents;
-        std::string _conjunction;
-        std::shared_ptr<FuzzySet> _consequent;
-        std::string _naturalLanguage;
-        std::vector<double> mus;
+        vector<shared_ptr<FuzzySet>> _antecedents;
+        string _conjunction;
+        shared_ptr<FuzzySet> _consequent;
+        string _naturalLanguage;
+        vector<double> mus;
 
     public:
-        Rule();
-        Rule(const vector<std::shared_ptr<FuzzySet>>antecedents, const string conjunction, std::shared_ptr<FuzzySet>const consequent, const string naturalLanguage);
+        Rule(); // default constructor
+        Rule(const vector<shared_ptr<FuzzySet>>antecedents, const string conjunction, shared_ptr<FuzzySet>const consequent, const string naturalLanguage); // regular constructor
 
-        std::shared_ptr<FuzzySet> getConsequent();
+        shared_ptr<FuzzySet> getConsequent();
 
         double fire(const vector<double> values);
     };

@@ -127,9 +127,8 @@
 				83C7E79B17C8126D00F95F8D /* CHANGELOG.md */,
 				83C7E79C17C8126D00F95F8D /* LICENSE */,
 				83C7E79D17C8126D00F95F8D /* README.md */,
-				832EEB5D17C296BF0022C8FF /* fuzzyMemory */,
-				832930B517C80563005B34A1 /* hvac_example */,
-				83C7E79017C80AD000F95F8D /* weapon_example */,
+				832EEB5D17C296BF0022C8FF /* Source Code */,
+				8399C06117DA3F92004EFD52 /* Examples */,
 				832EEB5C17C296BF0022C8FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -144,24 +143,49 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		832EEB5D17C296BF0022C8FF /* fuzzyMemory */ = {
+		832EEB5D17C296BF0022C8FF /* Source Code */ = {
+			isa = PBXGroup;
+			children = (
+				8399C05F17DA3F6D004EFD52 /* headers */,
+				8399C06017DA3F7F004EFD52 /* source */,
+			);
+			name = "Source Code";
+			path = fam;
+			sourceTree = "<group>";
+		};
+		8399C05F17DA3F6D004EFD52 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				832EEB7217C2A8880022C8FF /* fuzzy_set.h */,
+				832EEB7517C2C5670022C8FF /* linguistic_variable.h */,
+				832EEB7817C2CCC00022C8FF /* rule.h */,
+				832EEB7B17C2E5E20022C8FF /* rule_set.h */,
+				8333275E17C5D9E000B8BFE7 /* trapezoid.h */,
+				832EEB6817C296F70022C8FF /* triangle.h */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+		8399C06017DA3F7F004EFD52 /* source */ = {
 			isa = PBXGroup;
 			children = (
 				832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */,
-				832EEB7217C2A8880022C8FF /* fuzzy_set.h */,
 				832EEB7417C2C5670022C8FF /* linguistic_variable.cpp */,
-				832EEB7517C2C5670022C8FF /* linguistic_variable.h */,
 				832EEB7717C2CCC00022C8FF /* rule.cpp */,
-				832EEB7817C2CCC00022C8FF /* rule.h */,
 				832EEB7A17C2E5E20022C8FF /* rule_set.cpp */,
-				832EEB7B17C2E5E20022C8FF /* rule_set.h */,
 				8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */,
-				8333275E17C5D9E000B8BFE7 /* trapezoid.h */,
 				832EEB6717C296F70022C8FF /* triangle.cpp */,
-				832EEB6817C296F70022C8FF /* triangle.h */,
 			);
-			name = fuzzyMemory;
-			path = fam;
+			name = source;
+			sourceTree = "<group>";
+		};
+		8399C06117DA3F92004EFD52 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				832930B517C80563005B34A1 /* hvac_example */,
+				83C7E79017C80AD000F95F8D /* weapon_example */,
+			);
+			name = Examples;
 			sourceTree = "<group>";
 		};
 		83C7E79017C80AD000F95F8D /* weapon_example */ = {

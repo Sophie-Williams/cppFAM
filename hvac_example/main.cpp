@@ -14,12 +14,15 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "trapezoid.h"
-#include "triangle.h"
 #include "linguistic_variable.h"
+#include "triangle.h"
+#include "trapezoid.h"
 #include "rule_set.h"
 
 using std::cout;
+using std::shared_ptr;
+using std::make_shared;
+
 using namespace fuzzy;
 
 int main(int argc, const char * argv[])
