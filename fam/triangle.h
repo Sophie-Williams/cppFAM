@@ -19,6 +19,8 @@
 #include "fuzzy_set.h"
 #include "trapezoid.h"
 
+using std::shared_ptr;
+
 namespace fuzzy {
     class Triangle : public FuzzySet {
     private:
@@ -40,9 +42,9 @@ namespace fuzzy {
             return (_left + _right + _center) / 3.0;
         }
 
-        std::shared_ptr<FuzzySet> larsen(const double ratio) const;
+        shared_ptr<FuzzySet> larsen(const double ratio) const;
 
-        std::shared_ptr<FuzzySet> mamdami(const double clip_height) const;
+        shared_ptr<FuzzySet> mamdami(const double clip_height) const;
 
         void print( std::ostream &strm) const {
             strm << "Triangle " << this << ", " << this->_left << "/" << this->_center << "/" << this->_right << " (" << this->_height << ")";

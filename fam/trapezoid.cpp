@@ -53,7 +53,6 @@ double fuzzy::Trapezoid::calculateXCentroid() const {
 }
 
 std::shared_ptr<fuzzy::FuzzySet> fuzzy::Trapezoid::larsen(const double ratio) const {
-//    Trapezoid *dup = new Trapezoid(*this);
     std::shared_ptr<Trapezoid> dup(new Trapezoid(*this));
     dup->setHeight(_height * ratio);
     return dup;
