@@ -19,15 +19,18 @@ using std::pair;
 using std::string;
 
 fuzzy::RuleSet::RuleSet() :
-_name {""},
-_implication {""}
+_name(""),
+_implication("")
 {
+    //nop
 }
 
 fuzzy::RuleSet::RuleSet(string name, string implication) :
-_name {name},
-_implication {implication}
+_name(name),
+_implication(implication)
 {
+    //nop
+}
 }
 
 string fuzzy::RuleSet::name() {

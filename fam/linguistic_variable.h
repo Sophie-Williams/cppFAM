@@ -18,9 +18,10 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "fuzzy_set.h"
 
 namespace fuzzy {
+    class FuzzySet;
+
     class LinguisticVariable {
     private:
         std::string _name;

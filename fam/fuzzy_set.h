@@ -14,7 +14,7 @@
 #ifndef __fam__fuzzy_set__
 #define __fam__fuzzy_set__
 
-#include <iostream>
+#include <ostream>
 
 namespace fuzzy {
     class FuzzySet {
