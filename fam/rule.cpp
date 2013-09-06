@@ -32,10 +32,6 @@ _consequent(consequent),
 _naturalLanguage(naturalLanguage) {
 }
 
-shared_ptr<fuzzy::FuzzySet> fuzzy::Rule::getConsequent() {
-    return _consequent;
-}
-
 double fuzzy::Rule::fire(const vector<double> values) {
     for (size_t i = 0; i < _antecedents.size(); i++) {
         mus.push_back(_antecedents[i]->calculateMu(values[i]));

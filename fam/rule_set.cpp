@@ -64,22 +64,20 @@ void fuzzy::RuleSet::addRule(shared_ptr<Rule> const r) {
 
 double fuzzy::RuleSet::calculate(vector<double> inputValues) {
 
-    shared_ptr<FuzzySet>con;
     // Fire each rule to determine the µ value (degree of fit).
     for (auto rule : _rules) {
         double mu = rule->fire(inputValues);
-        con = rule->getConsequent();
 
         // Since any given consequent may have been activated more than once, we
         // need to get just a single µ value out -- we only care about the 'best'
         // µ. A popular way of doing so is to OR the values together, i.e. keep the
         // maximum µ value and discard the others.
-        _mmi = _consequent_mus.find(con);
+        _mmi = _consequent_mus.find(rule->getConsequent());
         if (_mmi != _consequent_mus.end() && mu > _mmi->second) {
             _mmi->second = mu; // keep the max mu
         } else {
             // Didn't find
-            _consequent_mus.insert(pair<shared_ptr<FuzzySet>, double>(con, mu));
+            _consequent_mus.insert(pair<shared_ptr<FuzzySet>, double>(rule->getConsequent(), mu));
         }
     }
 
