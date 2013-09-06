@@ -25,7 +25,7 @@ using std::shared_ptr;
 fuzzy::Rule::Rule() {
 }
 
-fuzzy::Rule::Rule(vector<shared_ptr<FuzzySet>> antecedents, string conjunction, shared_ptr<FuzzySet>consequent, string naturalLanguage) :
+fuzzy::Rule::Rule(const vector<shared_ptr<FuzzySet>>antecedents, const string conjunction, shared_ptr<FuzzySet>const consequent, const string naturalLanguage) :
 _antecedents(antecedents),
 _conjunction(conjunction),
 _consequent(consequent),

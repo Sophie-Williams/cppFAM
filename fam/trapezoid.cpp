@@ -14,24 +14,24 @@
 #include "trapezoid.h"
 
 fuzzy::Trapezoid::Trapezoid(const double l, const double tl, const double tr, const double r, const double h) :
-_left {l},
-_top_left {tl},
-_top_right {tr},
-_right {r}
+_left(l),
+_top_left(tl),
+_top_right(tr),
+_right(r)
 {
     _height=h;
 }
 
 fuzzy::Trapezoid::Trapezoid() :
-_left {0},
-_top_left {0},
-_top_right {0},
-_right {0}
+_left(0),
+_top_left(0),
+_top_right(0),
+_right(0)
 {
     _height=0;
 }
 
-double fuzzy::Trapezoid::calculateMu(double value) const {
+double fuzzy::Trapezoid::calculateMu(const double value) const {
     if (value < _left || value > _right) {
         return 0.0;
     } else if (value >= _left && value < _top_left) {
@@ -52,22 +52,18 @@ double fuzzy::Trapezoid::calculateXCentroid() const {
     return cx+_left;
 }
 
-void fuzzy::Trapezoid::setHeight(double height) {
-    _height = height;
-}
-
-std::shared_ptr<fuzzy::FuzzySet> fuzzy::Trapezoid::larsen(double ratio) const {
+std::shared_ptr<fuzzy::FuzzySet> fuzzy::Trapezoid::larsen(const double ratio) const {
 //    Trapezoid *dup = new Trapezoid(*this);
     std::shared_ptr<Trapezoid> dup(new Trapezoid(*this));
     dup->setHeight(_height * ratio);
     return dup;
 }
 
-std::shared_ptr<fuzzy::FuzzySet> fuzzy::Trapezoid::mamdami(double clip_height) const {
+std::shared_ptr<fuzzy::FuzzySet> fuzzy::Trapezoid::mamdami(const double clip_height) const {
     double l = _left;
     double tl = _left + (clip_height * (_top_left - _left));
     double tr = _right + (clip_height * (_right - _top_right));
     double r = _right;
 
-    return make_shared<Trapezoid>(l, tl, tr, r, clip_height);
+    return std::make_shared<Trapezoid>(l, tl, tr, r, clip_height);
 }

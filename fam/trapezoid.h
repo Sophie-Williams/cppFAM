@@ -18,8 +18,6 @@
 #include <cmath>
 #include "fuzzy_set.h"
 
-using namespace std;
-
 namespace fuzzy {
     class Trapezoid : public FuzzySet {
         double _left;
@@ -28,27 +26,24 @@ namespace fuzzy {
         double _right;
 
     public:
-        Trapezoid(const double l, const double tl, const double tr, const double r, const double h=1.0);
         Trapezoid();
+        Trapezoid(const double l, const double tl, const double tr, const double r, const double h=1.0);
 
-        double calculateMu(double value) const;
+        void setHeight(const double height) {
+            _height = height;
+        }
+
+        double calculateMu(const double value) const;
+
         double calculateXCentroid() const;
 
-        std::shared_ptr<FuzzySet> larsen(double ratio) const;
-        std::shared_ptr<FuzzySet> mamdami(double clip_height) const;
+        std::shared_ptr<FuzzySet> larsen(const double ratio) const;
 
-        void setHeight(double height);
+        std::shared_ptr<FuzzySet> mamdami(const double clip_height) const;
 
         void print( std::ostream &strm) const {
             strm << "Trapezoid " << this << ", " << this->_left << "/" << this->_top_left << "/" << this->_top_right << "/" << this->_right << " (" << this->_height << ")";
         }
-
-    //    inline friend ostream& operator<<(ostream &strm, const Trapezoid &tri) {
-    //        // print something from v to str, e.g: Str << v.getX();
-    //        strm << "Trapezoid " << &tri << ", " << tri._left << "/" << tri._top_left << "/" << tri._top_right << "/" << tri._right << " (" << tri._height << ")";
-    //
-    //        return strm;
-    //    }
     };
 }
 

@@ -14,12 +14,12 @@
 #include "linguistic_variable.h"
 
 fuzzy::LinguisticVariable::LinguisticVariable() :
-_name {""}
+_name("")
 {
 }
 
 fuzzy::LinguisticVariable::LinguisticVariable(std::string name) :
-_name {name}
+_name(name)
 {
 }
 
