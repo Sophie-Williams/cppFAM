@@ -53,5 +53,7 @@ double fuzzy::Rule::fire(const vector<double> values) {
     //    }
     //    cout << "], final µ is " << mu << endl;
     
+    mus.clear();
+
     return mu;
 }
