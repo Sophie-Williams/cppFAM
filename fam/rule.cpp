@@ -12,7 +12,6 @@
 //
 
 #include "rule.h"
-//#include <assert.h>
 
 using std::cout;
 using std::endl;
@@ -20,24 +19,24 @@ using std::min_element;
 using std::max_element;
 using std::begin;
 using std::end;
+using std::vector;
+using std::shared_ptr;
 
 fuzzy::Rule::Rule() {
 }
 
-fuzzy::Rule::Rule(vector<FuzzySet *> antecedents, string conjunction, FuzzySet *consequent, string naturalLanguage) :
+fuzzy::Rule::Rule(vector<shared_ptr<FuzzySet>> antecedents, string conjunction, shared_ptr<FuzzySet>consequent, string naturalLanguage) :
 _antecedents(antecedents),
 _conjunction(conjunction),
 _consequent(consequent),
 _naturalLanguage(naturalLanguage) {
 }
 
-fuzzy::FuzzySet* fuzzy::Rule::getConsequent() {
+shared_ptr<fuzzy::FuzzySet> fuzzy::Rule::getConsequent() {
     return _consequent;
 }
 
-double fuzzy::Rule::fire(const std::vector<double> values) {
-    mus.clear();
-    
+double fuzzy::Rule::fire(const vector<double> values) {
     for (size_t i = 0; i < _antecedents.size(); i++) {
         mus.push_back(_antecedents[i]->calculateMu(values[i]));
     }
@@ -54,5 +53,7 @@ double fuzzy::Rule::fire(const std::vector<double> values) {
     //    }
     //    cout << "], final µ is " << mu << endl;
     
+    mus.clear();
+
     return mu;
 }

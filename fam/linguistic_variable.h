@@ -17,20 +17,22 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "fuzzy_set.h"
+#include <memory>
 
 namespace fuzzy {
+    class FuzzySet;
+
     class LinguisticVariable {
     private:
         std::string _name;
-        std::vector<FuzzySet *> _sets;
+        std::vector<std::shared_ptr<FuzzySet>> _sets;
 
     public:
         LinguisticVariable();
         LinguisticVariable(const std::string name);
 
         std::string name();
-        void addSet(FuzzySet * const set);
+        void addSet(std::shared_ptr<FuzzySet> const set);
     };
 }
 

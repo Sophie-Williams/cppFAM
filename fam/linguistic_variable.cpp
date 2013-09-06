@@ -27,7 +27,7 @@ std::string fuzzy::LinguisticVariable::name() {
     return _name;
 }
 
-void fuzzy::LinguisticVariable::addSet(FuzzySet * const set) {
+void fuzzy::LinguisticVariable::addSet(std::shared_ptr<FuzzySet> const set) {
     _sets.push_back(set);
 }
 

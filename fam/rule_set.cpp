@@ -19,32 +19,54 @@ using std::pair;
 using std::string;
 
 fuzzy::RuleSet::RuleSet() :
-_name {""},
-_implication {""}
+_name(""),
+_implication("")
 {
+    //nop
 }
 
 fuzzy::RuleSet::RuleSet(string name, string implication) :
-_name {name},
-_implication {implication}
+_name(name),
+_implication(implication)
 {
+    //nop
+}
+
+fuzzy::RuleSet::RuleSet(const RuleSet& other) :
+_name(other._name),
+_implication(other._implication),
+_rules(other._rules),
+_consequent_mus(other._consequent_mus),
+_mmi(other._mmi)
+{
+    //nop
+}
+
+fuzzy::RuleSet& fuzzy::RuleSet::operator=(const fuzzy::RuleSet &rhs) {
+    if (this == &rhs) return *this;
+
+    _name = rhs._name;
+    _implication = rhs._implication;
+    _rules = rhs._rules;
+    _consequent_mus = rhs._consequent_mus;
+    _mmi = rhs._mmi;
+    return *this;
 }
 
 string fuzzy::RuleSet::name() {
     return _name;
 }
 
-void fuzzy::RuleSet::addRule(Rule * const r) {
+void fuzzy::RuleSet::addRule(std::shared_ptr<Rule> const r) {
     _rules.push_back(r);
 }
 
 double fuzzy::RuleSet::calculate(vector<double> inputValues) {
-//    std::cout << "\nFiring all rules..." << std::endl;
+    double mu;
+    std::shared_ptr<FuzzySet>con;
 
     // Fire each rule to determine the µ value (degree of fit).
-    double mu;
-    FuzzySet *con;
-    for (Rule *rule : _rules) {
+    for (auto rule : _rules) {
         mu = rule->fire(inputValues);
         con = rule->getConsequent();
 
@@ -52,12 +74,12 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
         // need to get just a single µ value out -- we only care about the 'best'
         // µ. A popular way of doing so is to OR the values together, i.e. keep the
         // maximum µ value and discard the others.
-        _p = _consequent_mus.find(con);
-        if (_p != _consequent_mus.end() && mu > _p->second) {
-            _p->second = mu; // keep the max mu
+        _mmi = _consequent_mus.find(con);
+        if (_mmi != _consequent_mus.end() && mu > _mmi->second) {
+            _mmi->second = mu; // keep the max mu
         } else {
             // Didn't find
-            _consequent_mus.insert(pair<FuzzySet*, double>(con, mu));
+            _consequent_mus.insert(pair<std::shared_ptr<FuzzySet>, double>(con, mu));
         }
     }
 
@@ -65,34 +87,28 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     // called implication, and 'weights' the consequents properly. There are
     // several common ways of doing it, such as Larsen (scaling) and Mamdani
     // (clipping).
-    for ( auto item : _consequent_mus) {
-        if (_implication == "mamdani") {
-            _consequents.push_back( (item.first)->mamdami(item.second) );
-        } else {
-            _consequents.push_back( (item.first)->larsen(item.second) );
-        }
-    }
-
-    // Defuzzify into a discrete & usable value by adding up the weighted
-    // consequents' contributions to the output. Again there are several ways
-    // of doing it, such as computing the centroid of the combined 'mass', or
-    // the 'mean of maximum' of the tallest set(s). Here we use the "Average
-    // of Maxima" summation mechanism. MaxAv is defined as:
-    // (∑ representative value * height) / (∑ height) for all output sets
-    // where 'representative value' is shape-dependent.
-    //
-    // Also, clean up all the temporary, implicated fuzzy sets. Note that doing
-    // it this way this isn't exception-safe...
     double numerator=0;
     double denominator=0;
 
-    for (auto cons : _consequents) {
-        numerator += (cons->calculateXCentroid() * cons->getHeight());
-        denominator += cons->getHeight();
-        delete cons;
+    std::shared_ptr<FuzzySet> tmp;
+    for ( auto item : _consequent_mus) {
+        if (_implication == "mamdani") {
+            tmp = (item.first)->mamdami(item.second);
+        } else {
+            tmp = (item.first)->larsen(item.second);
+        }
+
+        // Defuzzify into a discrete & usable value by adding up the weighted
+        // consequents' contributions to the output. Again there are several ways
+        // of doing it, such as computing the centroid of the combined 'mass', or
+        // the 'mean of maximum' of the tallest set(s). Here we use the "Average
+        // of Maxima" summation mechanism. MaxAv is defined as:
+        // (∑ representative value * height) / (∑ height) for all output sets
+        // where 'representative value' is shape-dependent.
+        numerator += (tmp->calculateXCentroid() * tmp->getHeight());
+        denominator += tmp->getHeight();
     }
 
-    _consequents.clear();
     _consequent_mus.clear();
 
     return numerator/denominator;

@@ -16,25 +16,27 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "fuzzy_set.h"
 
 using std::string;
 using std::vector;
+using std::shared_ptr;
 
 namespace fuzzy {
     class Rule {
     private:
-        std::vector<FuzzySet *> _antecedents;
-        std::string _conjunction;
-        FuzzySet *_consequent;
-        std::string _naturalLanguage;
-        std::vector<double> mus;
+        vector<shared_ptr<FuzzySet>> _antecedents;
+        string _conjunction;
+        shared_ptr<FuzzySet> _consequent;
+        string _naturalLanguage;
+        vector<double> mus;
 
     public:
-        Rule();
-        Rule(const vector<FuzzySet *>antecedents, const string conjunction, FuzzySet *const consequent, const string naturalLanguage);
+        Rule(); // default constructor
+        Rule(const vector<shared_ptr<FuzzySet>>antecedents, const string conjunction, shared_ptr<FuzzySet>const consequent, const string naturalLanguage); // regular constructor
 
-        FuzzySet *getConsequent();
+        shared_ptr<FuzzySet> getConsequent();
 
         double fire(const vector<double> values);
     };
