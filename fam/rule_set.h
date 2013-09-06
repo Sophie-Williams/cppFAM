@@ -21,25 +21,46 @@
 #include <memory>
 #include "rule.h"
 
+using std::string;
+using std::unordered_map;
+using std::shared_ptr;
+using std::vector;
+
 namespace fuzzy {
     class RuleSet {
     private:
-        std::string _name;
-        std::string _implication;
-        std::vector<std::shared_ptr<Rule>> _rules;
-        vector<std::shared_ptr<FuzzySet>> consequents;
+        string _name;
+        string _implication;
+        vector<shared_ptr<Rule>> _rules;
 
-        typedef std::unordered_map<std::shared_ptr<FuzzySet>, double> mu_map;
-        mu_map consequent_mus;
-        mu_map::iterator p;
+        typedef unordered_map<shared_ptr<FuzzySet>, double> mu_map;
+        mu_map _consequent_mus;
+        mu_map::iterator _mmi;
 
     public:
-        RuleSet();
-        RuleSet(std::string name, std::string implication);
+        RuleSet();                                // default constructor
+        RuleSet(string name, string implication); // constructor
+        RuleSet(const RuleSet& other);            // copy constructor
+        RuleSet& operator=(const RuleSet& rhs);   // copy assignment operator
 
-        std::string name();
-        void addRule(std::shared_ptr<Rule> const r);
-        double calculate(std::vector<double> values);
+        /**
+         Retrieve the ruleset's natural-language name
+         @return the name in string form
+         */
+        string name();
+
+        /**
+         Add an existing rule to the ruleset.
+         @param r A Rule instance
+         */
+        void addRule(shared_ptr<Rule> const r);
+
+        /**
+         Given a collection of inputs, calculate the ruleset's result.
+         @param values A vector of inputs (each a double)
+         @return the result in double form
+         */
+        double calculate(vector<double> values);
     };
 }
 
