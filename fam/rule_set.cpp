@@ -90,23 +90,23 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     double numerator=0;
     double denominator=0;
 
-    std::shared_ptr<FuzzySet> tmp;
+    // Defuzzify into a discrete & usable value by adding up the weighted
+    // consequents' contributions to the output. Again there are several ways
+    // of doing it, such as computing the centroid of the combined 'mass', or
+    // the 'mean of maximum' of the tallest set(s). Here we use the "Average
+    // of Maxima" summation mechanism. MaxAv is defined as:
+    // (∑ representative value * height) / (∑ height) for all output sets
+    // where 'representative value' is shape-dependent.
     for ( auto item : _consequent_mus) {
         if (_implication == "mamdani") {
-            tmp = (item.first)->mamdami(item.second);
+            std::shared_ptr<FuzzySet> tmp((item.first)->mamdami(item.second));
+            numerator += (tmp->calculateXCentroid() * tmp->getHeight());
+            denominator += tmp->getHeight();
         } else {
-            tmp = (item.first)->larsen(item.second);
+            std::shared_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
+            numerator += (tmp->calculateXCentroid() * tmp->getHeight());
+            denominator += tmp->getHeight();
         }
-
-        // Defuzzify into a discrete & usable value by adding up the weighted
-        // consequents' contributions to the output. Again there are several ways
-        // of doing it, such as computing the centroid of the combined 'mass', or
-        // the 'mean of maximum' of the tallest set(s). Here we use the "Average
-        // of Maxima" summation mechanism. MaxAv is defined as:
-        // (∑ representative value * height) / (∑ height) for all output sets
-        // where 'representative value' is shape-dependent.
-        numerator += (tmp->calculateXCentroid() * tmp->getHeight());
-        denominator += tmp->getHeight();
     }
 
     _consequent_mus.clear();
