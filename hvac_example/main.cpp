@@ -32,7 +32,7 @@ int main(int argc, const char * argv[])
     auto cool = make_shared<Triangle>(45, 55, 65);
     auto ok   = make_shared<Triangle>(60, 65, 70);
     auto warm = make_shared<Triangle>(65, 75, 85);
-    auto hot  = make_shared<Trapezoid>(40, 40, 40, 50);
+    auto hot  = make_shared<Trapezoid>(80, 90, 90, 90);
 
     temperature_in->addSet(cold);
     temperature_in->addSet(cool);
