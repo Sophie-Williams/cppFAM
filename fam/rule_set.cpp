@@ -33,27 +33,6 @@ _implication(implication)
     //nop
 }
 
-fuzzy::RuleSet::RuleSet(const RuleSet& other) :
-_name(other._name),
-_implication(other._implication),
-_rules(other._rules),
-_consequent_mus(other._consequent_mus),
-_mmi(other._mmi)
-{
-    //nop
-}
-
-fuzzy::RuleSet& fuzzy::RuleSet::operator=(const fuzzy::RuleSet &rhs) {
-    if (this == &rhs) return *this;
-
-    _name = rhs._name;
-    _implication = rhs._implication;
-    _rules = rhs._rules;
-    _consequent_mus = rhs._consequent_mus;
-    _mmi = rhs._mmi;
-    return *this;
-}
-
 string fuzzy::RuleSet::name() {
     return _name;
 }

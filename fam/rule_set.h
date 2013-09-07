@@ -40,8 +40,6 @@ namespace fuzzy {
     public:
         RuleSet();                                // default constructor
         RuleSet(string name, string implication); // constructor
-        RuleSet(const RuleSet& other);            // copy constructor
-        RuleSet& operator=(const RuleSet& rhs);   // copy assignment operator
 
         /**
          Retrieve the ruleset's natural-language name
