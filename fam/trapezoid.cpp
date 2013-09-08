@@ -53,16 +53,13 @@ double fuzzy::Trapezoid::calculateXCentroid() const {
 }
 
 std::shared_ptr<fuzzy::FuzzySet> fuzzy::Trapezoid::larsen(const double ratio) const {
-    std::shared_ptr<Trapezoid> dup(new Trapezoid(*this));
-    dup->setHeight(_height * ratio);
-    return dup;
+    return std::make_shared<Trapezoid>(_left, _top_left, _top_right, _right, (_height*ratio));
 }
 
 std::shared_ptr<fuzzy::FuzzySet> fuzzy::Trapezoid::mamdami(const double clip_height) const {
-    double l = _left;
-    double tl = _left + (clip_height * (_top_left - _left));
-    double tr = _right + (clip_height * (_right - _top_right));
-    double r = _right;
-
-    return std::make_shared<Trapezoid>(l, tl, tr, r, clip_height);
+    return std::make_shared<Trapezoid>(_left,
+                                       _left + (clip_height * (_top_left - _left)),
+                                       _right - (clip_height * (_right - _top_right)),
+                                       _right,
+                                       clip_height);
 }

@@ -38,16 +38,13 @@ double fuzzy::Triangle::calculateMu(const double value) const {
 }
 
 shared_ptr<fuzzy::FuzzySet> fuzzy::Triangle::larsen(const double ratio) const {
-    shared_ptr<Triangle> dup(new Triangle(*this));
-    dup->setHeight(_height * ratio);
-    return dup;
+    return std::make_shared<Triangle>(_left, _center, _right, (_height*ratio));
 }
 
 shared_ptr<fuzzy::FuzzySet> fuzzy::Triangle::mamdami(const double clip_height) const {
-    double l  = _left;
-    double tl = _left + (clip_height * (_center - _left));
-    double tr = _right - (clip_height * (_right - _center));
-    double r  = _right;
-
-    return std::make_shared<Trapezoid>(l, tl, tr, r, clip_height);
+    return std::make_shared<Trapezoid>(_left,
+                                       _left + (clip_height * (_center - _left)),
+                                       _right - (clip_height * (_right - _center)),
+                                       _right,
+                                       clip_height);
 }
