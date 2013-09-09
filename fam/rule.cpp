@@ -33,8 +33,8 @@ _naturalLanguage(naturalLanguage) {
 }
 
 double fuzzy::Rule::fire(const vector<double> values) {
-    for (size_t i = 0; i < _antecedents.size(); i++) {
-        mus.push_back(_antecedents[i]->calculateMu(values[i]));
+    for (size_t i = 0; i < _antecedents.size(); ++i) {
+        mus.emplace_back(_antecedents[i]->calculateMu(values[i]));
     }
 
     double mu;

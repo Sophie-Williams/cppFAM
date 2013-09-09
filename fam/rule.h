@@ -33,8 +33,8 @@ namespace fuzzy {
         vector<double> mus;
 
     public:
-        Rule(); // default constructor
-        Rule(const vector<shared_ptr<FuzzySet>>antecedents, const string conjunction, shared_ptr<FuzzySet>const consequent, const string naturalLanguage); // regular constructor
+        Rule();
+        Rule(const vector<shared_ptr<FuzzySet>>antecedents, const string conjunction, shared_ptr<FuzzySet>const consequent, const string naturalLanguage);
 
         shared_ptr<FuzzySet> getConsequent() {
             return _consequent;
