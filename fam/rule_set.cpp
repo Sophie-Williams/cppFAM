@@ -44,7 +44,7 @@ void fuzzy::RuleSet::addRule(shared_ptr<Rule> const r) {
 double fuzzy::RuleSet::calculate(vector<double> inputValues) {
 
     // Fire each rule to determine the µ value (degree of fit).
-    for (auto rule : _rules) {
+    for (const auto& rule : _rules) {
         double mu = rule->fire(inputValues);
 
         // Since any given consequent may have been activated more than once, we
@@ -75,7 +75,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     double numerator=0;
     double denominator=0;
 
-    for ( auto item : _consequent_mus) {
+    for ( const auto& item : _consequent_mus) {
         if (_implication == "mamdani") {
             shared_ptr<FuzzySet> tmp((item.first)->mamdami(item.second));
             numerator += (tmp->calculateXCentroid() * tmp->getHeight());

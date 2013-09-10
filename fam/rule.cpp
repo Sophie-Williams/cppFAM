@@ -44,7 +44,7 @@ double fuzzy::Rule::fire(const vector<double> values) {
         mu = *max_element(begin(mus), end(mus));
 
     //    cout << "Fired rule: µ choices are [";
-    //    for (auto mu: mus) {
+    //    for (const auto mu: mus) {
     //        cout << mu << ", ";
     //    }
     //    cout << "], final µ is " << mu << endl;
