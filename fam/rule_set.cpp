@@ -13,7 +13,6 @@
 
 #include "rule_set.h"
 
-using std::unordered_map;
 using std::vector;
 using std::pair;
 using std::string;
