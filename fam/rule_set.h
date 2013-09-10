@@ -17,12 +17,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <unordered_map>
+#include <map>
 #include <memory>
 #include "rule.h"
 
 using std::string;
-using std::unordered_map;
+using std::map;
 using std::shared_ptr;
 using std::vector;
 
@@ -33,7 +33,7 @@ namespace fuzzy {
         string _implication;
         vector<shared_ptr<Rule>> _rules;
 
-        typedef unordered_map<shared_ptr<FuzzySet>, double> mu_map;
+        typedef map<shared_ptr<FuzzySet>, double> mu_map;
         mu_map _consequent_mus;
         mu_map::iterator _mmi;
 
