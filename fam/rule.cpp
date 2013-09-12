@@ -20,12 +20,12 @@ using std::max_element;
 using std::begin;
 using std::end;
 using std::vector;
-using std::shared_ptr;
+using std::unique_ptr;
 
 fuzzy::Rule::Rule() {
 }
 
-fuzzy::Rule::Rule(const vector<shared_ptr<FuzzySet>>antecedents, const string conjunction, shared_ptr<FuzzySet>const consequent, const string naturalLanguage) :
+fuzzy::Rule::Rule(const vector<FuzzySet*>antecedents, const string conjunction, FuzzySet *const consequent, const string naturalLanguage) :
 _antecedents(antecedents),
 _conjunction(conjunction),
 _consequent(consequent),

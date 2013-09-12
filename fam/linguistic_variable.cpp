@@ -12,22 +12,3 @@
 //
 
 #include "linguistic_variable.h"
-
-fuzzy::LinguisticVariable::LinguisticVariable() :
-_name("")
-{
-}
-
-fuzzy::LinguisticVariable::LinguisticVariable(std::string name) :
-_name(name)
-{
-}
-
-std::string fuzzy::LinguisticVariable::name() {
-    return _name;
-}
-
-void fuzzy::LinguisticVariable::addSet(std::shared_ptr<FuzzySet> const set) {
-    _sets.push_back(set);
-}
-
