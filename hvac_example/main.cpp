@@ -43,16 +43,11 @@ private:
     unique_ptr<FuzzySet> blast;
 
     // The rules that will tie the logic together
-    RuleSet rules;
-    unique_ptr<Rule> r1;
-    unique_ptr<Rule> r2;
-    unique_ptr<Rule> r3;
-    unique_ptr<Rule> r4;
-    unique_ptr<Rule> r5;
+    unique_ptr<RuleSet> rules;
 
 public:
     double calculate(double t) {
-        return rules.calculate( vector<double>{t} );
+        return rules->calculate( vector<double>{t} );
     }
 
     HvacBrain() {
@@ -73,18 +68,12 @@ public:
         // Set up our rules.
         // If you know another object is going to outlive you and you want to observe it, use a (non-owning) raw pointer.
         // http://herbsutter.com/elements-of-modern-c-style/
-        r1=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops") );
-        r2=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow") );
-        r3=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{ok.get()},   "", med.get(),   "if room is ok, fan motor is medium") );
-        r4=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up") );
-        r5=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast") );
-
-        rules = RuleSet("HVAC control", "larsen");
-        rules.addRule(std::move(r1));
-        rules.addRule(std::move(r2));
-        rules.addRule(std::move(r3));
-        rules.addRule(std::move(r4));
-        rules.addRule(std::move(r5));
+        rules = unique_ptr<RuleSet>(new RuleSet("HVAC control", "larsen"));
+        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops") ));
+        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow") ));
+        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{ok.get()},   "", med.get(),   "if room is ok, fan motor is medium") ));
+        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up") ));
+        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast") ));
     }
 };
 
