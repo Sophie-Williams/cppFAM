@@ -32,13 +32,6 @@ _implication(implication)
     //nop
 }
 
-string fuzzy::RuleSet::name() {
-    return _name;
-}
-
-void fuzzy::RuleSet::addRule(shared_ptr<Rule> const r) {
-    _rules.push_back(r);
-}
 
 double fuzzy::RuleSet::calculate(vector<double> inputValues) {
 

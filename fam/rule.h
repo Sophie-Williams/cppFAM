@@ -22,11 +22,12 @@
 using std::string;
 using std::vector;
 using std::shared_ptr;
+using std::unique_ptr;
 
 namespace fuzzy {
     class Rule {
     private:
-        vector<shared_ptr<FuzzySet>> _antecedents;
+        vector<FuzzySet*> _antecedents;
         string _conjunction;
         shared_ptr<FuzzySet> _consequent;
         string _naturalLanguage;
@@ -34,7 +35,7 @@ namespace fuzzy {
 
     public:
         Rule();
-        Rule(const vector<shared_ptr<FuzzySet>>antecedents, const string conjunction, shared_ptr<FuzzySet>const consequent, const string naturalLanguage);
+        Rule(const vector<FuzzySet*>antecedents, const string conjunction, FuzzySet* const consequent, const string naturalLanguage);
 
         shared_ptr<FuzzySet> getConsequent() {
             return _consequent;

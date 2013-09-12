@@ -45,13 +45,17 @@ namespace fuzzy {
          Retrieve the ruleset's natural-language name
          @return the name in string form
          */
-        string name();
+        string name() {
+            return _name;
+        }
 
         /**
          Add an existing rule to the ruleset.
          @param r A Rule instance
          */
-        void addRule(shared_ptr<Rule> const r);
+        void addRule(shared_ptr<Rule> const r) {
+            _rules.push_back(r);
+        }
 
         /**
          Given a collection of inputs, calculate the ruleset's result.

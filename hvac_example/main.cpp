@@ -77,13 +77,13 @@ int main(int argc, const char * argv[])
     fan_speed->addSet(std::move(fast));
     fan_speed->addSet(std::move(blast));
 
-//    auto system = make_shared<RuleSet>("HVAC control", "larsen");
-//
-//    auto r1 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{cold}, "", stop,  "if room is cold, fan motor stops");
-//    auto r2 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{cool}, "", slow,  "if room is cool, fan motor is slow");
-//    auto r3 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{ok},   "", med,   "if room is ok, fan motor is medium");
-//    auto r4 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{warm}, "", fast,  "if room is warm, fan motor speeds up");
-//    auto r5 = make_shared<Rule>(vector<shared_ptr<FuzzySet>>{hot},  "", blast, "if room is hot, fan motor runs full blast");
+    auto system = make_shared<RuleSet>("HVAC control", "larsen");
+
+    auto r1 = make_shared<Rule>(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops");
+    auto r2 = make_shared<Rule>(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow");
+    auto r3 = make_shared<Rule>(vector<FuzzySet*>{ok.get()},   "", med.get(),   "if room is ok, fan motor is medium");
+    auto r4 = make_shared<Rule>(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up");
+    auto r5 = make_shared<Rule>(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast");
 //
 //    system->addRule(r1);
 //    system->addRule(r2);
