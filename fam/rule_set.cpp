@@ -74,17 +74,19 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     double numerator=0;
     double denominator=0;
 
-    for ( const auto& item : _consequent_mus) {
         if (_implication == "mamdani") {
-            shared_ptr<FuzzySet> tmp((item.first)->mamdami(item.second));
-            numerator += (tmp->calculateXCentroid() * tmp->getHeight());
-            denominator += tmp->getHeight();
+            for ( const auto& item : _consequent_mus) {
+                shared_ptr<FuzzySet> tmp((item.first)->mamdami(item.second));
+                numerator += (tmp->calculateXCentroid() * tmp->getHeight());
+                denominator += tmp->getHeight();
+            }
         } else {
-            shared_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
-            numerator += (tmp->calculateXCentroid() * tmp->getHeight());
-            denominator += tmp->getHeight();
+            for ( const auto& item : _consequent_mus) {
+                shared_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
+                numerator += (tmp->calculateXCentroid() * tmp->getHeight());
+                denominator += tmp->getHeight();
+            }
         }
-    }
 
     _consequent_mus.clear();
 
