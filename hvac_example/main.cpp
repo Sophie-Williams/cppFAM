@@ -81,6 +81,8 @@ public:
     HvacBrain& operator=(const HvacBrain &) = delete;
 };
 
+#define BENCHMARK
+
 int main(int argc, const char * argv[])
 {
     cout << "Starting...\n";
@@ -88,6 +90,13 @@ int main(int argc, const char * argv[])
     // OK to put on the stack, it's just 11 pointers (to things on the heap)
     HvacBrain system;
 
+#ifdef BENCHMARK
+    for (int i=0; i<50000; ++i) {
+        for (double t=40; t<=90; ++t) {
+            system.calculate(t);
+        }
+    }
+#else
     double result;
     for (double t=40; t<=90; ++t) {
         result=system.calculate( t );
@@ -96,12 +105,7 @@ int main(int argc, const char * argv[])
         cout << ", the fan speed is ";
         cout << result << " CFM\n";
     }
-
-//    for (int i=0; i<50000; ++i) {
-//        for (double t=40; t<=90; ++t) {
-//            system.calculate(t);
-//        }
-//    }
+#endif
 
     return 0;
 }
