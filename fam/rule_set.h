@@ -24,6 +24,7 @@
 using std::string;
 using std::map;
 using std::shared_ptr;
+using std::unique_ptr;
 using std::vector;
 
 namespace fuzzy {
@@ -31,7 +32,7 @@ namespace fuzzy {
     private:
         string _name;
         string _implication;
-        vector<shared_ptr<Rule>> _rules;
+        vector<unique_ptr<Rule>> _rules;
 
         typedef map<shared_ptr<FuzzySet>, double> mu_map;
         mu_map _consequent_mus;
@@ -53,8 +54,8 @@ namespace fuzzy {
          Add an existing rule to the ruleset.
          @param r A Rule instance
          */
-        void addRule(shared_ptr<Rule> const r) {
-            _rules.push_back(r);
+        void addRule(unique_ptr<Rule> r) {
+            _rules.emplace_back(std::move(r));
         }
 
         /**

@@ -30,7 +30,8 @@ int main(int argc, const char * argv[])
 {
     cout << "Starting...\n";
 
-    auto temperature_in = make_shared<LinguisticVariable>("room temperature");
+//    auto temperature_in = make_shared<LinguisticVariable>("room temperature");
+    LinguisticVariable temperature_in("room _temperature");
 
 //    Trapezoid cold {40, 40, 40, 50};
 //    Triangle  cool {45, 55, 65};
@@ -50,14 +51,15 @@ int main(int argc, const char * argv[])
     unique_ptr<FuzzySet> warm( new Triangle(65, 75, 85));
     unique_ptr<FuzzySet> hot( new Trapezoid(80, 90, 90, 90));
 
-    temperature_in->addSet(std::move(cold));
-    temperature_in->addSet(std::move(cool));
-    temperature_in->addSet(std::move(ok));
-    temperature_in->addSet(std::move(warm));
-    temperature_in->addSet(std::move(hot));
+//    temperature_in.addSet(std::move(cold));
+//    temperature_in.addSet(std::move(cool));
+//    temperature_in.addSet(std::move(ok));
+//    temperature_in.addSet(std::move(warm));
+//    temperature_in.addSet(std::move(hot));
 
 
-    auto fan_speed = make_shared<LinguisticVariable>("fan speed");
+//    auto fan_speed = make_shared<LinguisticVariable>("fan speed");
+    LinguisticVariable fan_speed("fan speed");
 
     unique_ptr<FuzzySet> stop(new Triangle(-30, 0, 30));
     unique_ptr<FuzzySet> slow(new Triangle(10, 30, 50));
@@ -71,34 +73,42 @@ int main(int argc, const char * argv[])
 //    auto fast  = make_shared<Triangle>(50, 70, 90);
 //    auto blast = make_shared<Triangle>(70, 100, 130);
 
-    fan_speed->addSet(std::move(stop));
-    fan_speed->addSet(std::move(slow));
-    fan_speed->addSet(std::move(med));
-    fan_speed->addSet(std::move(fast));
-    fan_speed->addSet(std::move(blast));
+//    fan_speed.addSet(std::move(stop));
+//    fan_speed.addSet(std::move(slow));
+//    fan_speed.addSet(std::move(med));
+//    fan_speed.addSet(std::move(fast));
+//    fan_speed.addSet(std::move(blast));
 
-    auto system = make_shared<RuleSet>("HVAC control", "larsen");
+//    auto system = make_shared<RuleSet>("HVAC control", "larsen");
+    RuleSet system("HVAC control", "larsen");
 
-    auto r1 = make_shared<Rule>(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops");
-    auto r2 = make_shared<Rule>(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow");
-    auto r3 = make_shared<Rule>(vector<FuzzySet*>{ok.get()},   "", med.get(),   "if room is ok, fan motor is medium");
-    auto r4 = make_shared<Rule>(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up");
-    auto r5 = make_shared<Rule>(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast");
-//
-//    system->addRule(r1);
-//    system->addRule(r2);
-//    system->addRule(r3);
-//    system->addRule(r4);
-//    system->addRule(r5);
-//
-//    //double result;
+    // If you know another object is going to outlive you and you
+    // want to observe it, use a (non-owning) raw pointer.
+    // http://herbsutter.com/elements-of-modern-c-style/
+    unique_ptr<Rule> r1( new Rule(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops") );
+    unique_ptr<Rule> r2( new Rule(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow") );
+    unique_ptr<Rule> r3( new Rule(vector<FuzzySet*>{ok.get()},   "", med.get(),   "if room is ok, fan motor is medium") );
+    unique_ptr<Rule> r4( new Rule(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up") );
+    unique_ptr<Rule> r5( new Rule(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast") );
+
+    system.addRule(std::move(r1));
+    system.addRule(std::move(r2));
+    system.addRule(std::move(r3));
+    system.addRule(std::move(r4));
+    system.addRule(std::move(r5));
+
+    double result;
+    for (double t=40; t<=90; ++t) {
+        result=system.calculate( vector<double>{t} );
+
+        cout << "The " << system.name() << " determines: for " << temperature_in.name();
+        cout << " " << t << ", the " << fan_speed.name() << " is ";
+        cout << result << " CFM\n";
+    }
+
 //    for (int i=0; i<50000; ++i) {
 //        for (double t=40; t<=90; ++t) {
 //            system->calculate( vector<double>{t} );
-//
-//            //        cout << "The " << system->name() << " determines: for " << temperature_in->name();
-//            //        cout << " " << t << ", the " << fan_speed->name() << " is ";
-//            //        cout << result << " CFM\n";
 //        }
 //    }
 
