@@ -19,7 +19,6 @@
 #include "fuzzy_set.h"
 #include "trapezoid.h"
 
-using std::shared_ptr;
 using std::unique_ptr;
 
 namespace fuzzy {

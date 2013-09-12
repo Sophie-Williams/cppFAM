@@ -16,7 +16,6 @@
 using std::vector;
 using std::pair;
 using std::string;
-using std::shared_ptr;
 
 fuzzy::RuleSet::RuleSet() :
 _name(""),

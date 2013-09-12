@@ -20,9 +20,7 @@
 #include "rule_set.h"
 
 using std::cout;
-using std::shared_ptr;
 using std::unique_ptr;
-using std::make_shared;
 
 using namespace fuzzy;
 

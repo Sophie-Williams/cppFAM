@@ -20,7 +20,6 @@ using std::max_element;
 using std::begin;
 using std::end;
 using std::vector;
-using std::shared_ptr;
 using std::unique_ptr;
 
 fuzzy::Rule::Rule() {
