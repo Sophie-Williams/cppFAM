@@ -34,7 +34,7 @@ namespace fuzzy {
 
     public:
         Rule();
-        Rule(const vector<FuzzySet*>antecedents, const string conjunction, FuzzySet* const consequent, const string naturalLanguage);
+        Rule(const vector<FuzzySet*>antecedents, const string conjunction, FuzzySet* const consequent, const string naturalLanguage="");
 
         FuzzySet *getConsequent() {
             return _consequent;
