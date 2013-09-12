@@ -54,7 +54,7 @@ namespace fuzzy {
          Add an existing rule to the ruleset.
          @param r A Rule instance
          */
-        void addRule(unique_ptr<Rule> r) {
+        void add(unique_ptr<Rule> r) {
             _rules.emplace_back(std::move(r));
         }
 

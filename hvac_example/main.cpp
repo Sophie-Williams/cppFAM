@@ -69,11 +69,11 @@ public:
         // If you know another object is going to outlive you and you want to observe it, use a (non-owning) raw pointer.
         // http://herbsutter.com/elements-of-modern-c-style/
         rules = unique_ptr<RuleSet>(new RuleSet("HVAC control", "larsen"));
-        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops") ));
-        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow") ));
-        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{ok.get()},   "", med.get(),   "if room is ok, fan motor is medium") ));
-        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up") ));
-        rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast") ));
+        rules->add(unique_ptr<Rule>(new Rule(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops") ));
+        rules->add(unique_ptr<Rule>(new Rule(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow") ));
+        rules->add(unique_ptr<Rule>(new Rule(vector<FuzzySet*>{ok.get()},   "", med.get(),   "if room is ok, fan motor is medium") ));
+        rules->add(unique_ptr<Rule>(new Rule(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up") ));
+        rules->add(unique_ptr<Rule>(new Rule(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast") ));
     }
 
     // Don't allow copying or assignment
@@ -85,17 +85,17 @@ int main(int argc, const char * argv[])
 {
     cout << "Starting...\n";
 
+    // OK to put on the stack, it's just 11 pointers (to things on the heap)
     HvacBrain system;
 
     double result;
     for (double t=40; t<=90; ++t) {
         result=system.calculate( t );
 
-//        cout << "The " << system.name() << " determines: for " << temperature_in.name();
-//        cout << " " << t << ", the " << fan_speed.name() << " is ";
+        cout << "The HVAC system determines: for temperature " << t;
+        cout << ", the fan speed is ";
         cout << result << " CFM\n";
     }
-
 
 //    for (int i=0; i<50000; ++i) {
 //        for (double t=40; t<=90; ++t) {
