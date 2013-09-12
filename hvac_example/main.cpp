@@ -28,20 +28,22 @@ using namespace fuzzy;
 
 class HvacBrain {
 private:
-    RuleSet rules;
-
+    // Antecedent sets: air temperature
     unique_ptr<FuzzySet> cold;
     unique_ptr<FuzzySet> cool;
     unique_ptr<FuzzySet> ok;
     unique_ptr<FuzzySet> warm;
     unique_ptr<FuzzySet> hot;
 
+    // Consequent sets: fan speed
     unique_ptr<FuzzySet> stop;
     unique_ptr<FuzzySet> slow;
     unique_ptr<FuzzySet> med;
     unique_ptr<FuzzySet> fast;
     unique_ptr<FuzzySet> blast;
 
+    // The rules that will tie the logic together
+    RuleSet rules;
     unique_ptr<Rule> r1;
     unique_ptr<Rule> r2;
     unique_ptr<Rule> r3;
@@ -54,22 +56,22 @@ public:
     }
 
     HvacBrain() {
-        rules = RuleSet("HVAC control", "larsen");
-
-        cold = unique_ptr<FuzzySet>(new Trapezoid(40,40,40,50));
+        // Configure our antecedent sets
+        cold = unique_ptr<FuzzySet>(new Trapezoid(40, 40, 40, 50));
         cool = unique_ptr<FuzzySet>(new Triangle(45, 55, 65));
         ok   = unique_ptr<FuzzySet>(new Triangle(60, 65, 70));
         warm = unique_ptr<FuzzySet>(new Triangle(65, 75, 85));
         hot  = unique_ptr<FuzzySet>(new Trapezoid(80, 90, 90, 90));
 
+        // Configure our consequent sets
         stop  = unique_ptr<FuzzySet>(new Triangle(-30, 0, 30));
         slow  = unique_ptr<FuzzySet>(new Triangle(10, 30, 50));
         med   = unique_ptr<FuzzySet>(new Triangle(40, 50, 60));
         fast  = unique_ptr<FuzzySet>(new Triangle(50, 70, 90));
         blast = unique_ptr<FuzzySet>(new Triangle(70, 100, 130));
 
-        // If you know another object is going to outlive you and you
-        // want to observe it, use a (non-owning) raw pointer.
+        // Set up our rules.
+        // If you know another object is going to outlive you and you want to observe it, use a (non-owning) raw pointer.
         // http://herbsutter.com/elements-of-modern-c-style/
         r1=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops") );
         r2=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow") );
@@ -77,6 +79,7 @@ public:
         r4=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up") );
         r5=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast") );
 
+        rules = RuleSet("HVAC control", "larsen");
         rules.addRule(std::move(r1));
         rules.addRule(std::move(r2));
         rules.addRule(std::move(r3));
