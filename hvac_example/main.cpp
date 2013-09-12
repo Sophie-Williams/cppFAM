@@ -75,6 +75,10 @@ public:
         rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up") ));
         rules->addRule(unique_ptr<Rule>( new Rule(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast") ));
     }
+
+    // Don't allow copying or assignment
+    HvacBrain(const HvacBrain &) = delete;
+    HvacBrain& operator=(const HvacBrain &) = delete;
 };
 
 int main(int argc, const char * argv[])
@@ -83,21 +87,21 @@ int main(int argc, const char * argv[])
 
     HvacBrain system;
 
-//    double result;
-//    for (double t=40; t<=90; ++t) {
-//        result=system.calculate( t );
-//
-////        cout << "The " << system.name() << " determines: for " << temperature_in.name();
-////        cout << " " << t << ", the " << fan_speed.name() << " is ";
-//        cout << result << " CFM\n";
-//    }
+    double result;
+    for (double t=40; t<=90; ++t) {
+        result=system.calculate( t );
 
-
-    for (int i=0; i<50000; ++i) {
-        for (double t=40; t<=90; ++t) {
-            system.calculate(t);
-        }
+//        cout << "The " << system.name() << " determines: for " << temperature_in.name();
+//        cout << " " << t << ", the " << fan_speed.name() << " is ";
+        cout << result << " CFM\n";
     }
+
+
+//    for (int i=0; i<50000; ++i) {
+//        for (double t=40; t<=90; ++t) {
+//            system.calculate(t);
+//        }
+//    }
 
     return 0;
 }
