@@ -34,7 +34,7 @@ namespace fuzzy {
         string _implication;
         vector<unique_ptr<Rule>> _rules;
 
-        typedef map<shared_ptr<FuzzySet>, double> mu_map;
+        typedef map<FuzzySet *, double> mu_map;
         mu_map _consequent_mus;
         mu_map::iterator _mmi;
 

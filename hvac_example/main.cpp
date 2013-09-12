@@ -97,20 +97,20 @@ int main(int argc, const char * argv[])
     system.addRule(std::move(r4));
     system.addRule(std::move(r5));
 
-    double result;
-    for (double t=40; t<=90; ++t) {
-        result=system.calculate( vector<double>{t} );
-
-        cout << "The " << system.name() << " determines: for " << temperature_in.name();
-        cout << " " << t << ", the " << fan_speed.name() << " is ";
-        cout << result << " CFM\n";
-    }
-
-//    for (int i=0; i<50000; ++i) {
-//        for (double t=40; t<=90; ++t) {
-//            system->calculate( vector<double>{t} );
-//        }
+//    double result;
+//    for (double t=40; t<=90; ++t) {
+//        result=system.calculate( vector<double>{t} );
+//
+//        cout << "The " << system.name() << " determines: for " << temperature_in.name();
+//        cout << " " << t << ", the " << fan_speed.name() << " is ";
+//        cout << result << " CFM\n";
 //    }
+
+    for (int i=0; i<50000; ++i) {
+        for (double t=40; t<=90; ++t) {
+            system.calculate( vector<double>{t} );
+        }
+    }
 
     return 0;
 }

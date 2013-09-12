@@ -48,7 +48,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
             _mmi->second = mu; // keep the max mu
         } else {
             // Didn't find
-            _consequent_mus.insert(pair<shared_ptr<FuzzySet>, double>(rule->getConsequent(), mu));
+            _consequent_mus.insert(pair<FuzzySet*, double>(rule->getConsequent(), mu));
         }
     }
 
@@ -69,13 +69,13 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
 
         if (_implication == "mamdani") {
             for ( const auto& item : _consequent_mus) {
-                shared_ptr<FuzzySet> tmp((item.first)->mamdami(item.second));
+                unique_ptr<FuzzySet> tmp = (item.first)->mamdami(item.second);
                 numerator += (tmp->calculateXCentroid() * tmp->getHeight());
                 denominator += tmp->getHeight();
             }
         } else {
             for ( const auto& item : _consequent_mus) {
-                shared_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
+                unique_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
                 numerator += (tmp->calculateXCentroid() * tmp->getHeight());
                 denominator += tmp->getHeight();
             }

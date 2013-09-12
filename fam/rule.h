@@ -29,7 +29,7 @@ namespace fuzzy {
     private:
         vector<FuzzySet*> _antecedents;
         string _conjunction;
-        shared_ptr<FuzzySet> _consequent;
+        FuzzySet* _consequent;
         string _naturalLanguage;
         vector<double> mus;
 
@@ -37,7 +37,7 @@ namespace fuzzy {
         Rule();
         Rule(const vector<FuzzySet*>antecedents, const string conjunction, FuzzySet* const consequent, const string naturalLanguage);
 
-        shared_ptr<FuzzySet> getConsequent() {
+        FuzzySet *getConsequent() {
             return _consequent;
         }
 
