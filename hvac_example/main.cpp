@@ -26,89 +26,84 @@ using std::make_shared;
 
 using namespace fuzzy;
 
+class HvacBrain {
+private:
+    RuleSet rules;
+
+    unique_ptr<FuzzySet> cold;
+    unique_ptr<FuzzySet> cool;
+    unique_ptr<FuzzySet> ok;
+    unique_ptr<FuzzySet> warm;
+    unique_ptr<FuzzySet> hot;
+
+    unique_ptr<FuzzySet> stop;
+    unique_ptr<FuzzySet> slow;
+    unique_ptr<FuzzySet> med;
+    unique_ptr<FuzzySet> fast;
+    unique_ptr<FuzzySet> blast;
+
+    unique_ptr<Rule> r1;
+    unique_ptr<Rule> r2;
+    unique_ptr<Rule> r3;
+    unique_ptr<Rule> r4;
+    unique_ptr<Rule> r5;
+
+public:
+    double calculate(double t) {
+        return rules.calculate( vector<double>{t} );
+    }
+
+    HvacBrain() {
+        rules = RuleSet("HVAC control", "larsen");
+
+        cold = unique_ptr<FuzzySet>(new Trapezoid(40,40,40,50));
+        cool = unique_ptr<FuzzySet>(new Triangle(45, 55, 65));
+        ok   = unique_ptr<FuzzySet>(new Triangle(60, 65, 70));
+        warm = unique_ptr<FuzzySet>(new Triangle(65, 75, 85));
+        hot  = unique_ptr<FuzzySet>(new Trapezoid(80, 90, 90, 90));
+
+        stop  = unique_ptr<FuzzySet>(new Triangle(-30, 0, 30));
+        slow  = unique_ptr<FuzzySet>(new Triangle(10, 30, 50));
+        med   = unique_ptr<FuzzySet>(new Triangle(40, 50, 60));
+        fast  = unique_ptr<FuzzySet>(new Triangle(50, 70, 90));
+        blast = unique_ptr<FuzzySet>(new Triangle(70, 100, 130));
+
+        // If you know another object is going to outlive you and you
+        // want to observe it, use a (non-owning) raw pointer.
+        // http://herbsutter.com/elements-of-modern-c-style/
+        r1=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops") );
+        r2=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow") );
+        r3=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{ok.get()},   "", med.get(),   "if room is ok, fan motor is medium") );
+        r4=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up") );
+        r5=unique_ptr<Rule>( new Rule(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast") );
+
+        rules.addRule(std::move(r1));
+        rules.addRule(std::move(r2));
+        rules.addRule(std::move(r3));
+        rules.addRule(std::move(r4));
+        rules.addRule(std::move(r5));
+    }
+};
+
 int main(int argc, const char * argv[])
 {
     cout << "Starting...\n";
 
-//    auto temperature_in = make_shared<LinguisticVariable>("room temperature");
-    LinguisticVariable temperature_in("room _temperature");
-
-//    Trapezoid cold {40, 40, 40, 50};
-//    Triangle  cool {45, 55, 65};
-//    Triangle  ok   {60, 65, 70};
-//    Triangle  warm {65, 75, 85};
-//    Trapezoid hot  {80, 90, 90, 90};
-
-//    auto cold = make_shared<Trapezoid>(40, 40, 40, 50);
-//    auto cool = make_shared<Triangle>(45, 55, 65);
-//    auto ok   = make_shared<Triangle>(60, 65, 70);
-//    auto warm = make_shared<Triangle>(65, 75, 85);
-//    auto hot  = make_shared<Trapezoid>(80, 90, 90, 90);
-
-    unique_ptr<FuzzySet> cold( new Trapezoid(40,40,40,50));
-    unique_ptr<FuzzySet> cool( new Triangle(45, 55, 65));
-    unique_ptr<FuzzySet> ok( new Triangle(60, 65, 70));
-    unique_ptr<FuzzySet> warm( new Triangle(65, 75, 85));
-    unique_ptr<FuzzySet> hot( new Trapezoid(80, 90, 90, 90));
-
-//    temperature_in.addSet(std::move(cold));
-//    temperature_in.addSet(std::move(cool));
-//    temperature_in.addSet(std::move(ok));
-//    temperature_in.addSet(std::move(warm));
-//    temperature_in.addSet(std::move(hot));
-
-
-//    auto fan_speed = make_shared<LinguisticVariable>("fan speed");
-    LinguisticVariable fan_speed("fan speed");
-
-    unique_ptr<FuzzySet> stop(new Triangle(-30, 0, 30));
-    unique_ptr<FuzzySet> slow(new Triangle(10, 30, 50));
-    unique_ptr<FuzzySet> med(new Triangle(40, 50, 60));
-    unique_ptr<FuzzySet> fast(new Triangle(50, 70, 90));
-    unique_ptr<FuzzySet> blast(new Triangle(70, 100, 130));
-
-//    auto stop  = make_shared<Triangle>(-30, 0, 30);
-//    auto slow  = make_shared<Triangle>(10, 30, 50);
-//    auto med   = make_shared<Triangle>(40, 50, 60);
-//    auto fast  = make_shared<Triangle>(50, 70, 90);
-//    auto blast = make_shared<Triangle>(70, 100, 130);
-
-//    fan_speed.addSet(std::move(stop));
-//    fan_speed.addSet(std::move(slow));
-//    fan_speed.addSet(std::move(med));
-//    fan_speed.addSet(std::move(fast));
-//    fan_speed.addSet(std::move(blast));
-
-//    auto system = make_shared<RuleSet>("HVAC control", "larsen");
-    RuleSet system("HVAC control", "larsen");
-
-    // If you know another object is going to outlive you and you
-    // want to observe it, use a (non-owning) raw pointer.
-    // http://herbsutter.com/elements-of-modern-c-style/
-    unique_ptr<Rule> r1( new Rule(vector<FuzzySet*>{cold.get()}, "", stop.get(),  "if room is cold, fan motor stops") );
-    unique_ptr<Rule> r2( new Rule(vector<FuzzySet*>{cool.get()}, "", slow.get(),  "if room is cool, fan motor is slow") );
-    unique_ptr<Rule> r3( new Rule(vector<FuzzySet*>{ok.get()},   "", med.get(),   "if room is ok, fan motor is medium") );
-    unique_ptr<Rule> r4( new Rule(vector<FuzzySet*>{warm.get()}, "", fast.get(),  "if room is warm, fan motor speeds up") );
-    unique_ptr<Rule> r5( new Rule(vector<FuzzySet*>{hot.get()},  "", blast.get(), "if room is hot, fan motor runs full blast") );
-
-    system.addRule(std::move(r1));
-    system.addRule(std::move(r2));
-    system.addRule(std::move(r3));
-    system.addRule(std::move(r4));
-    system.addRule(std::move(r5));
+    HvacBrain system;
 
 //    double result;
 //    for (double t=40; t<=90; ++t) {
-//        result=system.calculate( vector<double>{t} );
+//        result=system.calculate( t );
 //
-//        cout << "The " << system.name() << " determines: for " << temperature_in.name();
-//        cout << " " << t << ", the " << fan_speed.name() << " is ";
+////        cout << "The " << system.name() << " determines: for " << temperature_in.name();
+////        cout << " " << t << ", the " << fan_speed.name() << " is ";
 //        cout << result << " CFM\n";
 //    }
 
+
     for (int i=0; i<50000; ++i) {
         for (double t=40; t<=90; ++t) {
-            system.calculate( vector<double>{t} );
+            system.calculate(t);
         }
     }
 
