@@ -29,7 +29,7 @@ using namespace fuzzy;
 class HvacBrain {
 private:
     // Antecedent sets: air temperature
-    unique_ptr<FuzzySet> cold;
+    unique_ptr<FuzzySet> cold;// { unique_ptr<FuzzySet>(new Trapezoid(40, 40, 40, 50)) };
     unique_ptr<FuzzySet> cool;
     unique_ptr<FuzzySet> ok;
     unique_ptr<FuzzySet> warm;
