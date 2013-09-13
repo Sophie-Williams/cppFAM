@@ -14,7 +14,6 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "linguistic_variable.h"
 #include "triangle.h"
 #include "trapezoid.h"
 #include "rule_set.h"

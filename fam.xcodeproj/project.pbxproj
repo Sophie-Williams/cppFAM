@@ -8,13 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		830518F717C803AC004DC675 /* fuzzy_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */; };
-		830518F817C803AC004DC675 /* linguistic_variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7417C2C5670022C8FF /* linguistic_variable.cpp */; };
 		830518F917C803AC004DC675 /* rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7717C2CCC00022C8FF /* rule.cpp */; };
 		830518FA17C803AC004DC675 /* rule_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7A17C2E5E20022C8FF /* rule_set.cpp */; };
 		830518FB17C803AC004DC675 /* trapezoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */; };
 		830518FC17C803AC004DC675 /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB6717C296F70022C8FF /* triangle.cpp */; };
 		8305190317C803CB004DC675 /* fuzzy_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7217C2A8880022C8FF /* fuzzy_set.h */; };
-		8305190417C803CB004DC675 /* linguistic_variable.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7517C2C5670022C8FF /* linguistic_variable.h */; };
 		8305190517C803CB004DC675 /* rule.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7817C2CCC00022C8FF /* rule.h */; };
 		8305190617C803CB004DC675 /* rule_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7B17C2E5E20022C8FF /* rule_set.h */; };
 		8305190717C803CB004DC675 /* trapezoid.h in Headers */ = {isa = PBXBuildFile; fileRef = 8333275E17C5D9E000B8BFE7 /* trapezoid.h */; };
@@ -70,8 +68,6 @@
 		832EEB6817C296F70022C8FF /* triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle.h; sourceTree = "<group>"; };
 		832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fuzzy_set.cpp; sourceTree = "<group>"; };
 		832EEB7217C2A8880022C8FF /* fuzzy_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fuzzy_set.h; sourceTree = "<group>"; };
-		832EEB7417C2C5670022C8FF /* linguistic_variable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = linguistic_variable.cpp; sourceTree = "<group>"; };
-		832EEB7517C2C5670022C8FF /* linguistic_variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linguistic_variable.h; sourceTree = "<group>"; };
 		832EEB7717C2CCC00022C8FF /* rule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rule.cpp; sourceTree = "<group>"; };
 		832EEB7817C2CCC00022C8FF /* rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rule.h; sourceTree = "<group>"; };
 		832EEB7A17C2E5E20022C8FF /* rule_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rule_set.cpp; sourceTree = "<group>"; };
@@ -157,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				832EEB7217C2A8880022C8FF /* fuzzy_set.h */,
-				832EEB7517C2C5670022C8FF /* linguistic_variable.h */,
 				832EEB7817C2CCC00022C8FF /* rule.h */,
 				832EEB7B17C2E5E20022C8FF /* rule_set.h */,
 				8333275E17C5D9E000B8BFE7 /* trapezoid.h */,
@@ -170,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */,
-				832EEB7417C2C5670022C8FF /* linguistic_variable.cpp */,
 				832EEB7717C2CCC00022C8FF /* rule.cpp */,
 				832EEB7A17C2E5E20022C8FF /* rule_set.cpp */,
 				8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */,
@@ -204,7 +198,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8305190317C803CB004DC675 /* fuzzy_set.h in Headers */,
-				8305190417C803CB004DC675 /* linguistic_variable.h in Headers */,
 				8305190517C803CB004DC675 /* rule.h in Headers */,
 				8305190617C803CB004DC675 /* rule_set.h in Headers */,
 				8305190717C803CB004DC675 /* trapezoid.h in Headers */,
@@ -302,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				830518F717C803AC004DC675 /* fuzzy_set.cpp in Sources */,
-				830518F817C803AC004DC675 /* linguistic_variable.cpp in Sources */,
 				830518F917C803AC004DC675 /* rule.cpp in Sources */,
 				830518FA17C803AC004DC675 /* rule_set.cpp in Sources */,
 				830518FB17C803AC004DC675 /* trapezoid.cpp in Sources */,

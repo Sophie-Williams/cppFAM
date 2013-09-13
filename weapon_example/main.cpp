@@ -16,7 +16,6 @@
 #include <memory>
 #include "trapezoid.h"
 #include "triangle.h"
-#include "linguistic_variable.h"
 #include "rule_set.h"
 
 using std::cout;
