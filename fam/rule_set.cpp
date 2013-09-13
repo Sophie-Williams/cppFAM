@@ -66,19 +66,20 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     double numerator=0;
     double denominator=0;
 
-        if (_implication == "mamdani") {
-            for ( const auto& item : _consequent_mus) {
-                unique_ptr<FuzzySet> tmp = (item.first)->mamdami(item.second);
-                numerator += (tmp->calculateXCentroid() * tmp->getHeight());
-                denominator += tmp->getHeight();
-            }
-        } else {
-            for ( const auto& item : _consequent_mus) {
-                unique_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
-                numerator += (tmp->calculateXCentroid() * tmp->getHeight());
-                denominator += tmp->getHeight();
-            }
+    // This isn't DRY but it's fastest this way.
+    if (_implication == "mamdani") {
+        for ( const auto& item : _consequent_mus) {
+            unique_ptr<FuzzySet> tmp = (item.first)->mamdami(item.second);
+            numerator += (tmp->calculateXCentroid() * tmp->getHeight());
+            denominator += tmp->getHeight();
         }
+    } else {
+        for ( const auto& item : _consequent_mus) {
+            unique_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
+            numerator += (tmp->calculateXCentroid() * tmp->getHeight());
+            denominator += tmp->getHeight();
+        }
+    }
 
     _consequent_mus.clear();
 

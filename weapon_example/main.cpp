@@ -126,7 +126,7 @@ public:
         // Set up our rules.
         // If you know another object is going to outlive you and you want to observe it, use a (non-owning) raw pointer.
         // http://herbsutter.com/elements-of-modern-c-style/
-        rules = unique_ptr<RuleSet>(new RuleSet("Rocket desirability", "mamdani"));
+        rules = unique_ptr<RuleSet>(new RuleSet("Shotgun desirability", "mamdani"));
         rules->add(unique_ptr<Rule>(new Rule(vector<FuzzySet*>{far.get(), ammo_lots.get()},    "and", undesirable.get() ) ));
         rules->add(unique_ptr<Rule>(new Rule(vector<FuzzySet*>{far.get(), ammo_ok.get()},      "and", undesirable.get() ) ));
         rules->add(unique_ptr<Rule>(new Rule(vector<FuzzySet*>{far.get(), ammo_low.get()},     "and", undesirable.get() ) ));
@@ -150,6 +150,8 @@ int main(int argc, const char * argv[])
     // For this demo we set up TWO FAMs, one for each weapon. We supply
     // them both with the inputs of the "current game state" and compare
     // their outputs to pick the more desirable weapon for this state.
+    //
+    // They are OK to put on the stack, each is just a handful of pointers.
     RocketFAM rocket_system;
     ShotgunFam gun_system;
 

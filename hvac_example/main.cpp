@@ -84,7 +84,7 @@ int main(int argc, const char * argv[])
 {
     cout << "Starting...\n";
 
-    // OK to put on the stack, it's just 11 pointers (to things on the heap)
+    // OK to put on the stack, it's just 11 pointers
     HvacBrain system;
 
 #ifdef BENCHMARK
