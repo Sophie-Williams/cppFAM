@@ -47,7 +47,7 @@ namespace fuzzy {
         unique_ptr<FuzzySet> mamdami(const double clip_height) const;
 
         void print( std::ostream &strm) const {
-            strm << "Triangle " << this << ", " << this->_left << "/" << this->_center << "/" << this->_right << " (" << this->_height << ")";
+            strm << "Triangle {" << this << ", " << this->_left << "/" << this->_center << "/" << this->_right << " (" << this->_height << ")}";
         }
 
     };

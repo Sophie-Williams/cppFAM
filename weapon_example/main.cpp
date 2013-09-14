@@ -143,7 +143,7 @@ public:
     ShotgunFam& operator=(const ShotgunFam &) = delete;
 };
 
-int main(int argc, const char * argv[])
+int main()
 {
     cout << "Starting...\n";
 

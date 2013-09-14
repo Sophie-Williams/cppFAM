@@ -76,6 +76,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     } else {
         for ( const auto& item : _consequent_mus) {
             unique_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
+            std::cout << *tmp << std::endl;
             numerator += (tmp->calculateXCentroid() * tmp->getHeight());
             denominator += tmp->getHeight();
         }

@@ -19,7 +19,7 @@
 namespace fuzzy {
     class FuzzySet {
     private:
-        virtual void print( std::ostream& ) const = 0;
+        virtual void print( std::ostream& ) const = 0; // See operator<< below
 
     protected:
         double _height;
@@ -41,6 +41,8 @@ namespace fuzzy {
             return _height;
         }
 
+        // When "cout" is passed a FuzzySet pointer, the actual derived object will
+        // be asked to print itself.
         friend std::ostream& operator<<( std::ostream& out, const FuzzySet& b ) {
             b.print( out );
             return out;

@@ -80,7 +80,7 @@ public:
 
 #define BENCHMARK
 
-int main(int argc, const char * argv[])
+int main()
 {
     cout << "Starting...\n";
 
