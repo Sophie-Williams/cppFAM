@@ -78,8 +78,6 @@ public:
     HvacBrain& operator=(const HvacBrain &) = delete;
 };
 
-#define BENCHMARK
-
 int main()
 {
     cout << "Starting...\n";
