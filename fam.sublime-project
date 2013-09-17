@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/chris/Code/cpp/fam"
+		}
+	],
+  "settings":
+  {
+      "sublimeclang_options":
+      [
+        "-I/usr/local/lib/llvm-3.3/lib/c++/v1",
+        "-I/Users/chris/Code/cpp/fam/fam",
+        "-L/usr/local/lib/llvm-3.3/usr/lib",
+        "-Wall",
+        "-Wextra"
+      ]
+  }
+}
