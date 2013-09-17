@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		830518F717C803AC004DC675 /* fuzzy_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */; };
-		830518F917C803AC004DC675 /* rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7717C2CCC00022C8FF /* rule.cpp */; };
-		830518FA17C803AC004DC675 /* rule_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB7A17C2E5E20022C8FF /* rule_set.cpp */; };
-		830518FB17C803AC004DC675 /* trapezoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */; };
-		830518FC17C803AC004DC675 /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832EEB6717C296F70022C8FF /* triangle.cpp */; };
-		8305190317C803CB004DC675 /* fuzzy_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7217C2A8880022C8FF /* fuzzy_set.h */; };
-		8305190517C803CB004DC675 /* rule.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7817C2CCC00022C8FF /* rule.h */; };
-		8305190617C803CB004DC675 /* rule_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB7B17C2E5E20022C8FF /* rule_set.h */; };
-		8305190717C803CB004DC675 /* trapezoid.h in Headers */ = {isa = PBXBuildFile; fileRef = 8333275E17C5D9E000B8BFE7 /* trapezoid.h */; };
-		8305190817C803CB004DC675 /* triangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 832EEB6817C296F70022C8FF /* triangle.h */; };
 		832930BD17C8056E005B34A1 /* libfuzzy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830518F317C8038D004DC675 /* libfuzzy.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
-		83388A4E17C80877001170DC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83388A4D17C80877001170DC /* main.cpp */; };
-		83C7E79217C80AD000F95F8D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83C7E79117C80AD000F95F8D /* main.cpp */; };
+		836509AD17E8F1160085342D /* fuzzy_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509A817E8F1160085342D /* fuzzy_set.h */; };
+		836509AE17E8F1160085342D /* rule_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509A917E8F1160085342D /* rule_set.h */; };
+		836509AF17E8F1160085342D /* rule.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509AA17E8F1160085342D /* rule.h */; };
+		836509B017E8F1160085342D /* trapezoid.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509AB17E8F1160085342D /* trapezoid.h */; };
+		836509B117E8F1160085342D /* triangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509AC17E8F1160085342D /* triangle.h */; };
+		836509B717E8F1260085342D /* fuzzy_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B217E8F1260085342D /* fuzzy_set.cpp */; };
+		836509B817E8F1260085342D /* rule_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B317E8F1260085342D /* rule_set.cpp */; };
+		836509B917E8F1260085342D /* rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B417E8F1260085342D /* rule.cpp */; };
+		836509BA17E8F1260085342D /* trapezoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B517E8F1260085342D /* trapezoid.cpp */; };
+		836509BB17E8F1260085342D /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B617E8F1260085342D /* triangle.cpp */; };
+		836509C017E8F1520085342D /* hvac_example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509BC17E8F1360085342D /* hvac_example.cpp */; };
+		836509C117E8F1550085342D /* weapon_example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509BD17E8F1360085342D /* weapon_example.cpp */; };
 		83C7E79A17C80AF500F95F8D /* libfuzzy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830518F317C8038D004DC675 /* libfuzzy.dylib */; };
 /* End PBXBuildFile section */
 
@@ -64,19 +64,19 @@
 /* Begin PBXFileReference section */
 		830518F317C8038D004DC675 /* libfuzzy.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfuzzy.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		832930B417C80563005B34A1 /* hvac_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hvac_example; sourceTree = BUILT_PRODUCTS_DIR; };
-		832EEB6717C296F70022C8FF /* triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = triangle.cpp; sourceTree = "<group>"; };
-		832EEB6817C296F70022C8FF /* triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle.h; sourceTree = "<group>"; };
-		832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fuzzy_set.cpp; sourceTree = "<group>"; };
-		832EEB7217C2A8880022C8FF /* fuzzy_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fuzzy_set.h; sourceTree = "<group>"; };
-		832EEB7717C2CCC00022C8FF /* rule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rule.cpp; sourceTree = "<group>"; };
-		832EEB7817C2CCC00022C8FF /* rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rule.h; sourceTree = "<group>"; };
-		832EEB7A17C2E5E20022C8FF /* rule_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rule_set.cpp; sourceTree = "<group>"; };
-		832EEB7B17C2E5E20022C8FF /* rule_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rule_set.h; sourceTree = "<group>"; };
-		8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trapezoid.cpp; sourceTree = "<group>"; };
-		8333275E17C5D9E000B8BFE7 /* trapezoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trapezoid.h; sourceTree = "<group>"; };
-		83388A4D17C80877001170DC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		836509A817E8F1160085342D /* fuzzy_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fuzzy_set.h; path = src/fuzzy_set.h; sourceTree = SOURCE_ROOT; };
+		836509A917E8F1160085342D /* rule_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule_set.h; path = src/rule_set.h; sourceTree = SOURCE_ROOT; };
+		836509AA17E8F1160085342D /* rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule.h; path = src/rule.h; sourceTree = SOURCE_ROOT; };
+		836509AB17E8F1160085342D /* trapezoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trapezoid.h; path = src/trapezoid.h; sourceTree = SOURCE_ROOT; };
+		836509AC17E8F1160085342D /* triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = triangle.h; path = src/triangle.h; sourceTree = SOURCE_ROOT; };
+		836509B217E8F1260085342D /* fuzzy_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fuzzy_set.cpp; path = src/fuzzy_set.cpp; sourceTree = SOURCE_ROOT; };
+		836509B317E8F1260085342D /* rule_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rule_set.cpp; path = src/rule_set.cpp; sourceTree = SOURCE_ROOT; };
+		836509B417E8F1260085342D /* rule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rule.cpp; path = src/rule.cpp; sourceTree = SOURCE_ROOT; };
+		836509B517E8F1260085342D /* trapezoid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trapezoid.cpp; path = src/trapezoid.cpp; sourceTree = SOURCE_ROOT; };
+		836509B617E8F1260085342D /* triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = triangle.cpp; path = src/triangle.cpp; sourceTree = SOURCE_ROOT; };
+		836509BC17E8F1360085342D /* hvac_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hvac_example.cpp; path = examples/hvac_example.cpp; sourceTree = "<group>"; };
+		836509BD17E8F1360085342D /* weapon_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = weapon_example.cpp; path = examples/weapon_example.cpp; sourceTree = "<group>"; };
 		83C7E78F17C80ACF00F95F8D /* weapon_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = weapon_example; sourceTree = BUILT_PRODUCTS_DIR; };
-		83C7E79117C80AD000F95F8D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		83C7E79B17C8126D00F95F8D /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		83C7E79C17C8126D00F95F8D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		83C7E79D17C8126D00F95F8D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -109,14 +109,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		832930B517C80563005B34A1 /* hvac_example */ = {
-			isa = PBXGroup;
-			children = (
-				83388A4D17C80877001170DC /* main.cpp */,
-			);
-			path = hvac_example;
-			sourceTree = "<group>";
-		};
 		832EEB5217C296BF0022C8FF = {
 			isa = PBXGroup;
 			children = (
@@ -152,11 +144,11 @@
 		8399C05F17DA3F6D004EFD52 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				832EEB7217C2A8880022C8FF /* fuzzy_set.h */,
-				832EEB7817C2CCC00022C8FF /* rule.h */,
-				832EEB7B17C2E5E20022C8FF /* rule_set.h */,
-				8333275E17C5D9E000B8BFE7 /* trapezoid.h */,
-				832EEB6817C296F70022C8FF /* triangle.h */,
+				836509A817E8F1160085342D /* fuzzy_set.h */,
+				836509A917E8F1160085342D /* rule_set.h */,
+				836509AA17E8F1160085342D /* rule.h */,
+				836509AB17E8F1160085342D /* trapezoid.h */,
+				836509AC17E8F1160085342D /* triangle.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -164,11 +156,11 @@
 		8399C06017DA3F7F004EFD52 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				832EEB7117C2A8880022C8FF /* fuzzy_set.cpp */,
-				832EEB7717C2CCC00022C8FF /* rule.cpp */,
-				832EEB7A17C2E5E20022C8FF /* rule_set.cpp */,
-				8333275D17C5D9E000B8BFE7 /* trapezoid.cpp */,
-				832EEB6717C296F70022C8FF /* triangle.cpp */,
+				836509B217E8F1260085342D /* fuzzy_set.cpp */,
+				836509B317E8F1260085342D /* rule_set.cpp */,
+				836509B417E8F1260085342D /* rule.cpp */,
+				836509B517E8F1260085342D /* trapezoid.cpp */,
+				836509B617E8F1260085342D /* triangle.cpp */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -176,18 +168,10 @@
 		8399C06117DA3F92004EFD52 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				832930B517C80563005B34A1 /* hvac_example */,
-				83C7E79017C80AD000F95F8D /* weapon_example */,
+				836509BC17E8F1360085342D /* hvac_example.cpp */,
+				836509BD17E8F1360085342D /* weapon_example.cpp */,
 			);
 			name = Examples;
-			sourceTree = "<group>";
-		};
-		83C7E79017C80AD000F95F8D /* weapon_example */ = {
-			isa = PBXGroup;
-			children = (
-				83C7E79117C80AD000F95F8D /* main.cpp */,
-			);
-			path = weapon_example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,11 +181,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8305190317C803CB004DC675 /* fuzzy_set.h in Headers */,
-				8305190517C803CB004DC675 /* rule.h in Headers */,
-				8305190617C803CB004DC675 /* rule_set.h in Headers */,
-				8305190717C803CB004DC675 /* trapezoid.h in Headers */,
-				8305190817C803CB004DC675 /* triangle.h in Headers */,
+				836509AF17E8F1160085342D /* rule.h in Headers */,
+				836509AD17E8F1160085342D /* fuzzy_set.h in Headers */,
+				836509B117E8F1160085342D /* triangle.h in Headers */,
+				836509AE17E8F1160085342D /* rule_set.h in Headers */,
+				836509B017E8F1160085342D /* trapezoid.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,11 +278,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				830518F717C803AC004DC675 /* fuzzy_set.cpp in Sources */,
-				830518F917C803AC004DC675 /* rule.cpp in Sources */,
-				830518FA17C803AC004DC675 /* rule_set.cpp in Sources */,
-				830518FB17C803AC004DC675 /* trapezoid.cpp in Sources */,
-				830518FC17C803AC004DC675 /* triangle.cpp in Sources */,
+				836509BA17E8F1260085342D /* trapezoid.cpp in Sources */,
+				836509B817E8F1260085342D /* rule_set.cpp in Sources */,
+				836509B717E8F1260085342D /* fuzzy_set.cpp in Sources */,
+				836509BB17E8F1260085342D /* triangle.cpp in Sources */,
+				836509B917E8F1260085342D /* rule.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83388A4E17C80877001170DC /* main.cpp in Sources */,
+				836509C017E8F1520085342D /* hvac_example.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83C7E79217C80AD000F95F8D /* main.cpp in Sources */,
+				836509C117E8F1550085342D /* weapon_example.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +321,7 @@
 		830518F517C8038D004DC675 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -350,7 +334,7 @@
 		830518F617C8038D004DC675 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
