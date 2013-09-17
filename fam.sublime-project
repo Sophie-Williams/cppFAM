@@ -9,7 +9,7 @@
   [
       {
           "name": "CMake build",
-          "cmd": [ "make", "-C", "build" ],
+          "cmd": [ "ninja", "-C", "build" ],
           "file_regex": "/([^/:]+):(\\d+):(\\d+): "
       }
   ],

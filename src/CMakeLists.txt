@@ -1,6 +1,5 @@
 # Include the directory itself as a path to include directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
 
 # include_directories("${CMAKE_SOURCE_DIR}/include")
 

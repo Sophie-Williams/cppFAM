@@ -53,6 +53,20 @@ To do (in descending importance, roughly):
 
 Watch the [changelog](http://github.com/cpowell/fuzzy-associative-memory-cplusplus/blob/master/CHANGELOG.md) for news.
 
+## Building
+You can open the package in XCode and build it that way. Targets aready exist for the library and the examples.
+
+You can use cmake as follows:
+```mkdir build && cd build && cmake .. && make```
+
+You can use cmake + ninja as follows:
+```mkdir build && cd build && cmake .. -GNinja && ninja```
+
+(Ninja is a nice, new build tool from Google but 'old-school' make works just fine too.)
+
+I recommend that you set your CXX environment variable appropriately; it will be used automatically during build. Mine is:
+```export CXX=clang++-3.3 -std=c++11 -stdlib=libc++ -I/usr/local/lib/llvm-3.3/lib/c++/v1```
+
 ## Included examples
 
 The source code contains the following examples:
