@@ -5,8 +5,19 @@
 			"path": "/Users/chris/Code/cpp/fam"
 		}
 	],
+  "build_systems":
+  [
+      {
+          "name": "CMake build",
+          "cmd": [ "make", "-C", "build" ],
+          "file_regex": "/([^/:]+):(\\d+):(\\d+): "
+      }
+  ],
   "settings":
   {
+      "sublimegdb_commandline": "gdb --interpreter=mi myapp",
+      "sublimegdb_workingdir": "build",
+      "sublimeclang_options_script": "/Users/chris/bin/compileflags.rb ${project_path:build}",
       "sublimeclang_options":
       [
         "-I/usr/local/lib/llvm-3.3/lib/c++/v1",
