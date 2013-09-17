@@ -25,3 +25,6 @@ doxygenWarnings.txt
 Pods
 profile
 xcuserdata
+*.sublime-project
+*.sublime-workspace
+
