@@ -7,7 +7,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 
 add_subdirectory (src)
-add_subdirectory (examples)
+#add_subdirectory (examples)
 
 #======================
 # Testing stuff...
