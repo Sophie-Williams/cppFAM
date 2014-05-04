@@ -59,7 +59,11 @@ namespace fuzzy {
         }
 
         /**
-         Given a collection of inputs, calculate the ruleset's result.
+         Given a collection of inputs, calculate the ruleset's result. This means,
+         fire all the rules to calculate each rule's µ ; choosing the highest µ
+         for every consequent ; weighting the consequents (implication) by their µ
+         values ; finally, adding up the weighted consequents to achieve a final 
+         calculation.
          @param values A vector of inputs (each a double)
          @return the result in double form
          */

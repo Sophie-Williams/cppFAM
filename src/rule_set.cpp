@@ -34,6 +34,7 @@ _implication(implication)
 
 double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
     // Fire each rule to determine the µ value (degree of fit).
+    _consequent_mus.clear();
     for (const auto& rule : _rules) {
         double mu = rule.fire(inputValues);
 
@@ -71,7 +72,7 @@ double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
     // This isn't DRY but it's fastest this way.
     if (_implication == Implication::MAMDANI) {
         for ( const auto& item : _consequent_mus) {
-            unique_ptr<FuzzySet> tmp = (item.first)->mamdami(item.second);
+            unique_ptr<FuzzySet> tmp((item.first)->mamdami(item.second));
             numerator += (tmp->calculateXCentroid() * tmp->height());
             denominator += tmp->height();
         }
@@ -82,8 +83,6 @@ double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
             denominator += tmp->height();
         }
     }
-
-    _consequent_mus.clear();
 
     return numerator/denominator;
 }

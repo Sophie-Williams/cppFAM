@@ -51,12 +51,15 @@ private:
     // The rules that will tie the logic together
     RuleSet rules;
 
+
 public:
     double calculate(double t) {
-        return rules.calculate( std::vector<double>{t} );
+        return rules.calculate( std::vector<const double>{t} );
     }
 
-    HvacBrain() {
+    HvacBrain() :
+    rules{"HVAC control", Implication::MAMDANI}
+    {
         // Configure our antecedent sets
         cold = make_unique<Trapezoid>(40, 40, 40, 50);
         cool = make_unique<Triangle>(45, 55, 65);
@@ -74,12 +77,11 @@ public:
         // Set up our rules.
         // If you know another object is going to outlive you and you want to observe it, use a (non-owning) raw pointer.
         // http://herbsutter.com/elements-of-modern-c-style/
-        RuleSet rules("HVAC control", Implication::MAMDANI);
-        rules.add( Rule(std::vector<FuzzySet*>{cold.get()}, Conjunction::INTERSECTION, stop.get(),  "if room is cold, fan motor stops") );
-        rules.add( Rule(std::vector<FuzzySet*>{cool.get()}, Conjunction::INTERSECTION, slow.get(),  "if room is cool, fan motor is slow") );
-        rules.add( Rule(std::vector<FuzzySet*>{ok.get()},   Conjunction::INTERSECTION, med.get(),   "if room is ok, fan motor is medium") );
-        rules.add( Rule(std::vector<FuzzySet*>{warm.get()}, Conjunction::INTERSECTION, fast.get(),  "if room is warm, fan motor speeds up") );
-        rules.add( Rule(std::vector<FuzzySet*>{hot.get()},  Conjunction::INTERSECTION, blast.get(), "if room is hot, fan motor runs full blast") );
+        rules.add( Rule{std::vector<FuzzySet*>{cold.get()}, Conjunction::AND, stop.get(),  "if room is cold, fan motor stops"} );
+        rules.add( Rule{std::vector<FuzzySet*>{cool.get()}, Conjunction::AND, slow.get(),  "if room is cool, fan motor is slow"} );
+        rules.add( Rule{std::vector<FuzzySet*>{ok.get()},   Conjunction::AND, med.get(),   "if room is ok, fan motor is medium"} );
+        rules.add( Rule{std::vector<FuzzySet*>{warm.get()}, Conjunction::AND, fast.get(),  "if room is warm, fan motor speeds up"} );
+        rules.add( Rule{std::vector<FuzzySet*>{hot.get()},  Conjunction::AND, blast.get(), "if room is hot, fan motor runs full blast"} );
     }
 
     // Don't allow copying or assignment
