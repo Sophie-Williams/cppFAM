@@ -22,8 +22,14 @@
 using std::unique_ptr;
 
 namespace fuzzy {
-    enum Conjunction {INTERSECTION, UNION};
+    enum Conjunction {AND, OR};
 
+    /**
+     A rule is basically a statement of "If this then that."
+     The antecedents are the "if this" part, and the consequent is the "that" part.
+     Given the antecedents, and some input, the rule can "fire" to determine
+     a "degree of fit" - i.e. how much this rule applies to those circumstances.
+     */
     class Rule {
     private:
         // A rule has one or more antecedent FuzzySets
@@ -59,12 +65,12 @@ namespace fuzzy {
         FuzzySet *consequent() const { return _consequent; }
 
         /**
-         Fire the rule and determine its degree of fit (µ), given the provided input values.
-         This means, it goes through the antecedent fuzzy-sets, calculates the µ value of each,
-         and chooses a µ value according to the rule's conjunction.
+         Given the provided input values, calculate the rule's degree of fit (µ).
+         This means: it goes through the antecedent fuzzy-sets, calculates the µ value of each,
+         and computes an aggregate µ value according to the rule's conjunction.
          The size of 'values' must equal the size of the antecedents vector.
          @param values a vector of input values, one for each antecedent
-         @return this rule's degree-of-fit (µ) as a double
+         @return this rule's degree-of-fit (µ) as a range of 0 (no fit) to 1 (perfect fit)
          */
         double fire(const std::vector<double> values) const;
     };

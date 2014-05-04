@@ -13,6 +13,8 @@
 
 #include "rule.h"
 
+//#include <iostream>
+
 fuzzy::Rule::Rule() {
     //nop
 }
@@ -35,16 +37,16 @@ double fuzzy::Rule::fire(const std::vector<double> values) const {
 
     double mu;
 
-    if (_conjunction == Conjunction::INTERSECTION)  // AND == intersection == minimum
+    if (_conjunction == Conjunction::AND)  // AND == intersection == minimum
         mu = *std::min_element(begin(mus), end(mus));
     else // OR == union == maximum
         mu = *std::max_element(begin(mus), end(mus));
 
-    //    cout << "Fired rule: µ choices are [";
-    //    for (const auto mu: mus) {
-    //        cout << mu << ", ";
-    //    }
-    //    cout << "], final µ is " << mu << endl;
+//    std::cout << "Fired rule: µ choices are [";
+//    for (const auto &mu: mus) {
+//        std::cout << mu << ", ";
+//    }
+//    std::cout << "], final µ is " << mu << std::endl;
 
     return mu;
 }
