@@ -27,6 +27,10 @@ using std::unique_ptr;
 namespace fuzzy {
     enum Implication { MAMDANI, LARSEN };
     
+    /**
+     A RuleSet is a collection of related rules that govern a particular decision,
+     e.g. "fan speed" or "shotgun desirability".
+     */
     class RuleSet {
     private:
         std::string _name;
@@ -59,7 +63,7 @@ namespace fuzzy {
          @param values A vector of inputs (each a double)
          @return the result in double form
          */
-        double calculate(std::vector<double> values) ;
+        double calculate(const std::vector<const double> values) ;
     };
 }
 

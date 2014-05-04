@@ -65,6 +65,12 @@ namespace fuzzy {
         FuzzySet *consequent() const { return _consequent; }
 
         /**
+         Retrieve the rule's natural-language description.
+         @return the description in string form
+         */
+        std::string name() const { return _naturalLanguage; }
+
+        /**
          Given the provided input values, calculate the rule's degree of fit (µ).
          This means: it goes through the antecedent fuzzy-sets, calculates the µ value of each,
          and computes an aggregate µ value according to the rule's conjunction.
@@ -72,7 +78,7 @@ namespace fuzzy {
          @param values a vector of input values, one for each antecedent
          @return this rule's degree-of-fit (µ) as a range of 0 (no fit) to 1 (perfect fit)
          */
-        double fire(const std::vector<double> values) const;
+        double fire(const std::vector<const double> values) const;
     };
 }
 

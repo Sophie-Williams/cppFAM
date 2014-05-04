@@ -32,7 +32,7 @@ _implication(implication)
 }
 
 
-double fuzzy::RuleSet::calculate(vector<double> inputValues) {
+double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
     // Fire each rule to determine the µ value (degree of fit).
     for (const auto& rule : _rules) {
         double mu = rule.fire(inputValues);

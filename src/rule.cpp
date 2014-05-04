@@ -27,7 +27,7 @@ _naturalLanguage(naturalLanguage) {
     //nop
 }
 
-double fuzzy::Rule::fire(const std::vector<double> values) const {
+double fuzzy::Rule::fire(const std::vector<const double> values) const {
     std::vector<double> mus;
 
     // TODO check that the two sizes are equal

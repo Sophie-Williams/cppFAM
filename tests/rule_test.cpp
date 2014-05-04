@@ -63,24 +63,24 @@ protected:
 };
 
 TEST_F(RuleTest, single_antecedent_fire_returns_expected_value) {
-    ASSERT_EQ(0, x.fire(std::vector<double>{55}));
-    ASSERT_EQ(0, x.fire(std::vector<double>{60}));
-    ASSERT_EQ(0.5, x.fire(std::vector<double>{62.5}));
-    ASSERT_EQ(1.0, x.fire(std::vector<double>{65}));
-    ASSERT_EQ(0.5, x.fire(std::vector<double>{67.5}));
-    ASSERT_EQ(0, x.fire(std::vector<double>{70}));
-    ASSERT_EQ(0, x.fire(std::vector<double>{75}));
+    ASSERT_EQ(0, x.fire(std::vector<const double>{55}));
+    ASSERT_EQ(0, x.fire(std::vector<const double>{60}));
+    ASSERT_EQ(0.5, x.fire(std::vector<const double>{62.5}));
+    ASSERT_EQ(1.0, x.fire(std::vector<const double>{65}));
+    ASSERT_EQ(0.5, x.fire(std::vector<const double>{67.5}));
+    ASSERT_EQ(0, x.fire(std::vector<const double>{70}));
+    ASSERT_EQ(0, x.fire(std::vector<const double>{75}));
 }
 
 TEST_F(RuleTest, multiple_antecedent_fire_returns_expected_value) {
-    ASSERT_EQ(0, y.fire(std::vector<double>{200, 15}));
-    ASSERT_EQ(1, y.fire(std::vector<double>{0, 0}));
+    ASSERT_EQ(0, y.fire(std::vector<const double>{200, 15}));
+    ASSERT_EQ(1, y.fire(std::vector<const double>{0, 0}));
 
     // Vary the ammo
-    ASSERT_EQ(0.9, y.fire(std::vector<double>{0, 1}));
-    ASSERT_EQ(0.5, y.fire(std::vector<double>{0, 5}));
+    ASSERT_EQ(0.9, y.fire(std::vector<const double>{0, 1}));
+    ASSERT_EQ(0.5, y.fire(std::vector<const double>{0, 5}));
 
     // Vary the distance
-    ASSERT_EQ(1, y.fire(std::vector<double>{25, 0}));
-    ASSERT_EQ(0.5, y.fire(std::vector<double>{87.5, 0}));
+    ASSERT_EQ(1, y.fire(std::vector<const double>{25, 0}));
+    ASSERT_EQ(0.5, y.fire(std::vector<const double>{87.5, 0}));
 }
