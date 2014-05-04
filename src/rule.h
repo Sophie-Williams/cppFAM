@@ -28,7 +28,7 @@ namespace fuzzy {
      A rule is basically a statement of "If this then that."
      The antecedents are the "if this" part, and the consequent is the "that" part.
      Given the antecedents, and some input, the rule can "fire" to determine
-     a "degree of fit" - i.e. how much this rule applies to those circumstances.
+     a "degree of fit" - i.e. how much this rule applies to the given circumstances.
      */
     class Rule {
     private:
@@ -42,6 +42,7 @@ namespace fuzzy {
 //        std::vector<double> mus;
 
         // When a rule fires, it returns the degree-of-fit of this consequent
+        // If you know another object is going to outlive you and you want to observe it, use a (non-owning) raw pointer.
         FuzzySet* _consequent;
 
         // This is just a human-readable summary of what this rule does
@@ -52,15 +53,17 @@ namespace fuzzy {
 
         /**
          Construct a rule.
+         The conjunction is always required, but is ignored for single-element antecedents.
          @param antecedents a vector of one or more FuzzySets 
-         @param conjunction how the antecedent mu will be chosen at fire-time (intersection or union)
+         @param conjunction how the antecedents work together ("and" or "or")
          @param consequent a FuzzySet that is the result of this Rule
          @param naturalLanguage an optional human-readable summary of this rule
          */
         Rule(const std::vector<FuzzySet*>antecedents, const Conjunction conjunction, FuzzySet* const consequent, const std::string naturalLanguage="");
 
         /**
-         Retrieve this rule's consequent.
+         Retrieve this rule's consequent. OK to return as a raw pointer with the caveat that
+         this Rule outlives whatever is observing this Rule.
          */
         FuzzySet *consequent() const { return _consequent; }
 
