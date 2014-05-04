@@ -19,12 +19,12 @@ using std::string;
 
 fuzzy::RuleSet::RuleSet() :
 _name(""),
-_implication("")
+_implication(Implication::LARSEN)
 {
     //nop
 }
 
-fuzzy::RuleSet::RuleSet(string name, string implication) :
+fuzzy::RuleSet::RuleSet(string name, Implication implication) :
 _name(name),
 _implication(implication)
 {
@@ -33,21 +33,23 @@ _implication(implication)
 
 
 double fuzzy::RuleSet::calculate(vector<double> inputValues) {
-
     // Fire each rule to determine the µ value (degree of fit).
     for (const auto& rule : _rules) {
-        double mu = rule->fire(inputValues);
+        double mu = rule.fire(inputValues);
 
         // Since any given consequent may have been activated more than once, we
         // need to get just a single µ value out -- we only care about the 'best'
         // µ. A popular way of doing so is to OR the values together, i.e. keep the
         // maximum µ value and discard the others.
-        _mmi = _consequent_mus.find(rule->getConsequent());
-        if (_mmi != _consequent_mus.end() && mu > _mmi->second) {
-            _mmi->second = mu; // keep the max mu
-        } else {
+        //
+        // Put another way, keep only the highest µ for any given consequent.
+        auto iter = _consequent_mus.find(rule.consequent());
+        if (iter == end(_consequent_mus)) {
             // Didn't find
-            _consequent_mus.insert(pair<FuzzySet*, double>(rule->getConsequent(), mu));
+            _consequent_mus.insert(pair<FuzzySet*, double>(rule.consequent(), mu));
+        } else if (mu > iter->second) {
+            // Did find, and latest µ is better than previous µ
+            iter->second = mu; // keep the max mu
         }
     }
 
@@ -56,7 +58,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     // several common ways of doing it, such as Larsen (scaling) and Mamdani
     // (clipping).
     //
-    // Defuzzify into a discrete & usable value by adding up the weighted
+    // Then defuzzify into a discrete & usable value by adding up the weighted
     // consequents' contributions to the output. Again there are several ways
     // of doing it, such as computing the centroid of the combined 'mass', or
     // the 'mean of maximum' of the tallest set(s). Here we use the "Average
@@ -67,7 +69,7 @@ double fuzzy::RuleSet::calculate(vector<double> inputValues) {
     double denominator=0;
 
     // This isn't DRY but it's fastest this way.
-    if (_implication == "mamdani") {
+    if (_implication == Implication::MAMDANI) {
         for ( const auto& item : _consequent_mus) {
             unique_ptr<FuzzySet> tmp = (item.first)->mamdami(item.second);
             numerator += (tmp->calculateXCentroid() * tmp->height());

@@ -14,33 +14,59 @@
 #ifndef __fam__rule__
 #define __fam__rule__
 
-#include <iostream>
+#include <string>
 #include <vector>
-#include <memory>
+
 #include "fuzzy_set.h"
 
-using std::string;
-using std::vector;
 using std::unique_ptr;
 
 namespace fuzzy {
+    enum Conjunction {INTERSECTION, UNION};
+
     class Rule {
     private:
-        vector<FuzzySet*> _antecedents;
-        string _conjunction;
+        // A rule has one or more antecedent FuzzySets
+        std::vector<FuzzySet*> _antecedents;
+
+        // The conjunction joins the antecedents together
+        Conjunction _conjunction;
+
+        // Holds the calculated mu values for each antecedent upon firing
+//        std::vector<double> mus;
+
+        // When a rule fires, it returns the degree-of-fit of this consequent
         FuzzySet* _consequent;
-        string _naturalLanguage;
-        vector<double> mus;
+
+        // This is just a human-readable summary of what this rule does
+        std::string _naturalLanguage;
 
     public:
         Rule();
-        Rule(const vector<FuzzySet*>antecedents, const string conjunction, FuzzySet* const consequent, const string naturalLanguage="");
 
-        FuzzySet *getConsequent() {
-            return _consequent;
-        }
+        /**
+         Construct a rule.
+         @param antecedents a vector of one or more FuzzySets 
+         @param conjunction how the antecedent mu will be chosen at fire-time (intersection or union)
+         @param consequent a FuzzySet that is the result of this Rule
+         @param naturalLanguage an optional human-readable summary of this rule
+         */
+        Rule(const std::vector<FuzzySet*>antecedents, const Conjunction conjunction, FuzzySet* const consequent, const std::string naturalLanguage="");
 
-        double fire(const vector<double> values);
+        /**
+         Retrieve this rule's consequent.
+         */
+        FuzzySet *consequent() const { return _consequent; }
+
+        /**
+         Fire the rule and determine its degree of fit (µ), given the provided input values.
+         This means, it goes through the antecedent fuzzy-sets, calculates the µ value of each,
+         and chooses a µ value according to the rule's conjunction.
+         The size of 'values' must equal the size of the antecedents vector.
+         @param values a vector of input values, one for each antecedent
+         @return this rule's degree-of-fit (µ) as a double
+         */
+        double fire(const std::vector<double> values) const;
     };
 }
 

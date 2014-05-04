@@ -21,40 +21,37 @@
 #include <memory>
 #include "rule.h"
 
-using std::string;
 using std::map;
 using std::unique_ptr;
-using std::vector;
 
 namespace fuzzy {
+    enum Implication { MAMDANI, LARSEN };
+    
     class RuleSet {
     private:
-        string _name;
-        string _implication;
-        vector<unique_ptr<Rule>> _rules;
+        std::string _name;
+        Implication _implication;
+        std::vector<Rule> _rules;
 
         typedef map<FuzzySet *, double> mu_map;
         mu_map _consequent_mus;
-        mu_map::iterator _mmi;
 
     public:
-        RuleSet();                                // default constructor
-        RuleSet(string name, string implication); // constructor
+        RuleSet();                                          // default constructor
+        RuleSet(std::string name, Implication implication); // constructor
 
         /**
          Retrieve the ruleset's natural-language name
          @return the name in string form
          */
-        string name() {
-            return _name;
-        }
+        std::string name() const { return _name; }
 
         /**
          Add an existing rule to the ruleset.
-         @param r A Rule instance
+         @param r an rvalue-reference to a Rule
          */
-        void add(unique_ptr<Rule> r) {
-            _rules.emplace_back(std::move(r));
+        void add(Rule &&r) {
+            _rules.push_back(std::move(r));
         }
 
         /**
@@ -62,7 +59,7 @@ namespace fuzzy {
          @param values A vector of inputs (each a double)
          @return the result in double form
          */
-        double calculate(vector<double> values);
+        double calculate(std::vector<double> values) ;
     };
 }
 

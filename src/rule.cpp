@@ -13,43 +13,38 @@
 
 #include "rule.h"
 
-using std::cout;
-using std::endl;
-using std::min_element;
-using std::max_element;
-using std::begin;
-using std::end;
-using std::vector;
-using std::unique_ptr;
-
 fuzzy::Rule::Rule() {
+    //nop
 }
 
-fuzzy::Rule::Rule(const vector<FuzzySet*>antecedents, const string conjunction, FuzzySet *const consequent, const string naturalLanguage) :
+fuzzy::Rule::Rule(const std::vector<FuzzySet*>antecedents, const Conjunction conjunction, FuzzySet *const consequent, const std::string naturalLanguage) :
 _antecedents(antecedents),
 _conjunction(conjunction),
 _consequent(consequent),
 _naturalLanguage(naturalLanguage) {
+    //nop
 }
 
-double fuzzy::Rule::fire(const vector<double> values) {
+double fuzzy::Rule::fire(const std::vector<double> values) const {
+    std::vector<double> mus;
+
+    // TODO check that the two sizes are equal
     for (size_t i = 0; i < _antecedents.size(); ++i) {
-        mus.emplace_back(_antecedents[i]->calculateMu(values[i]));
+        mus.push_back(_antecedents[i]->calculateMu(values[i]));
     }
 
     double mu;
-    if (_conjunction == "and")  // AND == intersection == minimum
-        mu = *min_element(begin(mus), end(mus));
+
+    if (_conjunction == Conjunction::INTERSECTION)  // AND == intersection == minimum
+        mu = *std::min_element(begin(mus), end(mus));
     else // OR == union == maximum
-        mu = *max_element(begin(mus), end(mus));
+        mu = *std::max_element(begin(mus), end(mus));
 
     //    cout << "Fired rule: µ choices are [";
     //    for (const auto mu: mus) {
     //        cout << mu << ", ";
     //    }
     //    cout << "], final µ is " << mu << endl;
-    
-    mus.clear();
 
     return mu;
 }
