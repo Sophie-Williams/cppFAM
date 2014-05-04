@@ -33,6 +33,11 @@ namespace fuzzy {
             _height = height;
         }
 
+        double left() const { return _left; }
+        double topLeft() const { return _top_left; }
+        double topRight() const { return _top_right; }
+        double right() const { return _right; }
+
         double calculateMu(const double value) const;
 
         double calculateXCentroid() const;

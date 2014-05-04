@@ -37,9 +37,7 @@ namespace fuzzy {
         virtual std::unique_ptr<FuzzySet> larsen(const double ratio) const = 0;
         virtual std::unique_ptr<FuzzySet> mamdami(const double clip_height) const = 0;
 
-        double getHeight() const {
-            return _height;
-        }
+        double height() const { return _height; }
 
         // When "cout" is passed a FuzzySet pointer, the actual derived object will
         // be asked to print itself.

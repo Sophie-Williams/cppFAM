@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		832930BD17C8056E005B34A1 /* libfuzzy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830518F317C8038D004DC675 /* libfuzzy.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		8333A4FD191696730042D79C /* libgtest.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8333A4FC191696730042D79C /* libgtest.dylib */; };
+		8333A4FF191696840042D79C /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8333A4FE191696840042D79C /* gtest.framework */; };
+		8333A501191696EA0042D79C /* triangle_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333A500191696EA0042D79C /* triangle_test.cpp */; };
+		8333A5031916971A0042D79C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333A5021916971A0042D79C /* main.cpp */; };
+		8333A5041916989A0042D79C /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B617E8F1260085342D /* triangle.cpp */; };
+		8333A505191698AE0042D79C /* trapezoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B517E8F1260085342D /* trapezoid.cpp */; };
+		8333A506191698B10042D79C /* rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B417E8F1260085342D /* rule.cpp */; };
+		8333A507191698B40042D79C /* rule_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B317E8F1260085342D /* rule_set.cpp */; };
+		8333A508191698B60042D79C /* fuzzy_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B217E8F1260085342D /* fuzzy_set.cpp */; };
+		8333A50A1916AEE40042D79C /* trapezoid_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333A5091916AEE40042D79C /* trapezoid_test.cpp */; };
 		836509AD17E8F1160085342D /* fuzzy_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509A817E8F1160085342D /* fuzzy_set.h */; };
 		836509AE17E8F1160085342D /* rule_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509A917E8F1160085342D /* rule_set.h */; };
 		836509AF17E8F1160085342D /* rule.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509AA17E8F1160085342D /* rule.h */; };
@@ -50,6 +60,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		8333A4F1191695B80042D79C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		83C7E78D17C80ACF00F95F8D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,6 +83,12 @@
 /* Begin PBXFileReference section */
 		830518F317C8038D004DC675 /* libfuzzy.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfuzzy.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		832930B417C80563005B34A1 /* hvac_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hvac_example; sourceTree = BUILT_PRODUCTS_DIR; };
+		8333A4F3191695B80042D79C /* fuzzy_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fuzzy_tests; sourceTree = BUILT_PRODUCTS_DIR; };
+		8333A4FC191696730042D79C /* libgtest.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgtest.dylib; path = "../../build/ext/googletest-read-only/libgtest.dylib"; sourceTree = "<group>"; };
+		8333A4FE191696840042D79C /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../../gtest.framework; sourceTree = "<group>"; };
+		8333A500191696EA0042D79C /* triangle_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = triangle_test.cpp; path = tests/triangle_test.cpp; sourceTree = "<group>"; };
+		8333A5021916971A0042D79C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = tests/main.cpp; sourceTree = "<group>"; };
+		8333A5091916AEE40042D79C /* trapezoid_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trapezoid_test.cpp; path = tests/trapezoid_test.cpp; sourceTree = "<group>"; };
 		836509A817E8F1160085342D /* fuzzy_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fuzzy_set.h; path = src/fuzzy_set.h; sourceTree = SOURCE_ROOT; };
 		836509A917E8F1160085342D /* rule_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule_set.h; path = src/rule_set.h; sourceTree = SOURCE_ROOT; };
 		836509AA17E8F1160085342D /* rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule.h; path = src/rule.h; sourceTree = SOURCE_ROOT; };
@@ -98,6 +123,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8333A4F0191695B80042D79C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8333A4FF191696840042D79C /* gtest.framework in Frameworks */,
+				8333A4FD191696730042D79C /* libgtest.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83C7E78C17C80ACF00F95F8D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -112,10 +146,13 @@
 		832EEB5217C296BF0022C8FF = {
 			isa = PBXGroup;
 			children = (
+				8333A4FE191696840042D79C /* gtest.framework */,
+				8333A4FC191696730042D79C /* libgtest.dylib */,
 				83C7E79B17C8126D00F95F8D /* CHANGELOG.md */,
 				83C7E79C17C8126D00F95F8D /* LICENSE */,
 				83C7E79D17C8126D00F95F8D /* README.md */,
 				832EEB5D17C296BF0022C8FF /* Source Code */,
+				8333A4EE1916944C0042D79C /* Tests */,
 				8399C06117DA3F92004EFD52 /* Examples */,
 				832EEB5C17C296BF0022C8FF /* Products */,
 			);
@@ -127,6 +164,7 @@
 				830518F317C8038D004DC675 /* libfuzzy.dylib */,
 				832930B417C80563005B34A1 /* hvac_example */,
 				83C7E78F17C80ACF00F95F8D /* weapon_example */,
+				8333A4F3191695B80042D79C /* fuzzy_tests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,6 +177,16 @@
 			);
 			name = "Source Code";
 			path = fam;
+			sourceTree = "<group>";
+		};
+		8333A4EE1916944C0042D79C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8333A500191696EA0042D79C /* triangle_test.cpp */,
+				8333A5021916971A0042D79C /* main.cpp */,
+				8333A5091916AEE40042D79C /* trapezoid_test.cpp */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		8399C05F17DA3F6D004EFD52 /* headers */ = {
@@ -227,6 +275,23 @@
 			productReference = 832930B417C80563005B34A1 /* hvac_example */;
 			productType = "com.apple.product-type.tool";
 		};
+		8333A4F2191695B80042D79C /* fuzzy_tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8333A4F9191695B80042D79C /* Build configuration list for PBXNativeTarget "fuzzy_tests" */;
+			buildPhases = (
+				8333A4EF191695B80042D79C /* Sources */,
+				8333A4F0191695B80042D79C /* Frameworks */,
+				8333A4F1191695B80042D79C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fuzzy_tests;
+			productName = fuzzy_tests;
+			productReference = 8333A4F3191695B80042D79C /* fuzzy_tests */;
+			productType = "com.apple.product-type.tool";
+		};
 		83C7E78E17C80ACF00F95F8D /* weapon_example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83C7E79517C80AD000F95F8D /* Build configuration list for PBXNativeTarget "weapon_example" */;
@@ -251,7 +316,7 @@
 		832EEB5317C296BF0022C8FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Prylis Inc.";
 			};
 			buildConfigurationList = 832EEB5617C296BF0022C8FF /* Build configuration list for PBXProject "fam" */;
@@ -269,6 +334,7 @@
 				830518F217C8038D004DC675 /* fuzzy */,
 				832930B317C80563005B34A1 /* hvac_example */,
 				83C7E78E17C80ACF00F95F8D /* weapon_example */,
+				8333A4F2191695B80042D79C /* fuzzy_tests */,
 			);
 		};
 /* End PBXProject section */
@@ -291,6 +357,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				836509C017E8F1520085342D /* hvac_example.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8333A4EF191695B80042D79C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8333A5031916971A0042D79C /* main.cpp in Sources */,
+				8333A508191698B60042D79C /* fuzzy_set.cpp in Sources */,
+				8333A506191698B10042D79C /* rule.cpp in Sources */,
+				8333A507191698B40042D79C /* rule_set.cpp in Sources */,
+				8333A50A1916AEE40042D79C /* trapezoid_test.cpp in Sources */,
+				8333A505191698AE0042D79C /* trapezoid.cpp in Sources */,
+				8333A5041916989A0042D79C /* triangle.cpp in Sources */,
+				8333A501191696EA0042D79C /* triangle_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +447,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -393,14 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.8;
-				WARNING_CFLAGS = (
-					"-Wall",
-					"-Wextra",
-					"-Weffc++",
-				);
 			};
 			name = Debug;
 		};
@@ -408,7 +481,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -425,7 +497,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_PEDANTIC = YES;
@@ -433,13 +504,53 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx10.8;
-				WARNING_CFLAGS = (
-					"-Wall",
-					"-Wextra",
-					"-Weffc++",
+			};
+			name = Release;
+		};
+		8333A4FA191695B80042D79C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/chris/Code/cpp/TriremeServer,
 				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/chris/Code/cpp/TriremeServer/build/ext/googletest-read-only",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8333A4FB191695B80042D79C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/chris/Code/cpp/TriremeServer,
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/chris/Code/cpp/TriremeServer/build/ext/googletest-read-only",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -491,6 +602,15 @@
 			buildConfigurations = (
 				832EEB6217C296BF0022C8FF /* Debug */,
 				832EEB6317C296BF0022C8FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8333A4F9191695B80042D79C /* Build configuration list for PBXNativeTarget "fuzzy_tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8333A4FA191695B80042D79C /* Debug */,
+				8333A4FB191695B80042D79C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
