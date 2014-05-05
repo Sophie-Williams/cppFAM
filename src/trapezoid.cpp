@@ -17,18 +17,20 @@ fuzzy::Trapezoid::Trapezoid(const double l, const double tl, const double tr, co
 _left(l),
 _top_left(tl),
 _top_right(tr),
-_right(r)
+_right(r),
+_height(h)
 {
-    _height=h;
+    //nop
 }
 
 fuzzy::Trapezoid::Trapezoid() :
 _left(0),
 _top_left(0),
 _top_right(0),
-_right(0)
+_right(0),
+_height(0)
 {
-    _height=0;
+    //nop
 }
 
 double fuzzy::Trapezoid::calculateMu(const double value) const {

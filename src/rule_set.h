@@ -17,11 +17,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <memory>
 #include "rule.h"
 
-using std::map;
 using std::unique_ptr;
 
 namespace fuzzy {
@@ -37,7 +36,7 @@ namespace fuzzy {
         Implication _implication;
         std::vector<Rule> _rules;
 
-        typedef map<const Trapezoid*, double> mu_map;
+        typedef std::unordered_map<const Trapezoid, double, TrapezoidHasher> mu_map;
         mu_map _consequent_mus;
 
     public:

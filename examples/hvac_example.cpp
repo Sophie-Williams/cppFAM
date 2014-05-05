@@ -35,22 +35,21 @@ std::unique_ptr<T> make_unique( Args&& ... args ) {
 class HvacBrain {
 private:
     // Antecedent sets: air temperature
-    Trapezoid cold_;
-    Trapezoid cool_;
-    Trapezoid ok_;
-    Trapezoid warm_;
-    Trapezoid hot_;
+    const Trapezoid cold_;
+    const Trapezoid cool_;
+    const Trapezoid ok_;
+    const Trapezoid warm_;
+    const Trapezoid hot_;
 
     // Consequent sets: fan speed
-    Trapezoid stop_;
-    Trapezoid slow_;
-    Trapezoid med_;
-    Trapezoid fast_;
-    Trapezoid blast_;
+    const Trapezoid stop_;
+    const Trapezoid slow_;
+    const Trapezoid med_;
+    const Trapezoid fast_;
+    const Trapezoid blast_;
 
     // The rules that will tie the logic together
     RuleSet rule_set_;
-
 
 public:
     double calculate(double t) {
@@ -58,41 +57,30 @@ public:
     }
 
     HvacBrain() :
+    cold_(40, 40, 40, 50),
+    cool_(45, 55, 55, 65),
+    ok_(60, 65, 65, 70),
+    warm_(65, 75, 75, 85),
+    hot_(80, 90, 90, 90),
+    stop_(-30, 0,  0, 30),
+    slow_(10, 30, 30, 50),
+    med_(40, 50, 50, 60),
+    fast_(50, 70, 70, 90),
+    blast_(70, 100, 100, 130),
     rule_set_("HVAC control", Implication::MAMDANI)
     {
-        // Configure our antecedent sets
-        cold_ = Trapezoid(40, 40, 40, 50);
-        cool_ = Trapezoid(45, 55, 55, 65);
-        ok_   = Trapezoid(60, 65, 65, 70);
-        warm_ = Trapezoid(65, 75, 75, 85);
-        hot_  = Trapezoid(80, 90, 90, 90);
-
-        // Configure our consequent sets
-        stop_  = Trapezoid(-30, 0,  0, 30);
-        slow_  = Trapezoid(10, 30, 30, 50);
-        med_   = Trapezoid(40, 50, 50, 60);
-        fast_  = Trapezoid(50, 70, 70, 90);
-        blast_ = Trapezoid(70, 100, 100, 130);
-
         // Set up our rules.
-        // HvacBrain will outlive the RuleSet, so it's OK to pass a non-owning raw pointer to RuleSet.
-        // http://herbsutter.com/elements-of-modern-c-style/
         rule_set_.add( Rule{std::vector<Trapezoid>{cold_}, Conjunction::AND, stop_,  "if room is cold, fan motor stops"} );
         rule_set_.add( Rule{std::vector<Trapezoid>{cool_}, Conjunction::AND, slow_,  "if room is cool, fan motor is slow"} );
         rule_set_.add( Rule{std::vector<Trapezoid>{ok_},   Conjunction::AND, med_,   "if room is ok, fan motor is medium"} );
         rule_set_.add( Rule{std::vector<Trapezoid>{warm_}, Conjunction::AND, fast_,  "if room is warm, fan motor speeds up"} );
         rule_set_.add( Rule{std::vector<Trapezoid>{hot_},  Conjunction::AND, blast_, "if room is hot, fan motor runs full blast"} );
     }
-
-    // Don't allow copying or assignment
-    HvacBrain(const HvacBrain &) = delete;
-    HvacBrain& operator=(const HvacBrain &) = delete;
 };
 
 int main() {
     cout << "Starting...\n";
 
-    // OK to put on the stack, it's just 11 pointers
     HvacBrain brain;
 
 #ifdef BENCHMARK

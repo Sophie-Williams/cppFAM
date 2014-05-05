@@ -15,11 +15,7 @@
 
 //#include <iostream>
 
-fuzzy::Rule::Rule() {
-    //nop
-}
-
-fuzzy::Rule::Rule(const std::vector<Trapezoid>antecedents, const Conjunction conjunction, Trapezoid const consequent, const std::string naturalLanguage) :
+fuzzy::Rule::Rule(const std::vector<Trapezoid>antecedents, const Conjunction conjunction, const Trapezoid &consequent, std::string naturalLanguage) :
 _antecedents(antecedents),
 _conjunction(conjunction),
 _consequent(consequent),
@@ -27,20 +23,20 @@ _naturalLanguage(naturalLanguage) {
     //nop
 }
 
-double fuzzy::Rule::fire(const std::vector<const double> values) const {
-    std::vector<double> mus;
-
+double fuzzy::Rule::fire(const std::vector<const double> &values) {
+    _mus.clear();
+    
     // TODO check that the two sizes are equal
     for (size_t i = 0; i < _antecedents.size(); ++i) {
-        mus.push_back(_antecedents[i].calculateMu(values[i]));
+        _mus.push_back(_antecedents[i].calculateMu(values[i]));
     }
 
     double mu;
 
     if (_conjunction == Conjunction::AND)  // AND == intersection == minimum
-        mu = *std::min_element(begin(mus), end(mus));
+        mu = *std::min_element(begin(_mus), end(_mus));
     else // OR == union == maximum
-        mu = *std::max_element(begin(mus), end(mus));
+        mu = *std::max_element(begin(_mus), end(_mus));
 
 //    std::cout << "Fired rule: µ choices are [";
 //    for (const auto &mu: mus) {
