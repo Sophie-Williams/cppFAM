@@ -89,12 +89,10 @@
 		836509A917E8F1160085342D /* rule_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule_set.h; path = src/rule_set.h; sourceTree = SOURCE_ROOT; };
 		836509AA17E8F1160085342D /* rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule.h; path = src/rule.h; sourceTree = SOURCE_ROOT; };
 		836509AB17E8F1160085342D /* trapezoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trapezoid.h; path = src/trapezoid.h; sourceTree = SOURCE_ROOT; };
-		836509AC17E8F1160085342D /* triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = triangle.h; path = src/triangle.h; sourceTree = SOURCE_ROOT; };
 		836509B217E8F1260085342D /* fuzzy_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fuzzy_set.cpp; path = src/fuzzy_set.cpp; sourceTree = SOURCE_ROOT; };
 		836509B317E8F1260085342D /* rule_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rule_set.cpp; path = src/rule_set.cpp; sourceTree = SOURCE_ROOT; };
 		836509B417E8F1260085342D /* rule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rule.cpp; path = src/rule.cpp; sourceTree = SOURCE_ROOT; };
 		836509B517E8F1260085342D /* trapezoid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trapezoid.cpp; path = src/trapezoid.cpp; sourceTree = SOURCE_ROOT; };
-		836509B617E8F1260085342D /* triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = triangle.cpp; path = src/triangle.cpp; sourceTree = SOURCE_ROOT; };
 		836509BC17E8F1360085342D /* hvac_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hvac_example.cpp; path = examples/hvac_example.cpp; sourceTree = "<group>"; };
 		836509BD17E8F1360085342D /* weapon_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = weapon_example.cpp; path = examples/weapon_example.cpp; sourceTree = "<group>"; };
 		83C7E78F17C80ACF00F95F8D /* weapon_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = weapon_example; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,7 +191,6 @@
 				836509A917E8F1160085342D /* rule_set.h */,
 				836509AA17E8F1160085342D /* rule.h */,
 				836509AB17E8F1160085342D /* trapezoid.h */,
-				836509AC17E8F1160085342D /* triangle.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -205,7 +202,6 @@
 				836509B317E8F1260085342D /* rule_set.cpp */,
 				836509B417E8F1260085342D /* rule.cpp */,
 				836509B517E8F1260085342D /* trapezoid.cpp */,
-				836509B617E8F1260085342D /* triangle.cpp */,
 			);
 			name = source;
 			sourceTree = "<group>";
