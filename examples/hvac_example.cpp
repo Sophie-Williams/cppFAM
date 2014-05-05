@@ -13,13 +13,11 @@
 
 #include <iostream>
 #include <vector>
-#include <memory>
-#include "triangle.h"
-#include "trapezoid.h"
+
 #include "rule_set.h"
+#include "trapezoid.h"
 
 using std::cout;
-using std::unique_ptr;
 
 using namespace fuzzy;
 

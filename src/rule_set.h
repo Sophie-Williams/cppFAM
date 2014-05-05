@@ -16,9 +16,9 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 #include <unordered_map>
-#include <memory>
+#include <vector>
+
 #include "rule.h"
 
 using std::unique_ptr;
