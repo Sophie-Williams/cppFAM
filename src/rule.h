@@ -22,7 +22,7 @@
 using std::unique_ptr;
 
 namespace fuzzy {
-    enum Conjunction {AND, OR};
+    enum class Conjunction : char {AND, OR};
 
     /**
      A rule is basically a statement of "If this then that."

@@ -24,7 +24,7 @@
 using std::unique_ptr;
 
 namespace fuzzy {
-    enum Implication { MAMDANI, LARSEN };
+    enum class Implication : char { MAMDANI, LARSEN };
     
     /**
      A RuleSet is a collection of related rules that govern a particular decision,
