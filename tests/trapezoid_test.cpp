@@ -112,9 +112,32 @@ TEST_F(TrapezoidTest, has_correct_DOM_when_fully_positive) {
     ASSERT_EQ(0.9, t1.calculateMu(41));
 }
 
-TEST_F(TrapezoidTest, larsen_implication_takes_the_height_of_larsen_value) {
+TEST_F(TrapezoidTest, larsen_implication_takes_the_height_of_scaling_value) {
+    ASSERT_EQ(1.0, x.height());
     auto y = x.larsen(0.15);
     ASSERT_EQ(0.15, y.height());
+}
+
+TEST_F(TrapezoidTest, larsen_implication_keeps_four_points) {
+    auto y = x.larsen(0.15);
+    ASSERT_EQ(7, y.left());
+    ASSERT_EQ(10, y.topLeft());
+    ASSERT_EQ(13, y.topRight());
+    ASSERT_EQ(16, y.right());
+}
+
+TEST_F(TrapezoidTest, mamdami_implication_takes_the_height_of_clipping_value) {
+    ASSERT_EQ(1.0, x.height());
+    auto y = x.mamdami(0.15);
+    ASSERT_EQ(0.15, y.height());
+}
+
+TEST_F(TrapezoidTest, mamdami_implication_keeps_two_points_gets_two_new) {
+    auto y = x.mamdami(0.15);
+    ASSERT_EQ(7, y.left());
+    ASSERT_EQ(7.45, y.topLeft());
+    ASSERT_EQ(15.55, y.topRight());
+    ASSERT_EQ(16, y.right());
 }
 
 TEST_F(TrapezoidTest, triangle_shaped_trapezoid_behaves_like_a_triangle) {
@@ -127,15 +150,4 @@ TEST_F(TrapezoidTest, triangle_shaped_trapezoid_behaves_like_a_triangle) {
     ASSERT_EQ(0.5, z.calculateMu(11.5));
     ASSERT_EQ(0.5, z.calculateMu(8.5));
 }
-
-//TEST_F(TrapezoidTest, larsen_implication_takes_the_height_of_larsen_value) {
-//    auto y = x.larsen(0.15);
-//    ASSERT_EQ(0.15, y->height());
-//}
-
-//TEST_F(TrapezoidTest, larsen_implication_keeps_right_left_and_center) {
-//    auto y = x.larsen(0.15);
-//    ASSERT_EQ(7, static_  y->left());
-//}
-
 
