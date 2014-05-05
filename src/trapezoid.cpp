@@ -65,3 +65,11 @@ fuzzy::Trapezoid fuzzy::Trapezoid::mamdami(const double clip_height) const {
                      _right,
                      clip_height);
 }
+
+bool fuzzy::Trapezoid::operator==(const Trapezoid &other) const {
+    return (_left == other._left &&
+            _top_left == other._top_left &&
+            _top_right == other._top_right &&
+            _right == other._right &&
+            _height == other._height);
+}

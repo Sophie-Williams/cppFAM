@@ -75,14 +75,14 @@ namespace fuzzy {
          */
         Trapezoid mamdami(const double clip_height) const;
 
-        bool operator==(const Trapezoid &other) const {
-            return (_left == other._left &&
-                    _top_left == other._top_left &&
-                    _top_right == other._top_right &&
-                    _right == other._right &&
-                    _height == other._height);
-        }
-
+        /**
+         Overload the equality operator. Permits usage of Trapezoid as the
+         key in an unordered_map.
+         @param other the other trapezoid to compare to
+         @return true if they are equal in every way, false otherwise
+         */
+        bool operator==(const Trapezoid &other) const;
+        
         friend std::ostream& operator<<( std::ostream& out, const Trapezoid& b ) {
             b.print( out );
             return out;
@@ -91,6 +91,11 @@ namespace fuzzy {
         friend TrapezoidHasher;
     };
 
+    /**
+     A specialized hasher for Trapezoid. Permits the trapezoid to be
+     used as the key in an unordered_map. Also requires operator==,
+     which is declared in Trapezoid.
+     */
     struct TrapezoidHasher {
         std::size_t operator()(const Trapezoid& k) const {
             return std::hash<double>()(k._left) +
