@@ -17,7 +17,7 @@
 #include <string>
 #include <vector>
 
-#include "fuzzy_set.h"
+#include "trapezoid.h"
 
 using std::unique_ptr;
 
@@ -33,24 +33,22 @@ namespace fuzzy {
     class Rule {
     private:
         // A rule has one or more antecedent FuzzySets
-        std::vector<FuzzySet*> _antecedents;
+        const std::vector<Trapezoid> _antecedents;
 
         // The conjunction joins the antecedents together
-        Conjunction _conjunction;
+        const Conjunction _conjunction;
 
         // Holds the calculated mu values for each antecedent upon firing
-//        std::vector<double> mus;
+        std::vector<double> _mus;
 
         // When a rule fires, it returns the degree-of-fit of this consequent
         // If you know another object is going to outlive you and you want to observe it, use a (non-owning) raw pointer.
-        FuzzySet* _consequent;
+        const Trapezoid _consequent;
 
         // This is just a human-readable summary of what this rule does
         std::string _naturalLanguage;
 
     public:
-        Rule();
-
         /**
          Construct a rule.
          The conjunction is always required, but is ignored for single-element antecedents.
@@ -59,13 +57,12 @@ namespace fuzzy {
          @param consequent a FuzzySet that is the result of this Rule
          @param naturalLanguage an optional human-readable summary of this rule
          */
-        Rule(const std::vector<FuzzySet*>antecedents, const Conjunction conjunction, FuzzySet* const consequent, const std::string naturalLanguage="");
+        Rule(const std::vector<Trapezoid>antecedents, const Conjunction conjunction, const Trapezoid &consequent, std::string naturalLanguage="");
 
         /**
-         Retrieve this rule's consequent. OK to return as a raw pointer with the caveat that
-         this Rule outlives whatever is observing this Rule.
+         Retrieve this rule's consequent.
          */
-        FuzzySet *consequent() const { return _consequent; }
+        const Trapezoid& consequent() const { return _consequent; }
 
         /**
          Retrieve the rule's natural-language description.
@@ -81,7 +78,7 @@ namespace fuzzy {
          @param values a vector of input values, one for each antecedent
          @return this rule's degree-of-fit (µ) as a range of 0 (no fit) to 1 (perfect fit)
          */
-        double fire(const std::vector<const double> values) const;
+        double fire(const std::vector<const double> &values);
     };
 }
 

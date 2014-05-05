@@ -17,18 +17,20 @@ fuzzy::Trapezoid::Trapezoid(const double l, const double tl, const double tr, co
 _left(l),
 _top_left(tl),
 _top_right(tr),
-_right(r)
+_right(r),
+_height(h)
 {
-    _height=h;
+    //nop
 }
 
 fuzzy::Trapezoid::Trapezoid() :
 _left(0),
 _top_left(0),
 _top_right(0),
-_right(0)
+_right(0),
+_height(0)
 {
-    _height=0;
+    //nop
 }
 
 double fuzzy::Trapezoid::calculateMu(const double value) const {
@@ -52,14 +54,22 @@ double fuzzy::Trapezoid::calculateXCentroid() const {
     return cx+_left;
 }
 
-std::unique_ptr<fuzzy::FuzzySet> fuzzy::Trapezoid::larsen(const double ratio) const {
-    return std::unique_ptr<Trapezoid>(new Trapezoid(_left, _top_left, _top_right, _right, (_height*ratio)));
+fuzzy::Trapezoid fuzzy::Trapezoid::larsen(const double ratio) const {
+    return Trapezoid(_left, _top_left, _top_right, _right, (_height*ratio));
 }
 
-std::unique_ptr<fuzzy::FuzzySet> fuzzy::Trapezoid::mamdami(const double clip_height) const {
-    return std::unique_ptr<Trapezoid>(new Trapezoid(_left,
-                                       _left + (clip_height * (_top_left - _left)),
-                                       _right - (clip_height * (_right - _top_right)),
-                                       _right,
-                                       clip_height));
+fuzzy::Trapezoid fuzzy::Trapezoid::mamdami(const double clip_height) const {
+    return Trapezoid(_left,
+                     _left + (clip_height * (_top_left - _left)),
+                     _right - (clip_height * (_right - _top_right)),
+                     _right,
+                     clip_height);
+}
+
+bool fuzzy::Trapezoid::operator==(const Trapezoid &other) const {
+    return (_left == other._left &&
+            _top_left == other._top_left &&
+            _top_right == other._top_right &&
+            _right == other._right &&
+            _height == other._height);
 }

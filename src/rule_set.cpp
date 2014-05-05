@@ -14,7 +14,6 @@
 #include "rule_set.h"
 
 using std::vector;
-using std::pair;
 using std::string;
 
 fuzzy::RuleSet::RuleSet() :
@@ -35,10 +34,11 @@ _implication(implication)
 double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
     // Fire each rule to determine the µ value (degree of fit).
     _consequent_mus.clear();
-    for (const auto& rule : _rules) {
+    for (auto& rule : _rules) {
         double mu = rule.fire(inputValues);
 
-        // Since any given consequent may have been activated more than once, we
+        // Many rules can share a consequent, which means that any given consequent
+        // may have been activated more than once. 
         // need to get just a single µ value out -- we only care about the 'best'
         // µ. A popular way of doing so is to OR the values together, i.e. keep the
         // maximum µ value and discard the others.
@@ -47,7 +47,7 @@ double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
         auto iter = _consequent_mus.find(rule.consequent());
         if (iter == end(_consequent_mus)) {
             // Didn't find
-            _consequent_mus.insert(pair<FuzzySet*, double>(rule.consequent(), mu));
+            _consequent_mus.insert(std::pair<const Trapezoid, double>(rule.consequent(), mu));
         } else if (mu > iter->second) {
             // Did find, and latest µ is better than previous µ
             iter->second = mu; // keep the max mu
@@ -72,15 +72,15 @@ double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
     // This isn't DRY but it's fastest this way.
     if (_implication == Implication::MAMDANI) {
         for ( const auto& item : _consequent_mus) {
-            unique_ptr<FuzzySet> tmp((item.first)->mamdami(item.second));
-            numerator += (tmp->calculateXCentroid() * tmp->height());
-            denominator += tmp->height();
+            Trapezoid tmp{ (item.first).mamdami(item.second) };
+            numerator += (tmp.calculateXCentroid() * tmp.height());
+            denominator += tmp.height();
         }
     } else {
         for ( const auto& item : _consequent_mus) {
-            unique_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
-            numerator += (tmp->calculateXCentroid() * tmp->height());
-            denominator += tmp->height();
+            Trapezoid tmp{ (item.first).larsen(item.second) };
+            numerator += (tmp.calculateXCentroid() * tmp.height());
+            denominator += tmp.height();
         }
     }
 

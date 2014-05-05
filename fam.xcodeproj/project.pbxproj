@@ -10,25 +10,19 @@
 		832930BD17C8056E005B34A1 /* libfuzzy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830518F317C8038D004DC675 /* libfuzzy.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		8333A4FD191696730042D79C /* libgtest.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8333A4FC191696730042D79C /* libgtest.dylib */; };
 		8333A4FF191696840042D79C /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8333A4FE191696840042D79C /* gtest.framework */; };
-		8333A501191696EA0042D79C /* triangle_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333A500191696EA0042D79C /* triangle_test.cpp */; };
 		8333A5031916971A0042D79C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333A5021916971A0042D79C /* main.cpp */; };
-		8333A5041916989A0042D79C /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B617E8F1260085342D /* triangle.cpp */; };
 		8333A505191698AE0042D79C /* trapezoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B517E8F1260085342D /* trapezoid.cpp */; };
 		8333A506191698B10042D79C /* rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B417E8F1260085342D /* rule.cpp */; };
 		8333A507191698B40042D79C /* rule_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B317E8F1260085342D /* rule_set.cpp */; };
 		8333A508191698B60042D79C /* fuzzy_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B217E8F1260085342D /* fuzzy_set.cpp */; };
 		8333A50A1916AEE40042D79C /* trapezoid_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333A5091916AEE40042D79C /* trapezoid_test.cpp */; };
 		8333A50C1916CCAA0042D79C /* rule_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333A50B1916CCAA0042D79C /* rule_test.cpp */; };
-		836509AD17E8F1160085342D /* fuzzy_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509A817E8F1160085342D /* fuzzy_set.h */; };
 		836509AE17E8F1160085342D /* rule_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509A917E8F1160085342D /* rule_set.h */; };
 		836509AF17E8F1160085342D /* rule.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509AA17E8F1160085342D /* rule.h */; };
 		836509B017E8F1160085342D /* trapezoid.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509AB17E8F1160085342D /* trapezoid.h */; };
-		836509B117E8F1160085342D /* triangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509AC17E8F1160085342D /* triangle.h */; };
-		836509B717E8F1260085342D /* fuzzy_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B217E8F1260085342D /* fuzzy_set.cpp */; };
 		836509B817E8F1260085342D /* rule_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B317E8F1260085342D /* rule_set.cpp */; };
 		836509B917E8F1260085342D /* rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B417E8F1260085342D /* rule.cpp */; };
 		836509BA17E8F1260085342D /* trapezoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B517E8F1260085342D /* trapezoid.cpp */; };
-		836509BB17E8F1260085342D /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B617E8F1260085342D /* triangle.cpp */; };
 		836509C017E8F1520085342D /* hvac_example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509BC17E8F1360085342D /* hvac_example.cpp */; };
 		836509C117E8F1550085342D /* weapon_example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509BD17E8F1360085342D /* weapon_example.cpp */; };
 		83C7E79A17C80AF500F95F8D /* libfuzzy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830518F317C8038D004DC675 /* libfuzzy.dylib */; };
@@ -233,8 +227,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				836509AF17E8F1160085342D /* rule.h in Headers */,
-				836509AD17E8F1160085342D /* fuzzy_set.h in Headers */,
-				836509B117E8F1160085342D /* triangle.h in Headers */,
 				836509AE17E8F1160085342D /* rule_set.h in Headers */,
 				836509B017E8F1160085342D /* trapezoid.h in Headers */,
 			);
@@ -349,8 +341,6 @@
 			files = (
 				836509BA17E8F1260085342D /* trapezoid.cpp in Sources */,
 				836509B817E8F1260085342D /* rule_set.cpp in Sources */,
-				836509B717E8F1260085342D /* fuzzy_set.cpp in Sources */,
-				836509BB17E8F1260085342D /* triangle.cpp in Sources */,
 				836509B917E8F1260085342D /* rule.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,8 +364,6 @@
 				8333A507191698B40042D79C /* rule_set.cpp in Sources */,
 				8333A505191698AE0042D79C /* trapezoid.cpp in Sources */,
 				8333A50A1916AEE40042D79C /* trapezoid_test.cpp in Sources */,
-				8333A5041916989A0042D79C /* triangle.cpp in Sources */,
-				8333A501191696EA0042D79C /* triangle_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
