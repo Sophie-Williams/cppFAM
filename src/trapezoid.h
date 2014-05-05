@@ -16,14 +16,14 @@
 
 #include <iostream>
 #include <cmath>
-#include "fuzzy_set.h"
 
 namespace fuzzy {
-    class Trapezoid : public FuzzySet {
+    class Trapezoid {
         double _left;
         double _top_left;
         double _top_right;
         double _right;
+        double _height;
 
     public:
         Trapezoid();
@@ -37,14 +37,15 @@ namespace fuzzy {
         double topLeft() const { return _top_left; }
         double topRight() const { return _top_right; }
         double right() const { return _right; }
+        double height() const { return _height; }
 
         double calculateMu(const double value) const;
 
         double calculateXCentroid() const;
 
-        std::unique_ptr<FuzzySet> larsen(const double ratio) const;
+        Trapezoid larsen(const double ratio) const;
 
-        std::unique_ptr<FuzzySet> mamdami(const double clip_height) const;
+        Trapezoid mamdami(const double clip_height) const;
 
         void print( std::ostream &strm) const {
             strm << "Trapezoid {" << this << ", " << this->_left << "/" << this->_top_left << "/" << this->_top_right << "/" << this->_right << " (" << this->_height << ")}";

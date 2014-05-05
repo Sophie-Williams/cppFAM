@@ -37,7 +37,7 @@ namespace fuzzy {
         Implication _implication;
         std::vector<Rule> _rules;
 
-        typedef map<FuzzySet *, double> mu_map;
+        typedef map<const Trapezoid*, double> mu_map;
         mu_map _consequent_mus;
 
     public:

@@ -116,6 +116,18 @@ TEST_F(TrapezoidTest, larsen_implication_takes_the_height_of_larsen_value) {
     auto y = x.larsen(0.15);
     ASSERT_EQ(0.15, y->height());
 }
+
+TEST_F(TrapezoidTest, triangle_shaped_trapezoid_behaves_like_a_triangle) {
+    fuzzy::Trapezoid z {7,10,10,13};
+
+    ASSERT_EQ(10, z.calculateXCentroid());
+    ASSERT_EQ(0, z.calculateMu(2));
+    ASSERT_EQ(0, z.calculateMu(15));
+    ASSERT_EQ(1, z.calculateMu(10));
+    ASSERT_EQ(0.5, z.calculateMu(11.5));
+    ASSERT_EQ(0.5, z.calculateMu(8.5));
+}
+
 //TEST_F(TrapezoidTest, larsen_implication_takes_the_height_of_larsen_value) {
 //    auto y = x.larsen(0.15);
 //    ASSERT_EQ(0.15, y->height());

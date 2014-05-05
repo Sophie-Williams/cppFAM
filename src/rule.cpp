@@ -19,7 +19,7 @@ fuzzy::Rule::Rule() {
     //nop
 }
 
-fuzzy::Rule::Rule(const std::vector<FuzzySet*>antecedents, const Conjunction conjunction, FuzzySet *const consequent, const std::string naturalLanguage) :
+fuzzy::Rule::Rule(const std::vector<Trapezoid>antecedents, const Conjunction conjunction, Trapezoid const consequent, const std::string naturalLanguage) :
 _antecedents(antecedents),
 _conjunction(conjunction),
 _consequent(consequent),
@@ -32,7 +32,7 @@ double fuzzy::Rule::fire(const std::vector<const double> values) const {
 
     // TODO check that the two sizes are equal
     for (size_t i = 0; i < _antecedents.size(); ++i) {
-        mus.push_back(_antecedents[i]->calculateMu(values[i]));
+        mus.push_back(_antecedents[i].calculateMu(values[i]));
     }
 
     double mu;

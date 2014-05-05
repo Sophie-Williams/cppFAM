@@ -14,7 +14,6 @@
 #include "rule_set.h"
 
 using std::vector;
-using std::pair;
 using std::string;
 
 fuzzy::RuleSet::RuleSet() :
@@ -47,7 +46,7 @@ double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
         auto iter = _consequent_mus.find(rule.consequent());
         if (iter == end(_consequent_mus)) {
             // Didn't find
-            _consequent_mus.insert(pair<FuzzySet*, double>(rule.consequent(), mu));
+            _consequent_mus.insert(std::pair<const Trapezoid*, double>(rule.consequent(), mu));
         } else if (mu > iter->second) {
             // Did find, and latest µ is better than previous µ
             iter->second = mu; // keep the max mu
@@ -72,15 +71,15 @@ double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
     // This isn't DRY but it's fastest this way.
     if (_implication == Implication::MAMDANI) {
         for ( const auto& item : _consequent_mus) {
-            unique_ptr<FuzzySet> tmp((item.first)->mamdami(item.second));
-            numerator += (tmp->calculateXCentroid() * tmp->height());
-            denominator += tmp->height();
+            Trapezoid tmp((item.first)->mamdami(item.second));
+            numerator += (tmp.calculateXCentroid() * tmp.height());
+            denominator += tmp.height();
         }
     } else {
         for ( const auto& item : _consequent_mus) {
-            unique_ptr<FuzzySet> tmp((item.first)->larsen(item.second));
-            numerator += (tmp->calculateXCentroid() * tmp->height());
-            denominator += tmp->height();
+            Trapezoid tmp((item.first)->larsen(item.second));
+            numerator += (tmp.calculateXCentroid() * tmp.height());
+            denominator += tmp.height();
         }
     }
 
