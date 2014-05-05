@@ -114,7 +114,7 @@ TEST_F(TrapezoidTest, has_correct_DOM_when_fully_positive) {
 
 TEST_F(TrapezoidTest, larsen_implication_takes_the_height_of_larsen_value) {
     auto y = x.larsen(0.15);
-    ASSERT_EQ(0.15, y->height());
+    ASSERT_EQ(0.15, y.height());
 }
 
 TEST_F(TrapezoidTest, triangle_shaped_trapezoid_behaves_like_a_triangle) {

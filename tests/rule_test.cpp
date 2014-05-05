@@ -8,34 +8,31 @@
 
 #include "gtest/gtest.h"
 
-#include "fuzzy_set.h"
 #include "rule.h"
 #include "trapezoid.h"
-#include "triangle.h"
 
 #include <vector>
 
-// The fixture for testing class ActiveSonar.
 class RuleTest : public ::testing::Test {
 protected:
     // Objects declared here can be used by all tests in the test case for this component.
-    std::unique_ptr<fuzzy::FuzzySet> ok = std::unique_ptr<fuzzy::FuzzySet>(new fuzzy::Triangle(60, 65, 70));
-    std::unique_ptr<fuzzy::FuzzySet> med = std::unique_ptr<fuzzy::FuzzySet>(new fuzzy::Triangle(40, 50, 60));
-    std::vector<fuzzy::FuzzySet*> antecedents {ok.get()};
+    fuzzy::Trapezoid ok{60, 65, 65, 70};
+    fuzzy::Trapezoid med{40, 50, 50, 60};
+    std::vector<fuzzy::Trapezoid> antecedents {ok};
 
-    std::unique_ptr<fuzzy::FuzzySet> close = std::unique_ptr<fuzzy::FuzzySet>(new fuzzy::Trapezoid(-150, -25, 25, 150));
-    std::unique_ptr<fuzzy::FuzzySet> ammo_low = std::unique_ptr<fuzzy::FuzzySet>(new fuzzy::Triangle(-10, 0, 10));
-    std::unique_ptr<fuzzy::FuzzySet> undesirable = unique_ptr<fuzzy::FuzzySet>(new fuzzy::Trapezoid(0, 0, 20, 50));
-    std::vector<fuzzy::FuzzySet*> antecedents2 {close.get(), ammo_low.get()};
+    fuzzy::Trapezoid close{-150, -25, 25, 150};
+    fuzzy::Trapezoid ammo_low{-10, 0, 0, 10};
+    fuzzy::Trapezoid undesirable{0, 0, 20, 50};
+    std::vector<fuzzy::Trapezoid> antecedents2 {close, ammo_low};
 
     fuzzy::Rule x {antecedents,
                    fuzzy::Conjunction::AND,
-                   med.get(),
+                   med,
                    "if room is ok, fan motor is medium"};
 
     fuzzy::Rule y {antecedents2,
                    fuzzy::Conjunction::AND,
-                   undesirable.get(),
+                   undesirable,
                    "if enemy is close AND ammo is low, rocket is undesirable"};
 
     // You can remove any or all of the following functions if its body is empty.
