@@ -151,3 +151,22 @@ TEST_F(TrapezoidTest, triangle_shaped_trapezoid_behaves_like_a_triangle) {
     ASSERT_EQ(0.5, z.calculateMu(8.5));
 }
 
+TEST_F(TrapezoidTest, triangle_shaped_trapezoid_clips_to_a_trapezoid) {
+    fuzzy::Trapezoid z {7,10,10,13};
+    auto y = z.mamdami(0.15);
+    ASSERT_EQ(0.15, y.height());
+    ASSERT_EQ(7, y.left());
+    ASSERT_EQ(7.45, y.topLeft());
+    ASSERT_EQ(12.55, y.topRight());
+    ASSERT_EQ(13, y.right());
+}
+
+TEST_F(TrapezoidTest, triangle_shaped_trapezoid_scales_to_a_triangle) {
+    fuzzy::Trapezoid z {7,10,10,13};
+    auto y = z.larsen(0.15);
+    ASSERT_EQ(0.15, y.height());
+    ASSERT_EQ(7, y.left());
+    ASSERT_EQ(10, y.topLeft());
+    ASSERT_EQ(10, y.topRight());
+    ASSERT_EQ(13, y.right());
+}
