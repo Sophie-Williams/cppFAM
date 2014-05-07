@@ -36,8 +36,38 @@ namespace fuzzy {
         Implication _implication;
         std::vector<Rule> _rules;
 
+        // A map of each consequent to a µ value (presumably the 'best' µ for that
+        // consequent)
         typedef std::unordered_map<const Trapezoid, double, TrapezoidHasher> mu_map;
-        mu_map _consequent_mus;
+        mu_map _consequents_to_mus;
+
+        /**
+         Many rules can share a consequent, which means that any given consequent
+         may have been activated more than once.
+         But we need to get just a single µ value out -- we only care about the 'best'
+         µ. A popular way of doing so is to OR the values together, i.e. keep the
+         maximum µ value and discard the others.
+         Put another way, keep only the highest µ for any given consequent.
+         @param inputValues A vector of inputs (each a double)
+         */
+        void populate_mu_map(const std::vector<const double> inputValues);
+
+        /**
+         Using the consequents-to-µ map, we:
+         1) Scale each consequent by its µ value. This is called "implication," and
+         this 'weights' the consequents properly. There are several common ways of 
+         scaling, such as Larsen (scaling) and Mamdani (clipping).
+         
+         2) "Defuzzify" into a crisp value by summing the consequents' contributions
+         to the output in some sensibly weighted fashion. 
+         
+         Here we use the "Average of Maxima" summation mechanism. This is defined as:
+         (∑ Xcentroid * height) / (∑ height) for all output sets.
+         @return the
+         @exception <#throws#>
+         */
+        double scale_and_defuzzify();
+
 
     public:
         RuleSet();                                          // default constructor
@@ -66,7 +96,10 @@ namespace fuzzy {
          @param values A vector of inputs (each a double)
          @return the result in double form
          */
-        double calculate(const std::vector<const double> values) ;
+        double calculate(const std::vector<const double> values);
+
+        double calculate(const double value);
+
     };
 }
 

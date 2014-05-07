@@ -30,59 +30,54 @@ _implication(implication)
     //nop
 }
 
+double fuzzy::RuleSet::calculate(const double value) {
+    return calculate(std::vector<const double>{value});
+}
 
-double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
+void fuzzy::RuleSet::populate_mu_map(const vector<const double> inputValues) {
+    _consequents_to_mus.clear();
+
     // Fire each rule to determine the µ value (degree of fit).
-    _consequent_mus.clear();
     for (auto& rule : _rules) {
         double mu = rule.fire(inputValues);
 
-        // Many rules can share a consequent, which means that any given consequent
-        // may have been activated more than once. 
-        // need to get just a single µ value out -- we only care about the 'best'
-        // µ. A popular way of doing so is to OR the values together, i.e. keep the
-        // maximum µ value and discard the others.
-        //
-        // Put another way, keep only the highest µ for any given consequent.
-        auto iter = _consequent_mus.find(rule.consequent());
-        if (iter == end(_consequent_mus)) {
+        auto iter = _consequents_to_mus.find(rule.consequent());
+        if (iter == end(_consequents_to_mus)) {
             // Didn't find
-            _consequent_mus.insert(std::pair<const Trapezoid, double>(rule.consequent(), mu));
+            _consequents_to_mus.insert( std::make_pair(rule.consequent(), mu) );
         } else if (mu > iter->second) {
-            // Did find, and latest µ is better than previous µ
+            // Did find, and latest µ is superior to the previous best
             iter->second = mu; // keep the max mu
         }
     }
+}
 
-    // Using each µ value, alter the consequent fuzzy set's polgyon. This is
-    // called implication, and 'weights' the consequents properly. There are
-    // several common ways of doing it, such as Larsen (scaling) and Mamdani
-    // (clipping).
-    //
-    // Then defuzzify into a discrete & usable value by adding up the weighted
-    // consequents' contributions to the output. Again there are several ways
-    // of doing it, such as computing the centroid of the combined 'mass', or
-    // the 'mean of maximum' of the tallest set(s). Here we use the "Average
-    // of Maxima" summation mechanism. MaxAv is defined as:
-    // (∑ representative value * height) / (∑ height) for all output sets
-    // where 'representative value' is shape-dependent.
+double fuzzy::RuleSet::scale_and_defuzzify() {
     double numerator=0;
     double denominator=0;
 
     // This isn't DRY but it's fastest this way.
     if (_implication == Implication::MAMDANI) {
-        for ( const auto& item : _consequent_mus) {
-            Trapezoid tmp{ (item.first).mamdami(item.second) };
+        for ( const auto& entry : _consequents_to_mus) {
+            Trapezoid tmp{ (entry.first).mamdami(entry.second) };
             numerator += (tmp.calculateXCentroid() * tmp.height());
             denominator += tmp.height();
         }
     } else {
-        for ( const auto& item : _consequent_mus) {
-            Trapezoid tmp{ (item.first).larsen(item.second) };
+        for ( const auto& entry : _consequents_to_mus) {
+            Trapezoid tmp{ (entry.first).larsen(entry.second) };
             numerator += (tmp.calculateXCentroid() * tmp.height());
             denominator += tmp.height();
         }
     }
 
+    if (denominator==0)
+        return 0;
+
     return numerator/denominator;
+}
+
+double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
+    populate_mu_map(inputValues);
+    return scale_and_defuzzify();
 }
