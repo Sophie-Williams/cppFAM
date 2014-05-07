@@ -98,8 +98,13 @@ namespace fuzzy {
          */
         double calculate(const std::vector<const double> values);
 
+        /**
+         Convenience function to make it easier to call single-input RuleSets.
+         (A single-input RuleSet is one whose Rules each have just one antecedent.)
+         @param value the single input value to use
+         @return the result in double form
+         */
         double calculate(const double value);
-
     };
 }
 

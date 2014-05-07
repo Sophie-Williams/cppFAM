@@ -30,10 +30,6 @@ _implication(implication)
     //nop
 }
 
-double fuzzy::RuleSet::calculate(const double value) {
-    return calculate(std::vector<const double>{value});
-}
-
 void fuzzy::RuleSet::populate_mu_map(const vector<const double> inputValues) {
     _consequents_to_mus.clear();
 
@@ -75,6 +71,10 @@ double fuzzy::RuleSet::scale_and_defuzzify() {
         return 0;
 
     return numerator/denominator;
+}
+
+double fuzzy::RuleSet::calculate(const double value) {
+    return calculate(std::vector<const double>{value});
 }
 
 double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {

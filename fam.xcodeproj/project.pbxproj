@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830DC63D191AD4AD008C9557 /* rule_set_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 830DC63C191AD4AD008C9557 /* rule_set_test.cpp */; };
 		832930BD17C8056E005B34A1 /* libfuzzy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830518F317C8038D004DC675 /* libfuzzy.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		8333A4FD191696730042D79C /* libgtest.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8333A4FC191696730042D79C /* libgtest.dylib */; };
 		8333A4FF191696840042D79C /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8333A4FE191696840042D79C /* gtest.framework */; };
@@ -77,11 +78,11 @@
 
 /* Begin PBXFileReference section */
 		830518F317C8038D004DC675 /* libfuzzy.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfuzzy.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		830DC63C191AD4AD008C9557 /* rule_set_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rule_set_test.cpp; path = tests/rule_set_test.cpp; sourceTree = "<group>"; };
 		832930B417C80563005B34A1 /* hvac_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hvac_example; sourceTree = BUILT_PRODUCTS_DIR; };
 		8333A4F3191695B80042D79C /* fuzzy_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fuzzy_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		8333A4FC191696730042D79C /* libgtest.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgtest.dylib; path = "../../build/ext/googletest-read-only/libgtest.dylib"; sourceTree = "<group>"; };
 		8333A4FE191696840042D79C /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../../gtest.framework; sourceTree = "<group>"; };
-		8333A500191696EA0042D79C /* triangle_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = triangle_test.cpp; path = tests/triangle_test.cpp; sourceTree = "<group>"; };
 		8333A5021916971A0042D79C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = tests/main.cpp; sourceTree = "<group>"; };
 		8333A5091916AEE40042D79C /* trapezoid_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trapezoid_test.cpp; path = tests/trapezoid_test.cpp; sourceTree = "<group>"; };
 		8333A50B1916CCAA0042D79C /* rule_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rule_test.cpp; path = tests/rule_test.cpp; sourceTree = "<group>"; };
@@ -178,8 +179,8 @@
 			children = (
 				8333A5021916971A0042D79C /* main.cpp */,
 				8333A5091916AEE40042D79C /* trapezoid_test.cpp */,
-				8333A500191696EA0042D79C /* triangle_test.cpp */,
 				8333A50B1916CCAA0042D79C /* rule_test.cpp */,
+				830DC63C191AD4AD008C9557 /* rule_set_test.cpp */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -357,6 +358,7 @@
 				8333A508191698B60042D79C /* fuzzy_set.cpp in Sources */,
 				8333A506191698B10042D79C /* rule.cpp in Sources */,
 				8333A50C1916CCAA0042D79C /* rule_test.cpp in Sources */,
+				830DC63D191AD4AD008C9557 /* rule_set_test.cpp in Sources */,
 				8333A507191698B40042D79C /* rule_set.cpp in Sources */,
 				8333A505191698AE0042D79C /* trapezoid.cpp in Sources */,
 				8333A50A1916AEE40042D79C /* trapezoid_test.cpp in Sources */,
