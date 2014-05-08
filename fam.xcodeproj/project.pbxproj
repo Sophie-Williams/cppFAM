@@ -15,7 +15,6 @@
 		8333A505191698AE0042D79C /* trapezoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B517E8F1260085342D /* trapezoid.cpp */; };
 		8333A506191698B10042D79C /* rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B417E8F1260085342D /* rule.cpp */; };
 		8333A507191698B40042D79C /* rule_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B317E8F1260085342D /* rule_set.cpp */; };
-		8333A508191698B60042D79C /* fuzzy_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836509B217E8F1260085342D /* fuzzy_set.cpp */; };
 		8333A50A1916AEE40042D79C /* trapezoid_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333A5091916AEE40042D79C /* trapezoid_test.cpp */; };
 		8333A50C1916CCAA0042D79C /* rule_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8333A50B1916CCAA0042D79C /* rule_test.cpp */; };
 		836509AE17E8F1160085342D /* rule_set.h in Headers */ = {isa = PBXBuildFile; fileRef = 836509A917E8F1160085342D /* rule_set.h */; };
@@ -86,11 +85,9 @@
 		8333A5021916971A0042D79C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = tests/main.cpp; sourceTree = "<group>"; };
 		8333A5091916AEE40042D79C /* trapezoid_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trapezoid_test.cpp; path = tests/trapezoid_test.cpp; sourceTree = "<group>"; };
 		8333A50B1916CCAA0042D79C /* rule_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rule_test.cpp; path = tests/rule_test.cpp; sourceTree = "<group>"; };
-		836509A817E8F1160085342D /* fuzzy_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fuzzy_set.h; path = src/fuzzy_set.h; sourceTree = SOURCE_ROOT; };
 		836509A917E8F1160085342D /* rule_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule_set.h; path = src/rule_set.h; sourceTree = SOURCE_ROOT; };
 		836509AA17E8F1160085342D /* rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rule.h; path = src/rule.h; sourceTree = SOURCE_ROOT; };
 		836509AB17E8F1160085342D /* trapezoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trapezoid.h; path = src/trapezoid.h; sourceTree = SOURCE_ROOT; };
-		836509B217E8F1260085342D /* fuzzy_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fuzzy_set.cpp; path = src/fuzzy_set.cpp; sourceTree = SOURCE_ROOT; };
 		836509B317E8F1260085342D /* rule_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rule_set.cpp; path = src/rule_set.cpp; sourceTree = SOURCE_ROOT; };
 		836509B417E8F1260085342D /* rule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rule.cpp; path = src/rule.cpp; sourceTree = SOURCE_ROOT; };
 		836509B517E8F1260085342D /* trapezoid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trapezoid.cpp; path = src/trapezoid.cpp; sourceTree = SOURCE_ROOT; };
@@ -188,7 +185,6 @@
 		8399C05F17DA3F6D004EFD52 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				836509A817E8F1160085342D /* fuzzy_set.h */,
 				836509A917E8F1160085342D /* rule_set.h */,
 				836509AA17E8F1160085342D /* rule.h */,
 				836509AB17E8F1160085342D /* trapezoid.h */,
@@ -199,7 +195,6 @@
 		8399C06017DA3F7F004EFD52 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				836509B217E8F1260085342D /* fuzzy_set.cpp */,
 				836509B317E8F1260085342D /* rule_set.cpp */,
 				836509B417E8F1260085342D /* rule.cpp */,
 				836509B517E8F1260085342D /* trapezoid.cpp */,
@@ -355,7 +350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8333A5031916971A0042D79C /* main.cpp in Sources */,
-				8333A508191698B60042D79C /* fuzzy_set.cpp in Sources */,
 				8333A506191698B10042D79C /* rule.cpp in Sources */,
 				8333A50C1916CCAA0042D79C /* rule_test.cpp in Sources */,
 				830DC63D191AD4AD008C9557 /* rule_set_test.cpp in Sources */,
