@@ -60,11 +60,15 @@ namespace fuzzy {
          
          2) "Defuzzify" into a crisp value by summing the consequents' contributions
          to the output in some sensibly weighted fashion. 
-         
-         Here we use the "Average of Maxima" summation mechanism. This is defined as:
-         (∑ Xcentroid * height) / (∑ height) for all output sets.
-         @return the
-         @exception <#throws#>
+
+         PGAIBE uses the average of the two shoulder points as the 'representative value',
+         but other literature indicates that the actual, proper X centroid of the shape
+         is a proper 'representative value.' So this routine does that.
+
+         The defuzzification method scales the representative value of each consequent 
+         by its confidence (i.e. µ) and takes the average, like so:
+         (∑representativevalue * height) / (∑ height) for all output sets
+         @return the crisp value of this ruleset
          */
         double scale_and_defuzzify();
 

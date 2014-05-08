@@ -56,6 +56,8 @@ namespace fuzzy {
          checked - exceeding this range yields undefined behavior.
          
          A trapezoid can masquerade as a triangle if you use the same X-coord for tl & tr.
+         
+         Do not make your trapezoids overly large. Make them encompass your likely input range.
          */
         Trapezoid(const double l, const double tl, const double tr, const double r, const double h=1.0);
 

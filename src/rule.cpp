@@ -38,11 +38,15 @@ double fuzzy::Rule::fire(const std::vector<const double> &values) {
     else // OR == union == maximum
         mu = *std::max_element(begin(_mus), end(_mus));
 
-//    std::cout << "Fired rule: µ choices are [";
-//    for (const auto &mu: mus) {
-//        std::cout << mu << ", ";
+//    std::cout << "Fired rule '" << _naturalLanguage << "' with inputs [";
+//    for (const auto &v: values) {
+//        std::cout << v << ", ";
 //    }
-//    std::cout << "], final µ is " << mu << std::endl;
+//    std::cout << "], µ choices are [";
+//    for (const auto &m: _mus) {
+//        std::cout << m << ", ";
+//    }
+//    std::cout << "], final µ for this rule is " << mu << std::endl;
 
     return mu;
 }
