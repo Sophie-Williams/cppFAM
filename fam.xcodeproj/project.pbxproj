@@ -175,9 +175,9 @@
 			isa = PBXGroup;
 			children = (
 				8333A5021916971A0042D79C /* main.cpp */,
-				8333A5091916AEE40042D79C /* trapezoid_test.cpp */,
 				8333A50B1916CCAA0042D79C /* rule_test.cpp */,
 				830DC63C191AD4AD008C9557 /* rule_set_test.cpp */,
+				8333A5091916AEE40042D79C /* trapezoid_test.cpp */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -185,8 +185,8 @@
 		8399C05F17DA3F6D004EFD52 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				836509A917E8F1160085342D /* rule_set.h */,
 				836509AA17E8F1160085342D /* rule.h */,
+				836509A917E8F1160085342D /* rule_set.h */,
 				836509AB17E8F1160085342D /* trapezoid.h */,
 			);
 			name = headers;
@@ -195,8 +195,8 @@
 		8399C06017DA3F7F004EFD52 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				836509B317E8F1260085342D /* rule_set.cpp */,
 				836509B417E8F1260085342D /* rule.cpp */,
+				836509B317E8F1260085342D /* rule_set.cpp */,
 				836509B517E8F1260085342D /* trapezoid.cpp */,
 			);
 			name = source;
