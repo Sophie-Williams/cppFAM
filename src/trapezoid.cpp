@@ -20,7 +20,14 @@ _top_right(tr),
 _right(r),
 _height(h)
 {
-    //nop
+    if ((_left > _top_left) ||
+        (_top_left > _top_right) ||
+        (_top_right > _right) ||
+        (_height < 0) ||
+        (_height > 1) )
+    {
+        throw std::out_of_range("Your trapezoid corners must be sensible on the X axis and height must be 0..1.0");
+    }
 }
 
 fuzzy::Trapezoid::Trapezoid() :
