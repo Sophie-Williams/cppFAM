@@ -46,7 +46,7 @@ double fuzzy::Trapezoid::calculateMu(const double value) const {
     } else if (value >= _left && value < _top_left) {
         return (value - _left) / (_top_left - _left);
     } else if (value >= _top_left && value <= _top_right) {
-        return 1.0;
+        return _height;
     } else {
         return (_right - value) / (_right - _top_right);
     }

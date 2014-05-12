@@ -52,8 +52,7 @@ namespace fuzzy {
 
         /**
          Construct a trapzeoid. The X-coordinates of the 4 corners are required, and the height
-         optional and defaults to 1.0. Height must be in the range of 0..1.0; it is not
-         checked - exceeding this range yields undefined behavior.
+         optional and defaults to 1.0. Height must be in the range of 0..1.0.
          
          A trapezoid can masquerade as a triangle if you use the same X-coord for tl & tr.
          
@@ -116,7 +115,7 @@ namespace fuzzy {
     /**
      A specialized hasher for Trapezoid. Permits the trapezoid to be
      used as the key in an unordered_map. Also requires operator==,
-     which is declared in Trapezoid.
+     which is declared in the Trapezoid class.
      */
     struct TrapezoidHasher {
         std::size_t operator()(const Trapezoid& k) const {
