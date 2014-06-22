@@ -14,7 +14,7 @@
 #ifndef __fam__rule_set__
 #define __fam__rule_set__
 
-#include <iostream>
+#include <ostream>
 #include <string>
 #include <unordered_map>
 #include <vector>

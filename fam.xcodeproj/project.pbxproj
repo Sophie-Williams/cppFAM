@@ -93,7 +93,6 @@
 		836509BC17E8F1360085342D /* hvac_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hvac_example.cpp; path = examples/hvac_example.cpp; sourceTree = "<group>"; };
 		836509BD17E8F1360085342D /* weapon_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = weapon_example.cpp; path = examples/weapon_example.cpp; sourceTree = "<group>"; };
 		83C7E78F17C80ACF00F95F8D /* weapon_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = weapon_example; sourceTree = BUILT_PRODUCTS_DIR; };
-		83C7E79B17C8126D00F95F8D /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		83C7E79C17C8126D00F95F8D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		83C7E79D17C8126D00F95F8D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,7 +138,6 @@
 			children = (
 				8333A4FE191696840042D79C /* gtest.framework */,
 				8333A4FC191696730042D79C /* libgtest.dylib */,
-				83C7E79B17C8126D00F95F8D /* CHANGELOG.md */,
 				83C7E79C17C8126D00F95F8D /* LICENSE */,
 				83C7E79D17C8126D00F95F8D /* README.md */,
 				832EEB5D17C296BF0022C8FF /* Source Code */,
@@ -163,8 +161,12 @@
 		832EEB5D17C296BF0022C8FF /* Source Code */ = {
 			isa = PBXGroup;
 			children = (
-				8399C05F17DA3F6D004EFD52 /* headers */,
-				8399C06017DA3F7F004EFD52 /* source */,
+				836509B417E8F1260085342D /* rule.cpp */,
+				836509B317E8F1260085342D /* rule_set.cpp */,
+				836509B517E8F1260085342D /* trapezoid.cpp */,
+				836509AA17E8F1160085342D /* rule.h */,
+				836509A917E8F1160085342D /* rule_set.h */,
+				836509AB17E8F1160085342D /* trapezoid.h */,
 			);
 			name = "Source Code";
 			path = fam;
@@ -179,26 +181,6 @@
 				8333A5091916AEE40042D79C /* trapezoid_test.cpp */,
 			);
 			name = Tests;
-			sourceTree = "<group>";
-		};
-		8399C05F17DA3F6D004EFD52 /* headers */ = {
-			isa = PBXGroup;
-			children = (
-				836509AA17E8F1160085342D /* rule.h */,
-				836509A917E8F1160085342D /* rule_set.h */,
-				836509AB17E8F1160085342D /* trapezoid.h */,
-			);
-			name = headers;
-			sourceTree = "<group>";
-		};
-		8399C06017DA3F7F004EFD52 /* source */ = {
-			isa = PBXGroup;
-			children = (
-				836509B417E8F1260085342D /* rule.cpp */,
-				836509B317E8F1260085342D /* rule_set.cpp */,
-				836509B517E8F1260085342D /* trapezoid.cpp */,
-			);
-			name = source;
 			sourceTree = "<group>";
 		};
 		8399C06117DA3F92004EFD52 /* Examples */ = {

@@ -25,18 +25,18 @@ _naturalLanguage(naturalLanguage) {
 
 double fuzzy::Rule::fire(const std::vector<const double> &values) {
     _mus.clear();
+
+    if (_antecedents.size() != values.size())
+        throw std::out_of_range("The size of the input vector to Rule::fire() must equal the size of its antecedent vector.");
     
-    // TODO check that the two sizes are equal
     for (size_t i = 0; i < _antecedents.size(); ++i) {
         _mus.push_back(_antecedents[i].calculateMu(values[i]));
     }
 
-    double mu;
-
     if (_conjunction == Conjunction::AND)  // AND == intersection == minimum
-        mu = *std::min_element(begin(_mus), end(_mus));
+        return *std::min_element(begin(_mus), end(_mus));
     else // OR == union == maximum
-        mu = *std::max_element(begin(_mus), end(_mus));
+        return *std::max_element(begin(_mus), end(_mus));
 
 //    std::cout << "Fired rule '" << _naturalLanguage << "' with inputs [";
 //    for (const auto &v: values) {
@@ -48,5 +48,5 @@ double fuzzy::Rule::fire(const std::vector<const double> &values) {
 //    }
 //    std::cout << "], final µ for this rule is " << mu << std::endl;
 
-    return mu;
+//    return mu;
 }

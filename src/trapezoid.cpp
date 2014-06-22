@@ -20,7 +20,14 @@ _top_right(tr),
 _right(r),
 _height(h)
 {
-    //nop
+    if ((_left > _top_left) ||
+        (_top_left > _top_right) ||
+        (_top_right > _right) ||
+        (_height < 0) ||
+        (_height > 1) )
+    {
+        throw std::out_of_range("Your trapezoid corners must be sensible on the X axis and height must be 0..1.0");
+    }
 }
 
 fuzzy::Trapezoid::Trapezoid() :
@@ -39,7 +46,7 @@ double fuzzy::Trapezoid::calculateMu(const double value) const {
     } else if (value >= _left && value < _top_left) {
         return (value - _left) / (_top_left - _left);
     } else if (value >= _top_left && value <= _top_right) {
-        return 1.0;
+        return _height;
     } else {
         return (_right - value) / (_right - _top_right);
     }

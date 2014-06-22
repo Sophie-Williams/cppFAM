@@ -19,8 +19,6 @@
 
 #include "trapezoid.h"
 
-using std::unique_ptr;
-
 namespace fuzzy {
     enum class Conjunction : char {AND, OR};
 
