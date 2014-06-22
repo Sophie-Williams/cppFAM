@@ -93,7 +93,6 @@
 		836509BC17E8F1360085342D /* hvac_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hvac_example.cpp; path = examples/hvac_example.cpp; sourceTree = "<group>"; };
 		836509BD17E8F1360085342D /* weapon_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = weapon_example.cpp; path = examples/weapon_example.cpp; sourceTree = "<group>"; };
 		83C7E78F17C80ACF00F95F8D /* weapon_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = weapon_example; sourceTree = BUILT_PRODUCTS_DIR; };
-		83C7E79B17C8126D00F95F8D /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		83C7E79C17C8126D00F95F8D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		83C7E79D17C8126D00F95F8D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,7 +138,6 @@
 			children = (
 				8333A4FE191696840042D79C /* gtest.framework */,
 				8333A4FC191696730042D79C /* libgtest.dylib */,
-				83C7E79B17C8126D00F95F8D /* CHANGELOG.md */,
 				83C7E79C17C8126D00F95F8D /* LICENSE */,
 				83C7E79D17C8126D00F95F8D /* README.md */,
 				832EEB5D17C296BF0022C8FF /* Source Code */,

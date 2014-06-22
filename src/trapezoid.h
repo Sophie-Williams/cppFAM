@@ -15,8 +15,7 @@
 #define __fam__trapezoid__
 
 #include <cmath>
-#include <iostream>
-#include <utility>
+#include <ostream>
 #include <vector>
 
 namespace fuzzy {
