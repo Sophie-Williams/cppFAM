@@ -8,4 +8,4 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 file(GLOB FAM_SOURCES *.cpp)
 
 # Create an executable file from sources:
-add_library(fuzzy SHARED ${FAM_SOURCES})
+add_library(fuzzy STATIC ${FAM_SOURCES})

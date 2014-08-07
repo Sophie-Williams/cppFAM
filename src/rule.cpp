@@ -13,6 +13,8 @@
 
 #include "rule.h"
 
+#include <algorithm>
+
 //#include <iostream>
 
 fuzzy::Rule::Rule(const std::vector<Trapezoid>antecedents, const Conjunction conjunction, const Trapezoid &consequent, std::string naturalLanguage) :
@@ -28,7 +30,7 @@ double fuzzy::Rule::fire(const std::vector<const double> &values) {
 
     if (_antecedents.size() != values.size())
         throw std::out_of_range("The size of the input vector to Rule::fire() must equal the size of its antecedent vector.");
-    
+
     for (size_t i = 0; i < _antecedents.size(); ++i) {
         _mus.push_back(_antecedents[i].calculateMu(values[i]));
     }

@@ -21,11 +21,11 @@
 
 #include "rule.h"
 
-using std::unique_ptr;
-
 namespace fuzzy {
-    enum class Implication : char { MAMDANI, LARSEN };
-    
+    enum class Implication : char {
+        MAMDANI, LARSEN
+    };
+
     /**
      A RuleSet is a collection of related rules that govern a particular decision,
      e.g. "fan speed" or "shotgun desirability".
@@ -55,17 +55,17 @@ namespace fuzzy {
         /**
          Using the consequents-to-µ map, we:
          1) Scale each consequent by its µ value. This is called "implication," and
-         this 'weights' the consequents properly. There are several common ways of 
+         this 'weights' the consequents properly. There are several common ways of
          scaling, such as Larsen (scaling) and Mamdani (clipping).
-         
+
          2) "Defuzzify" into a crisp value by summing the consequents' contributions
-         to the output in some sensibly weighted fashion. 
+         to the output in some sensibly weighted fashion.
 
          PGAIBE uses the average of the two shoulder points as the 'representative value',
          but other literature indicates that the actual, proper X centroid of the shape
          is a proper 'representative value.' So this routine does that.
 
-         The defuzzification method scales the representative value of each consequent 
+         The defuzzification method scales the representative value of each consequent
          by its confidence (i.e. µ) and takes the average, like so:
          (∑representativevalue * height) / (∑ height) for all output sets
          @return the crisp value of this ruleset
@@ -81,13 +81,15 @@ namespace fuzzy {
          Retrieve the ruleset's natural-language name
          @return the name in string form
          */
-        std::string name() const { return _name; }
+        std::string name() const {
+            return _name;
+        }
 
         /**
          Add an existing rule to the ruleset.
          @param r an rvalue-reference to a Rule
          */
-        void add(Rule &&r) {
+        void add(Rule&& r) {
             _rules.push_back(std::move(r));
         }
 
@@ -95,7 +97,7 @@ namespace fuzzy {
          Given a collection of inputs, calculate the ruleset's result. This means,
          fire all the rules to calculate each rule's µ ; choosing the highest µ
          for every consequent ; weighting the consequents (implication) by their µ
-         values ; finally, adding up the weighted consequents to achieve a final 
+         values ; finally, adding up the weighted consequents to achieve a final
          calculation.
          @param values A vector of inputs (each a double)
          @return the result in double form
