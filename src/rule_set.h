@@ -11,8 +11,7 @@
 //  the terms found in the "LICENSE" file included with the library.
 //
 
-#ifndef __fam__rule_set__
-#define __fam__rule_set__
+#pragma once
 
 #include <ostream>
 #include <string>
@@ -22,96 +21,95 @@
 #include "rule.h"
 
 namespace fuzzy {
-    enum class Implication : char {
-        MAMDANI, LARSEN
-    };
+enum class Implication : char {
+    MAMDANI, LARSEN
+};
+
+/**
+ A RuleSet is a collection of related rules that govern a particular decision,
+ e.g. "fan speed" or "shotgun desirability".
+ */
+class RuleSet {
+private:
+    std::string _name;
+    Implication _implication;
+    std::vector<Rule> _rules;
+
+    // A map of each consequent to a µ value (presumably the 'best' µ for that
+    // consequent)
+    typedef std::unordered_map<const Trapezoid, double, TrapezoidHasher> mu_map;
+    mu_map _consequents_to_mus;
 
     /**
-     A RuleSet is a collection of related rules that govern a particular decision,
-     e.g. "fan speed" or "shotgun desirability".
+     Many rules can share a consequent, which means that any given consequent
+     may have been activated more than once.
+     But we need to get just a single µ value out -- we only care about the 'best'
+     µ. A popular way of doing so is to OR the values together, i.e. keep the
+     maximum µ value and discard the others.
+     Put another way, keep only the highest µ for any given consequent.
+     @param inputValues A vector of inputs (each a double)
      */
-    class RuleSet {
-    private:
-        std::string _name;
-        Implication _implication;
-        std::vector<Rule> _rules;
+    void populate_mu_map(const std::vector<const double> inputValues);
 
-        // A map of each consequent to a µ value (presumably the 'best' µ for that
-        // consequent)
-        typedef std::unordered_map<const Trapezoid, double, TrapezoidHasher> mu_map;
-        mu_map _consequents_to_mus;
+    /**
+     Using the consequents-to-µ map, we:
+     1) Scale each consequent by its µ value. This is called "implication," and
+     this 'weights' the consequents properly. There are several common ways of
+     scaling, such as Larsen (scaling) and Mamdani (clipping).
 
-        /**
-         Many rules can share a consequent, which means that any given consequent
-         may have been activated more than once.
-         But we need to get just a single µ value out -- we only care about the 'best'
-         µ. A popular way of doing so is to OR the values together, i.e. keep the
-         maximum µ value and discard the others.
-         Put another way, keep only the highest µ for any given consequent.
-         @param inputValues A vector of inputs (each a double)
-         */
-        void populate_mu_map(const std::vector<const double> inputValues);
+     2) "Defuzzify" into a crisp value by summing the consequents' contributions
+     to the output in some sensibly weighted fashion.
 
-        /**
-         Using the consequents-to-µ map, we:
-         1) Scale each consequent by its µ value. This is called "implication," and
-         this 'weights' the consequents properly. There are several common ways of
-         scaling, such as Larsen (scaling) and Mamdani (clipping).
+     PGAIBE uses the average of the two shoulder points as the 'representative value',
+     but other literature indicates that the actual, proper X centroid of the shape
+     is a proper 'representative value.' So this routine does that.
 
-         2) "Defuzzify" into a crisp value by summing the consequents' contributions
-         to the output in some sensibly weighted fashion.
-
-         PGAIBE uses the average of the two shoulder points as the 'representative value',
-         but other literature indicates that the actual, proper X centroid of the shape
-         is a proper 'representative value.' So this routine does that.
-
-         The defuzzification method scales the representative value of each consequent
-         by its confidence (i.e. µ) and takes the average, like so:
-         (∑representativevalue * height) / (∑ height) for all output sets
-         @return the crisp value of this ruleset
-         */
-        double scale_and_defuzzify();
+     The defuzzification method scales the representative value of each consequent
+     by its confidence (i.e. µ) and takes the average, like so:
+     (∑representativevalue * height) / (∑ height) for all output sets
+     @return the crisp value of this ruleset
+     */
+    double scale_and_defuzzify();
 
 
-    public:
-        RuleSet();                                          // default constructor
-        RuleSet(std::string name, Implication implication); // constructor
+public:
+    RuleSet();                                          // default constructor
+    RuleSet(std::string name, Implication implication); // constructor
 
-        /**
-         Retrieve the ruleset's natural-language name
-         @return the name in string form
-         */
-        std::string name() const {
-            return _name;
-        }
+    /**
+     Retrieve the ruleset's natural-language name
+     @return the name in string form
+     */
+    std::string name() const {
+        return _name;
+    }
 
-        /**
-         Add an existing rule to the ruleset.
-         @param r an rvalue-reference to a Rule
-         */
-        void add(Rule&& r) {
-            _rules.push_back(std::move(r));
-        }
+    /**
+     Add an existing rule to the ruleset.
+     @param r an rvalue-reference to a Rule
+     */
+    void add(Rule&& r) {
+        _rules.push_back(std::move(r));
+    }
 
-        /**
-         Given a collection of inputs, calculate the ruleset's result. This means,
-         fire all the rules to calculate each rule's µ ; choosing the highest µ
-         for every consequent ; weighting the consequents (implication) by their µ
-         values ; finally, adding up the weighted consequents to achieve a final
-         calculation.
-         @param values A vector of inputs (each a double)
-         @return the result in double form
-         */
-        double calculate(const std::vector<const double> values);
+    /**
+     Given a collection of inputs, calculate the ruleset's result. This means,
+     fire all the rules to calculate each rule's µ ; choosing the highest µ
+     for every consequent ; weighting the consequents (implication) by their µ
+     values ; finally, adding up the weighted consequents to achieve a final
+     calculation.
+     @param values A vector of inputs (each a double)
+     @return the result in double form
+     */
+    double calculate(const std::vector<const double> values);
 
-        /**
-         Convenience function to make it easier to call single-input RuleSets.
-         (A single-input RuleSet is one whose Rules each have just one antecedent.)
-         @param value the single input value to use
-         @return the result in double form
-         */
-        double calculate(const double value);
-    };
+    /**
+     Convenience function to make it easier to call single-input RuleSets.
+     (A single-input RuleSet is one whose Rules each have just one antecedent.)
+     @param value the single input value to use
+     @return the result in double form
+     */
+    double calculate(const double value);
+};
 }
 
-#endif /* defined(__fam__rule_set__) */
