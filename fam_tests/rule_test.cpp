@@ -19,12 +19,12 @@ protected:
     // Objects declared here can be used by all tests in the test case for this component.
     fuzzy::Trapezoid ok {60, 65, 65, 70};
     fuzzy::Trapezoid med {40, 50, 50, 60};
-    std::vector<fuzzy::Trapezoid> antecedents { std::vector <fuzzy::Trapezoid> {ok} };
+    std::vector<fuzzy::Trapezoid> antecedents { std::vector <fuzzy::Trapezoid> {ok} }; // This weird init is a VS2013 issue. See https://stackoverflow.com/questions/21573143/how-to-initialise-a-vector-member-variable-in-the-class-definition-c11
 
     fuzzy::Trapezoid close {-150, -25, 25, 150};
     fuzzy::Trapezoid ammo_low {-10, 0, 0, 10};
     fuzzy::Trapezoid undesirable {0, 0, 20, 50};
-    std::vector<fuzzy::Trapezoid> antecedents2 { std::vector<fuzzy::Trapezoid> { close, ammo_low } };
+    std::vector<fuzzy::Trapezoid> antecedents2 { std::vector<fuzzy::Trapezoid> { close, ammo_low } }; // This weird init is a VS2013 issue. See https://stackoverflow.com/questions/21573143/how-to-initialise-a-vector-member-variable-in-the-class-definition-c11
 
     fuzzy::Rule x {antecedents,
                    fuzzy::Conjunction::AND,

@@ -13,17 +13,17 @@
 
 #pragma once
 
+// To support Google Test for private members
+#ifndef TEST_FRIENDS
+#define TEST_FRIENDS
+#endif
+
 #include <ostream>
 #include <string>
 #include <unordered_map>
 #include <vector>
 
 #include "rule.h"
-
-// To support Google Test for private members
-#ifndef TEST_FRIENDS
-#define TEST_FRIENDS
-#endif
 
 namespace fuzzy {
     enum class Implication : char {
@@ -35,6 +35,7 @@ namespace fuzzy {
      e.g. "fan speed" or "shotgun desirability".
      */
     class RuleSet {
+
     private:
         std::string _name;
         Implication _implication;
