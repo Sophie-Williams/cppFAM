@@ -83,8 +83,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>C:\Users\Chris\Source\common_libs\Win32;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\Chris\Source\fam\src;C:\Users\Chris\Source\gtest-1.7.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Chris\Code\cpp\common_libs\Win\Win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Chris\Code\cpp\FAM\src;C:\Users\Chris\Code\cpp\gtest-1.7.0\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -93,9 +93,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\Chris\Code\cpp\FAM\src;C:\Users\Chris\Code\cpp\gtest-1.7.0\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\Chris\Code\cpp\FAM\src;C:\Users\Chris\Code\cpp\gtest-1.7.0\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
