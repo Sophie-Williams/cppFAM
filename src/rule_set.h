@@ -27,7 +27,8 @@
 
 namespace fuzzy {
     enum class Implication : char {
-        MAMDANI, LARSEN
+        MAMDANI,
+        LARSEN
     };
 
     /**
@@ -77,7 +78,6 @@ namespace fuzzy {
          */
         double scale_and_defuzzify();
 
-
     public:
         RuleSet();                                          // default constructor
         RuleSet(std::string name, Implication implication); // constructor
@@ -117,7 +117,6 @@ namespace fuzzy {
          */
         double calculate(const double value);
 
-        TEST_FRIENDS;
+        TEST_FRIENDS
     };
 }
-
