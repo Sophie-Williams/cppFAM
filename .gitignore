@@ -26,6 +26,7 @@ Pods
 profile
 xcuserdata
 *.sublime-workspace
+*.opendb
 
 # CMake stuff
 CMakeCache.txt

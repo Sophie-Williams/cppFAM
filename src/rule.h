@@ -54,7 +54,7 @@ public:
      @param consequent a FuzzySet that is the result of this Rule
      @param naturalLanguage an optional human-readable summary of this rule
      */
-    Rule(const std::vector<Trapezoid>antecedents, const Conjunction conjunction, const Trapezoid& consequent, std::string naturalLanguage="");
+    Rule(const std::vector<Trapezoid>antecedents, const Conjunction conjunction, const Trapezoid& consequent, std::string naturalLanguage = "");
 
     /**
      Retrieve this rule's consequent.
@@ -75,7 +75,7 @@ public:
      @param values a vector of input values, one for each antecedent
      @return this rule's degree-of-fit (µ) as a range of 0 (no fit) to 1 (perfect fit)
      */
-    double fire(const std::vector<const double>& values);
+    double fire(const std::vector<double>& values);
 };
 }
 

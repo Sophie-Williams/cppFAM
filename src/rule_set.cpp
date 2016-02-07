@@ -17,20 +17,18 @@ using std::vector;
 using std::string;
 
 fuzzy::RuleSet::RuleSet() :
-_name(""),
-_implication(Implication::LARSEN)
-{
+    _name(""),
+    _implication(Implication::LARSEN) {
     //nop
 }
 
 fuzzy::RuleSet::RuleSet(string name, Implication implication) :
-_name(name),
-_implication(implication)
-{
+    _name(name),
+    _implication(implication) {
     //nop
 }
 
-void fuzzy::RuleSet::populate_mu_map(const vector<const double> inputValues) {
+void fuzzy::RuleSet::populate_mu_map(const vector<double> inputValues) {
     _consequents_to_mus.clear();
 
     // Fire each rule to determine the µ value (degree of fit).
@@ -40,7 +38,7 @@ void fuzzy::RuleSet::populate_mu_map(const vector<const double> inputValues) {
         auto iter = _consequents_to_mus.find(rule.consequent());
         if (iter == end(_consequents_to_mus)) {
             // Didn't find
-            _consequents_to_mus.insert( std::make_pair(rule.consequent(), mu) );
+            _consequents_to_mus.insert(std::make_pair(rule.consequent(), mu));
         } else if (mu > iter->second) {
             // Did find, and latest µ is superior to the previous best
             iter->second = mu; // keep the max mu
@@ -49,36 +47,36 @@ void fuzzy::RuleSet::populate_mu_map(const vector<const double> inputValues) {
 }
 
 double fuzzy::RuleSet::scale_and_defuzzify() {
-    double numerator=0;
-    double denominator=0;
+    double numerator = 0;
+    double denominator = 0;
 
     // This isn't DRY but it's fastest this way.
     if (_implication == Implication::MAMDANI) {
-        for ( const auto& entry : _consequents_to_mus) {
+        for (const auto& entry : _consequents_to_mus) {
             Trapezoid tmp{ (entry.first).mamdami(entry.second) };
 //            std::cout << tmp << std::endl;
             numerator += (tmp.calculateXCentroid() * tmp.height());
             denominator += tmp.height();
         }
     } else {
-        for ( const auto& entry : _consequents_to_mus) {
+        for (const auto& entry : _consequents_to_mus) {
             Trapezoid tmp{ (entry.first).larsen(entry.second) };
             numerator += (tmp.calculateXCentroid() * tmp.height());
             denominator += tmp.height();
         }
     }
 
-    if (denominator==0)
-        return 0;
+    if (denominator == 0)
+    { return 0; }
 
-    return numerator/denominator;
+    return numerator / denominator;
 }
 
 double fuzzy::RuleSet::calculate(const double value) {
-    return calculate(std::vector<const double>{value});
+    return calculate(std::vector<double> {value});
 }
 
-double fuzzy::RuleSet::calculate(const vector<const double> inputValues) {
+double fuzzy::RuleSet::calculate(const vector<double> inputValues) {
     populate_mu_map(inputValues);
     return scale_and_defuzzify();
 }
