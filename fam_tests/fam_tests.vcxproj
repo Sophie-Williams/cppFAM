@@ -84,13 +84,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>D:\Code\googletest-master\googletest\msvc\gtest\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Code\FAM\src;D:\Code\googletest-master\googletest\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\googletest-master\googletest\msvc\gtest\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\src;$(ProjectDir)..\..\googletest-master\googletest\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>C:\Users\Chris\Source\common_libs\x64;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\Chris\Source\fam\src;C:\Users\Chris\Source\gtest-1.7.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\src;$(ProjectDir)..\..\googletest-master\googletest\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
