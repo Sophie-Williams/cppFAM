@@ -25,7 +25,7 @@
     <ClCompile Include="weapon_example.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\fam.vcxproj">
+    <ProjectReference Include="..\fam\fam.vcxproj">
       <Project>{c9c4bbf9-4c11-40ef-91f8-c97b78c795e5}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -83,10 +83,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\fam;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)..\fam;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

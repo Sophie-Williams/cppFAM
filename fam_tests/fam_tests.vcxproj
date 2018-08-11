@@ -24,13 +24,8 @@
     <ClCompile Include="trapezoid_test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\fam.vcxproj">
+    <ProjectReference Include="..\fam\fam.vcxproj">
       <Project>{c9c4bbf9-4c11-40ef-91f8-c97b78c795e5}</Project>
-      <Private>false</Private>
-      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
-      <LinkLibraryDependencies>true</LinkLibraryDependencies>
-      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -85,7 +80,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(SolutionDir)..\..\googletest-master\googletest\msvc\2010\gtest\Win32-Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(ProjectDir)..\src;$(SolutionDir)..\..\googletest-master\googletest\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\fam;$(SolutionDir)..\..\googletest-master\googletest\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
