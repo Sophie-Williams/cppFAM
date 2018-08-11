@@ -54,7 +54,6 @@ double fuzzy::RuleSet::scale_and_defuzzify() {
     if (_implication == Implication::MAMDANI) {
         for (const auto& entry : _consequents_to_mus) {
             Trapezoid tmp{ (entry.first).mamdami(entry.second) };
-//            std::cout << tmp << std::endl;
             numerator += (tmp.calculateXCentroid() * tmp.height());
             denominator += tmp.height();
         }
