@@ -43,7 +43,7 @@ private:
 
 public:
     double calculate(const double dist, const double ammo_qty) {
-        return rule_set_.calculate( std::vector<const double>{dist, ammo_qty} );
+        return rule_set_.calculate( std::vector<double>{dist, ammo_qty} );
     }
 
     RocketFAM() :
@@ -93,7 +93,7 @@ private:
 
 public:
     double calculate(const double dist, const double ammo_qty) {
-        return rule_set_.calculate( std::vector<const double>{dist, ammo_qty} );
+        return rule_set_.calculate( std::vector<double>{dist, ammo_qty} );
     }
 
     ShotgunFam() :

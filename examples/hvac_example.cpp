@@ -42,7 +42,7 @@ private:
 
 public:
     double calculate(double t) {
-        return rule_set_.calculate( std::vector<const double>{t} );
+        return rule_set_.calculate( std::vector<double>{t} );
     }
 
     HvacBrain() :
