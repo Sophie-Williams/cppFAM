@@ -71,7 +71,7 @@ double fuzzy::RuleSet::scale_and_defuzzify() {
     return numerator / denominator;
 }
 
-double fuzzy::RuleSet::calculate(const double value) {
+double fuzzy::RuleSet::calculate(double value) { 
     return calculate(std::vector<double> {value});
 }
 

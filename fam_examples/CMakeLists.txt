@@ -1,7 +1,7 @@
 # Include the directory itself as a path to include directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-include_directories("${CMAKE_SOURCE_DIR}/src")
+include_directories("${CMAKE_SOURCE_DIR}/fam")
 
 # Create a variable containing all .cpp files:
 #set(GOL_SOURCES board.cpp main.cpp)
