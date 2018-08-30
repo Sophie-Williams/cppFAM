@@ -257,6 +257,9 @@ DerivedData
 # Pods - for those of you who use CocoaPods
 Pods
 
+cmake-build-debug
+cmake-build-release
+
 =======
 /Debug/
 >>>>>>> develop
